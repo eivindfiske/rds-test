@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace IS202.website.Pages
+namespace rds_test.MVC.Pages
 {
     public class IndexModel : PageModel
     {
