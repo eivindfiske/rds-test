@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.EntityFrameworkCore;
 using rds_test.Data;
 using System.ComponentModel.DataAnnotations;
+using rds_test.MVC.Models;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +12,7 @@ builder.Services.AddRazorPages();
 ConfigureServices(
     builder.Services,
     builder.Configuration
-    ) ;
+    );
 
 var app = builder.Build();
 
@@ -27,8 +28,8 @@ app.MapGet("/Users/{id:int}", async (AppDbContext db, int id) =>
 
 app.MapPost("/Users", async (AppDbContext db, Users users) =>
 {
-     await db.users.AddAsync(users);
-     await db.SaveChangesAsync();
+    await db.users.AddAsync(users);
+    await db.SaveChangesAsync();
 
     return Results.Created($"/Users/{users.Id}", users);
 }).Produces(StatusCodes.Status201Created); //ehedbu
@@ -58,16 +59,16 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-    app.UseHttpsRedirection();
-    app.UseStaticFiles();
+app.UseHttpsRedirection();
+app.UseStaticFiles();
 
-    app.UseRouting();
+app.UseRouting();
 
-    app.UseAuthorization();
+app.UseAuthorization();
 
-    app.MapRazorPages();
+app.MapRazorPages();
 
-    app.Run();
+app.Run();
 
 void ConfigureServices(IServiceCollection services, ConfigurationManager configManager)
 {

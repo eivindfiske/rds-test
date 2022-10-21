@@ -1,8 +1,11 @@
 ﻿using System;
 
-public class Users 
+namespace rds_test.MVC.Models
 {
-    public int Id { get; set; }
-    public string Name { get; set; }
+    public class Users
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
 
+    }
 }

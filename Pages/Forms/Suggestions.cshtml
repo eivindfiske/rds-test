@@ -1,0 +1,19 @@
+@page
+@model SuggestionsModel
+@{
+    ViewData["Title"] = "Nytt forslag";
+}
+
+<h1>Opprett et forslag</h1>
+
+<div class="form">
+    <form method="post">
+        <input type="text" asp-for="Suggestion.id" placeholder="Saksummer">
+        <input type="text" asp-for="Suggestion.SugTitle" placeholder="Tittel">
+        <input type="text" asp-for="Suggestion.SugDescription" placeholder="Beskrivelse">
+        <br>
+        <button type="submit">Opprett</button>
+    </form>
+
+
+</div>
