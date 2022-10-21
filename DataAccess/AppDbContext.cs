@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
+using rds_test.MVC.Models;
 
 namespace rds_test.Data
 {
@@ -12,5 +13,5 @@ namespace rds_test.Data
 
         public virtual DbSet<Suggestions> suggestions { get; set; }
 
-    }   
+    }
 }

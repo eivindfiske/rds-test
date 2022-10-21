@@ -1,10 +1,13 @@
 ﻿using System;
 
-public class Suggestions
+namespace rds_test.MVC.Models
 {
-    public int id { get; set; }
-    public string SugTitle { get; set; }
+    public class Suggestions
+    {
+        public int id { get; set; }
+        public string SugTitle { get; set; }
 
-    public string SugDescription { get; set; }
+        public string SugDescription { get; set; }
 
+    }
 }
