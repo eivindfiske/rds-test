@@ -1,9 +1,22 @@
 html {
+<<<<<<< HEAD
   font-size: 30px;
   color: rgb(47, 43, 43);
 }
 
 @media (min-width: 768px) {
+=======
+    font-size: 30px;
+    color: rgb(47, 43, 43);
+  }
+  
+  @media (min-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+  
+>>>>>>> de3e3873218ae38c5a9810563fbc737bbdc9aa2b
   html {
     font-size: 16px;
   }
@@ -15,6 +28,7 @@ html {
 }
 
 body {
+<<<<<<< HEAD
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -50,3 +64,40 @@ a:hover {
 * {
   font-family: sans-serif;
 } 
+=======
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 60px;
+    background-color:#F9F8F7;
+    
+  }
+
+  footer {
+    margin-top: auto;
+  }
+
+  img {
+    width: 50vh;
+    padding: 10px;
+  }
+
+  a:link {
+    color: black;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: black;
+    text-decoration: none;
+  }
+
+  .nav-item {
+    color: rgb(47, 43, 43);
+
+  }
+
+  * {
+    font-family: sans-serif;
+  } 
+>>>>>>> de3e3873218ae38c5a9810563fbc737bbdc9aa2b
