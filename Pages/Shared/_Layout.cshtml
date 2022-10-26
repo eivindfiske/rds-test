@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="../IS202.website.styles.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
 
 
@@ -30,7 +31,7 @@
                 <div class="collapse navbar-collapse" id="toggleNavBar">
                     <ul class="navbar-nav">
   
-                            <a class="navbar-brand" asp-area="" asp-page="/Suggestions">Forslag</a>
+                            <a class="navbar-brand" asp-area="" asp-page="/Index">Forslag</a>
                         
                         
                             <a class="navbar-brand" asp-area="" asp-page="/Index">Statistikk</a>
@@ -46,6 +47,33 @@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
+
+    <style> 
+        .floating-btn {
+            width: 80px;
+            height: 80px;
+            background: #009879;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 40px; 
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            transition: background 0.25s;
+        }
+        .floating-btn:active {
+            background: #007D63;
+        }
+        </style>
+        <a href="/Forms/Suggestions" class="material-icons floating-btn">add</a>
+
+
+
         </main>
     </div>
 
