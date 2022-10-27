@@ -11,8 +11,8 @@ using rds_test.Data;
 namespace rds_test.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221027130433_KeyUpdate")]
-    partial class KeyUpdate
+    [Migration("20221027144725_RemoveAutoInc")]
+    partial class RemoveAutoInc
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,7 +38,6 @@ namespace rds_test.Migrations
                 {
                     b.Property<int>("emp_num")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(10)
                         .HasColumnType("int");
 
                     b.Property<bool>("admin")
@@ -98,11 +97,9 @@ namespace rds_test.Migrations
             modelBuilder.Entity("rds_test.Models.Suggestion", b =>
                 {
                     b.Property<int>("case_num")
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(10)
                         .HasColumnType("int");
 
-                    b.Property<DateOnly>("deadline")
+                    b.Property<DateOnly?>("deadline")
                         .HasColumnType("date");
 
                     b.Property<string>("description")

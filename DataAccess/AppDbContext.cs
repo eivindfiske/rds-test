@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore;
 using rds_test.Models;
 
 
@@ -38,6 +39,14 @@ namespace rds_test.Data
             .HasOne(e => e.dept)
             .WithMany(e => e.emp)
             .HasForeignKey(e => e.team);
+
+            modelBuilder.Entity<Suggestion>()
+            .Property(m => m.case_num)
+            .ValueGeneratedNever();
+
+            modelBuilder.Entity<Emp>()
+            .Property(m => m.emp_num)
+            .ValueGeneratedNever();
         }
     }
 

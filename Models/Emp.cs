@@ -7,7 +7,6 @@ namespace rds_test.Models
     public class Emp
     {
         [Key]
-        [MaxLength(10)]
         public int emp_num { get; set; }
 
         [Column(TypeName = "varchar(50)")]

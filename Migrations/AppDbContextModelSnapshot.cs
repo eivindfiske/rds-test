@@ -35,8 +35,6 @@ namespace rds_test.Migrations
             modelBuilder.Entity("rds_test.Models.Emp", b =>
                 {
                     b.Property<int>("emp_num")
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(10)
                         .HasColumnType("int");
 
                     b.Property<bool>("admin")
@@ -96,11 +94,9 @@ namespace rds_test.Migrations
             modelBuilder.Entity("rds_test.Models.Suggestion", b =>
                 {
                     b.Property<int>("case_num")
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(10)
                         .HasColumnType("int");
 
-                    b.Property<DateOnly>("deadline")
+                    b.Property<DateOnly?>("deadline")
                         .HasColumnType("date");
 
                     b.Property<string>("description")

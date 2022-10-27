@@ -11,8 +11,8 @@ using rds_test.Data;
 namespace rds_test.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221027123954_Log")]
-    partial class Log
+    [Migration("20221027144842_RemoveAutoIncEmp")]
+    partial class RemoveAutoIncEmp
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,8 +37,6 @@ namespace rds_test.Migrations
             modelBuilder.Entity("rds_test.Models.Emp", b =>
                 {
                     b.Property<int>("emp_num")
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(10)
                         .HasColumnType("int");
 
                     b.Property<bool>("admin")
@@ -55,6 +53,8 @@ namespace rds_test.Migrations
                         .HasColumnType("varchar(50)");
 
                     b.HasKey("emp_num");
+
+                    b.HasIndex("team");
 
                     b.ToTable("emp");
                 });
@@ -96,11 +96,9 @@ namespace rds_test.Migrations
             modelBuilder.Entity("rds_test.Models.Suggestion", b =>
                 {
                     b.Property<int>("case_num")
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(10)
                         .HasColumnType("int");
 
-                    b.Property<DateOnly>("deadline")
+                    b.Property<DateOnly?>("deadline")
                         .HasColumnType("date");
 
                     b.Property<string>("description")
@@ -147,6 +145,17 @@ namespace rds_test.Migrations
                     b.ToTable("suggestion");
                 });
 
+            modelBuilder.Entity("rds_test.Models.Emp", b =>
+                {
+                    b.HasOne("rds_test.Models.Dept", "dept")
+                        .WithMany("emp")
+                        .HasForeignKey("team")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("dept");
+                });
+
             modelBuilder.Entity("rds_test.Models.Participants", b =>
                 {
                     b.HasOne("rds_test.Models.Suggestion", "suggestion")
@@ -164,6 +173,11 @@ namespace rds_test.Migrations
                     b.Navigation("emp");
 
                     b.Navigation("suggestion");
+                });
+
+            modelBuilder.Entity("rds_test.Models.Dept", b =>
+                {
+                    b.Navigation("emp");
                 });
 
             modelBuilder.Entity("rds_test.Models.Emp", b =>

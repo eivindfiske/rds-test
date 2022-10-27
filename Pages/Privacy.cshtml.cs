@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace rds_test.MVC.Pages
+namespace rds_test.Pages
 {
     public class PrivacyModel : PageModel
     {
