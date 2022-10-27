@@ -1,5 +1,5 @@
 @page
-@model SuggestionsModel
+@model SuggestionModel
 @{
     ViewData["Title"] = "Nytt forslag";
 }
@@ -8,9 +8,9 @@
 
 <div class="form">
     <form method="post">
-        <input type="text" asp-for="Suggestion.id" placeholder="Saksummer">
-        <input type="text" asp-for="Suggestion.SugTitle" placeholder="Tittel">
-        <input type="text" asp-for="Suggestion.SugDescription" placeholder="Beskrivelse">
+        <input type="text" asp-for="suggestion.title" placeholder="Saksummer">
+        <input type="text" asp-for="suggestion.description" placeholder="Tittel">
+        <input type="text" asp-for="suggestion.timestamp" placeholder="Beskrivelse">
         <br>
         <button type="submit">Opprett</button>
     </form>

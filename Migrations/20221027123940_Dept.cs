@@ -1,0 +1,86 @@
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace rds_test.Migrations
+{
+    public partial class Dept : Migration
+    {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.CreateTable(
+                name: "dept",
+                columns: table => new
+                {
+                    team = table.Column<string>(type: "varchar(50)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    dept = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_dept", x => x.team);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "log",
+                columns: table => new
+                {
+                    timestamp = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    emp_num = table.Column<int>(type: "int", nullable: false),
+                    case_num = table.Column<int>(type: "int", nullable: false),
+                    edit_msg = table.Column<string>(type: "varchar(50)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_log", x => x.timestamp);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "participants",
+                columns: table => new
+                {
+                    case_num = table.Column<int>(type: "int", nullable: false),
+                    emp_num = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_participants", x => new { x.case_num, x.emp_num });
+                    table.ForeignKey(
+                        name: "FK_participants_emp_emp_num",
+                        column: x => x.emp_num,
+                        principalTable: "emp",
+                        principalColumn: "emp_num",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_participants_suggestion_case_num",
+                        column: x => x.case_num,
+                        principalTable: "suggestion",
+                        principalColumn: "case_num",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_participants_emp_num",
+                table: "participants",
+                column: "emp_num");
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "dept");
+
+            migrationBuilder.DropTable(
+                name: "log");
+
+            migrationBuilder.DropTable(
+                name: "participants");
+        }
+    }
+}

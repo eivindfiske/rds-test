@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using rds_test.Data;
 
@@ -10,9 +11,10 @@ using rds_test.Data;
 namespace rds_test.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221027124014_Participants")]
+    partial class Participants
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,8 +55,6 @@ namespace rds_test.Migrations
                         .HasColumnType("varchar(50)");
 
                     b.HasKey("emp_num");
-
-                    b.HasIndex("team");
 
                     b.ToTable("emp");
                 });
@@ -147,17 +147,6 @@ namespace rds_test.Migrations
                     b.ToTable("suggestion");
                 });
 
-            modelBuilder.Entity("rds_test.Models.Emp", b =>
-                {
-                    b.HasOne("rds_test.Models.Dept", "dept")
-                        .WithMany("emp")
-                        .HasForeignKey("team")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("dept");
-                });
-
             modelBuilder.Entity("rds_test.Models.Participants", b =>
                 {
                     b.HasOne("rds_test.Models.Suggestion", "suggestion")
@@ -175,11 +164,6 @@ namespace rds_test.Migrations
                     b.Navigation("emp");
 
                     b.Navigation("suggestion");
-                });
-
-            modelBuilder.Entity("rds_test.Models.Dept", b =>
-                {
-                    b.Navigation("emp");
                 });
 
             modelBuilder.Entity("rds_test.Models.Emp", b =>
