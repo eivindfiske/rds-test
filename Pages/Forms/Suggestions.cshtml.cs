@@ -1,13 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using rds_test.MVC.Models;
+using rds_test.Models;
 
 namespace rds_test.MVC.Pages.Forms
 {
-    public class SuggestionsModel : PageModel
+    public class SuggestionModel : PageModel
     {
         [BindProperty]
-        public Suggestions Suggestion { get; set; }
+        public Suggestion suggestion { get; set; }
         public void OnGet()
         {
 
