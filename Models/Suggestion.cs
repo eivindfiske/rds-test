@@ -18,10 +18,13 @@ namespace rds_test.Models
 
         [Column(TypeName = "varchar(500)")]
         public string? pdsa_plan { get; set; }
+
         [Column(TypeName = "varchar(500)")]
         public string? pdsa_do { get; set; }
+
         [Column(TypeName = "varchar(500)")]
         public string? pdsa_study { get; set; }
+
         [Column(TypeName = "varchar(500)")]
         public string? pdsa_act { get; set; }
 
@@ -30,11 +33,11 @@ namespace rds_test.Models
 
         [Column(TypeName = "varchar(50)")]
         public string? responsible { get; set; }
+
         [Column(TypeName = "varchar(50)")]
         public string? resdept { get; set; }
 
         [Key]
-        [MaxLength(10)]
         public int case_num { get; set; }
 
         public byte[]? pic_before { get; set; }
@@ -42,7 +45,7 @@ namespace rds_test.Models
 
         [Column(TypeName = "varchar(50)")]
         public string? timeframe { get; set; }
-        public DateOnly deadline { get; set; }
+        public DateOnly? deadline { get; set; }
 
         public List<Participants> participants { get; set; }
 

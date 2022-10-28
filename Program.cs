@@ -16,8 +16,6 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 
 var app = builder.Build();
-
-
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
