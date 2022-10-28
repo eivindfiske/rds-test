@@ -15,17 +15,20 @@ namespace rds_test.Pages.Suggestions
             _context = context;
         }
 
+        public IList<Suggestion> suggestions { get;set; } = default!;
         
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-
+            if (_context.suggestion != null)
+            {
+                suggestions = await _context.suggestion.ToListAsync();
+            }
         }
 
         [BindProperty]
         public Suggestion suggestion { get; set; }
 
         [HttpPost]
-
         public async Task<IActionResult> OnPostAsync()
         {
             await _context.Database.OpenConnectionAsync();
