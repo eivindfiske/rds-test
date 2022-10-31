@@ -7,7 +7,6 @@ namespace rds_test.Models
     {
         public string? dept { get; set; }
 
-        [Key]
         [Column(TypeName = "varchar(50)")]
         public string team { get; set; }
 
