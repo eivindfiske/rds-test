@@ -22,6 +22,15 @@ namespace rds_test.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Suggestion>()
+            .HasKey(c => c.case_num);
+
+            modelBuilder.Entity<Emp>()
+            .HasKey(c => c.emp_num);
+
+            modelBuilder.Entity<Dept>()
+            .HasKey(c => c.team);
+
             modelBuilder.Entity<Participants>()
             .HasKey(t => new { t.case_num, t.emp_num });
 
@@ -40,13 +49,11 @@ namespace rds_test.Data
             .WithMany(e => e.emp)
             .HasForeignKey(e => e.team);
 
-            modelBuilder.Entity<Suggestion>()
-            .Property(m => m.case_num)
-            .ValueGeneratedNever();
 
             modelBuilder.Entity<Emp>()
             .Property(m => m.emp_num)
             .ValueGeneratedNever();
+
         }
     }
 

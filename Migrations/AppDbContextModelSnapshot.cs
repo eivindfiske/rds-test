@@ -94,24 +94,30 @@ namespace rds_test.Migrations
             modelBuilder.Entity("rds_test.Models.Suggestion", b =>
                 {
                     b.Property<int>("case_num")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<DateOnly?>("deadline")
                         .HasColumnType("date");
 
                     b.Property<string>("description")
+                        .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
 
                     b.Property<string>("pdsa_act")
+                        .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
 
                     b.Property<string>("pdsa_do")
+                        .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
 
                     b.Property<string>("pdsa_plan")
+                        .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
 
                     b.Property<string>("pdsa_study")
+                        .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
 
                     b.Property<byte[]>("pic_after")
@@ -121,21 +127,29 @@ namespace rds_test.Migrations
                         .HasColumnType("longblob");
 
                     b.Property<string>("resdept")
+                        .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("responsible")
+                        .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("status")
+                        .HasMaxLength(1)
                         .HasColumnType("varchar(1)");
 
                     b.Property<string>("timeframe")
+                        .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
                     b.Property<DateTime>("timestamp")
-                        .HasColumnType("datetime(6)");
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("datetime(0)");
 
                     b.Property<string>("title")
+                        .IsRequired()
+                        .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
                     b.HasKey("case_num");

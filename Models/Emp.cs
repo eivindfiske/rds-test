@@ -6,7 +6,6 @@ namespace rds_test.Models
 {
     public class Emp
     {
-        [Key]
         public int emp_num { get; set; }
 
         [Column(TypeName = "varchar(50)")]

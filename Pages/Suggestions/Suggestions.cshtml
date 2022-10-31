@@ -9,27 +9,32 @@
 
 <div class="form">
     <form method="post">
-        <div asp-validation-summary="ModelOnly"></div>
-        <input type="text" asp-for="suggestion.title" placeholder="Tittel">
-        <input type="text" asp-for="suggestion.description" placeholder="Beskrivelse">
-        <input type="datetime-local" asp-for="suggestion.timestamp" placeholder="Tid opprettet">
+        <input asp-for="suggestion.title" placeholder="Tittel" required>
+        <textarea asp-for="suggestion.description" cols="30" rows="5"></textarea>
+        @* <input asp-for="suggestion.description" placeholder="Beskrivelse"> *@
         <br>
-        <input type="number" asp-for="suggestion.case_num" placeholder="Saksnummer">
-        <input type="text" asp-for="suggestion.pdsa_plan" placeholder="Plan">
-        <input type="text" asp-for="suggestion.pdsa_do" placeholder="Do">
-        <input type="text" asp-for="suggestion.pdsa_study" placeholder="Study">
-        <input type="text" asp-for="suggestion.pdsa_act" placeholder="Act">
-        <input type="text" asp-for="suggestion.status" placeholder="Status">
-        <input type="text" asp-for="suggestion.responsible" placeholder="Anvarlig">
-        <input type="text" asp-for="suggestion.resdept" placeholder="Ansvarig avdeling">
+        <input asp-for="suggestion.pdsa_plan" placeholder="Plan">
+        <input asp-for="suggestion.pdsa_do" placeholder="Do">
+        <input asp-for="suggestion.pdsa_study" placeholder="Study">
+        <input asp-for="suggestion.pdsa_act" placeholder="Act">
+        <!-- <input asp-for="suggestion.status" placeholder="Status"> -->
+        <select asp-for="suggestion.status" size="4">
+        <option value="P">P</option>
+        <option value="D">D</option>
+        <option value="S">S</option>
+        <option value="A">A</option>
+        </select>
+        <input asp-for="suggestion.responsible" placeholder="Anvarlig">
+        <input asp-for="suggestion.resdept" placeholder="Ansvarig avdeling">
         <input type="file" asp-for="suggestion.pic_before" placeholder="Bilde før">
         <input type="file" asp-for="suggestion.pic_after" placeholder="Bilde etter">
-        <input type="text" asp-for="suggestion.timeframe" placeholder="Tidsramme">
+        <input asp-for="suggestion.timeframe" placeholder="Tidsramme">
         <input type="date" asp-for="suggestion.deadline" placeholder="Tidsfrist">
         <button type="submit" value="submit">Opprett</button>
     </form>
 </div>
 
+<div>
 @foreach (var item in Model.suggestions) {
         <tr>
             <td>
@@ -45,9 +50,28 @@
                 @Html.DisplayFor(modelItem => item.description)
             </td>
             <td>
-                
+                @Html.DisplayFor(modelItem => item.pdsa_plan)
             </td>
-        </tr>
-}
-
+            <td>
+                @Html.DisplayFor(modelItem => item.pdsa_do)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pdsa_study)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pdsa_act)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.responsible)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.resdept)
+            </td>
+            <br>
+            
+        </tr> } 
+</div> 
 

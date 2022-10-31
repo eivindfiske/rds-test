@@ -11,7 +11,7 @@ using rds_test.Data;
 namespace rds_test.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221027141329_InitialCreate")]
+    [Migration("20221031144703_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,7 +37,6 @@ namespace rds_test.Migrations
             modelBuilder.Entity("rds_test.Models.Emp", b =>
                 {
                     b.Property<int>("emp_num")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<bool>("admin")
@@ -100,46 +99,16 @@ namespace rds_test.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateOnly?>("deadline")
-                        .HasColumnType("date");
-
                     b.Property<string>("description")
                         .HasColumnType("varchar(500)");
 
-                    b.Property<string>("pdsa_act")
-                        .HasColumnType("varchar(500)");
-
-                    b.Property<string>("pdsa_do")
-                        .HasColumnType("varchar(500)");
-
-                    b.Property<string>("pdsa_plan")
-                        .HasColumnType("varchar(500)");
-
-                    b.Property<string>("pdsa_study")
-                        .HasColumnType("varchar(500)");
-
-                    b.Property<byte[]>("pic_after")
-                        .HasColumnType("longblob");
-
-                    b.Property<byte[]>("pic_before")
-                        .HasColumnType("longblob");
-
-                    b.Property<string>("resdept")
-                        .HasColumnType("varchar(50)");
-
-                    b.Property<string>("responsible")
-                        .HasColumnType("varchar(50)");
-
-                    b.Property<string>("status")
-                        .HasColumnType("varchar(1)");
-
-                    b.Property<string>("timeframe")
-                        .HasColumnType("varchar(50)");
-
                     b.Property<DateTime>("timestamp")
-                        .HasColumnType("datetime(6)");
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("datetime(0)");
 
                     b.Property<string>("title")
+                        .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
                     b.HasKey("case_num");

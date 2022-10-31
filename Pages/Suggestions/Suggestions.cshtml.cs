@@ -15,35 +15,25 @@ namespace rds_test.Pages.Suggestions
             _context = context;
         }
 
-        public IList<Suggestion> suggestions { get;set; } = default!;
+        public IList<Suggestion> suggestions { get; set; }
         
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
-            if (_context.suggestion != null)
-            {
-                suggestions = await _context.suggestion.ToListAsync();
-            }
+            
+            suggestions = await _context.suggestion.ToListAsync();
+            return Page();
+             
         }
 
         [BindProperty]
         public Suggestion suggestion { get; set; }
 
-        [HttpPost]
         public async Task<IActionResult> OnPostAsync()
         {
-            await _context.Database.OpenConnectionAsync();
+            var entry = _context.Add(new Suggestion());
+            entry.CurrentValues.SetValues(suggestion);
             
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-           if (suggestion != null) 
-            {
-                _context.suggestion.Add(suggestion);
-            }
             await _context.SaveChangesAsync();
-
-            await _context.Database.CloseConnectionAsync();
 
             return RedirectToPage("./Suggestions");
         }
