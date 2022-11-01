@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using rds_test.Data;
 
@@ -10,9 +11,10 @@ using rds_test.Data;
 namespace rds_test.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221031144703_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -97,50 +99,8 @@ namespace rds_test.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateOnly?>("deadline")
-                        .HasColumnType("date");
-
                     b.Property<string>("description")
-                        .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
-
-                    b.Property<string>("pdsa_act")
-                        .HasMaxLength(500)
-                        .HasColumnType("varchar(500)");
-
-                    b.Property<string>("pdsa_do")
-                        .HasMaxLength(500)
-                        .HasColumnType("varchar(500)");
-
-                    b.Property<string>("pdsa_plan")
-                        .HasMaxLength(500)
-                        .HasColumnType("varchar(500)");
-
-                    b.Property<string>("pdsa_study")
-                        .HasMaxLength(500)
-                        .HasColumnType("varchar(500)");
-
-                    b.Property<byte[]>("pic_after")
-                        .HasColumnType("longblob");
-
-                    b.Property<byte[]>("pic_before")
-                        .HasColumnType("longblob");
-
-                    b.Property<string>("resdept")
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
-
-                    b.Property<string>("responsible")
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
-
-                    b.Property<string>("status")
-                        .HasMaxLength(1)
-                        .HasColumnType("varchar(1)");
-
-                    b.Property<string>("timeframe")
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
 
                     b.Property<DateTime>("timestamp")
                         .IsConcurrencyToken()
@@ -148,7 +108,6 @@ namespace rds_test.Migrations
                         .HasColumnType("datetime(0)");
 
                     b.Property<string>("title")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
