@@ -5,7 +5,62 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+<!DOCTYPE html>
 
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<html>
+
+<body>
+    <div class="topnav">
+        <div class="search-container">
+            <form action="/action_page.php">
+                <input type="text" placeholder="Søk.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="tekst">Filtrer</h2>
+        <div class="dropdown">
+            <button class="teambtn" type="button" data-toggle="dropdown">Team
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">Produksjon</a></li>
+                <li><a href="#">Teknisk</a></li>
+                <li><a href="#">Salg og marked</a></li>
+                <li><a href="#">Logistikk</a></li>
+                <li><a href="#">Ledergruppe</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="dropdown">
+            <button class="prosessbtn" type="button" data-toggle="dropdown">Prosess
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">Plan</a></li>
+                <li><a href="#">Do</a></li>
+                <li><a href="#">Study</a></li>
+                <li><a href="#">Act</a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>
 <h1>Index</h1>
 
 <p>
@@ -60,56 +115,57 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Suggestion) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.timestamp)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.pdsa_plan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.pdsa_do)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.pdsa_study)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.pdsa_act)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.responsible)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.resdept)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.pic_before)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.pic_after)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.timeframe)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.deadline)
-            </td>
-            <td>
-                <a asp-page="/Suggestions/Edit" asp-route-id="@item.case_num">Edit</a> |
-                <a asp-page="/Suggestions/Details" asp-route-id="@item.case_num">Details</a> |
-                <a asp-page="/Suggestions/Delete" asp-route-id="@item.case_num">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Suggestion)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.timestamp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pdsa_plan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pdsa_do)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pdsa_study)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pdsa_act)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.responsible)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.resdept)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pic_before)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pic_after)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.timeframe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.deadline)
+                </td>
+                <td>
+                    <a asp-page="/Suggestions/Edit" asp-route-id="@item.case_num">Edit</a> |
+                    <a asp-page="/Suggestions/Details" asp-route-id="@item.case_num">Details</a> |
+                    <a asp-page="/Suggestions/Delete" asp-route-id="@item.case_num">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
