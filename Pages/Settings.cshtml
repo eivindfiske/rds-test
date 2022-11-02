@@ -3,30 +3,3 @@
 
 <h1>Innstillinger</h1>
 
-using System;
-using System.Configuration;
-using System.Drawing;
-
-public class MyUserSettings : ApplicationSettingsBase
-{
-    [UserScopedSetting()]
-    [DefaultSettingValue("white")]
-    public Color BackgroundColor
-    {
-        get
-        {
-            return ((Color)this["BackgroundColor"]);
-        }
-        set
-        {
-            this["BackgroundColor"] = (Color)value;
-        }
-    }
-}
-
-//Make sure to hook up this event handler in the constructor!
-//this.FormClosing += new FormClosingEventHandler(Form1_FormClosing);
-    void Form1_FormClosing(object sender, FormClosingEventArgs e)
-    {
-        mus.Save();
-    }
