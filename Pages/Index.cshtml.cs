@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using rds_test.Data;
 using rds_test.Models;
 
-namespace rds_test.Pages.Suggestions
+namespace rds_test.Pages
 {
     public class IndexModel : PageModel
     {
