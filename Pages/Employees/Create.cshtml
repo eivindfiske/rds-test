@@ -1,0 +1,54 @@
+@page
+@model rds_test.Pages_Employees.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Employees</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Emp.emp_num" class="control-label"></label>
+                <input asp-for="Emp.emp_num" class="form-control" />
+                <span asp-validation-for="Emp.emp_num" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Emp.name" class="control-label"></label>
+                <input asp-for="Emp.name" class="form-control" />
+                <span asp-validation-for="Emp.name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Emp.password" class="control-label"></label>
+                <input asp-for="Emp.password" class="form-control" />
+                <span asp-validation-for="Emp.password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Emp.team" class="control-label"></label>
+                <input type="text" asp-for="Emp.team" class="form-control" asp-items="ViewBag.team">
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Emp.admin" /> @Html.DisplayNameFor(model =>
+                    model.Emp.admin)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

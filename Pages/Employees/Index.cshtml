@@ -1,0 +1,54 @@
+@page
+@model rds_test.Pages_Employees.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Emp[0].name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Emp[0].password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Emp[0].dept)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Emp[0].admin)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Emp) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dept.team)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.admin)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.emp_num">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.emp_num">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.emp_num">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

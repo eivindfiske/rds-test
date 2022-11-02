@@ -7,7 +7,6 @@
 }
 
 <h1>Index</h1>
-
 <p>
     <a asp-page="Create">Create New</a>
 </p>
@@ -60,56 +59,58 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Suggestion) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.timestamp)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.pdsa_plan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.pdsa_do)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.pdsa_study)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.pdsa_act)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.responsible)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.resdept)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.pic_before)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.pic_after)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.timeframe)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.deadline)
-            </td>
-            <td>
-                <a asp-page="/Suggestions/Edit" asp-route-id="@item.case_num">Edit</a> |
-                <a asp-page="/Suggestions/Details" asp-route-id="@item.case_num">Details</a> |
-                <a asp-page="/Suggestions/Delete" asp-route-id="@item.case_num">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Suggestion)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.timestamp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pdsa_plan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pdsa_do)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pdsa_study)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pdsa_act)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.responsible)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.resdept)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pic_before)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pic_after)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.timeframe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.deadline)
+                </td>
+                <td>
+                    <a asp-page="/Suggestions/Edit" asp-route-id="@item.case_num">Edit</a> |
+                    <a asp-page="/Suggestions/Details" asp-route-id="@item.case_num">Details</a> |
+                    <a asp-page="/Suggestions/Delete" asp-route-id="@item.case_num">Delete</a>
+                </td>
+            </tr>
+
+        }
     </tbody>
 </table>
