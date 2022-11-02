@@ -1,12 +1,128 @@
 ﻿@page
+<<<<<<< HEAD
 @using rds_test.MVC.Pages
 @model IndexModel
+=======
+@using rds_test.Pages
+@model rds_test.Pages.Suggestions.IndexModel
+
+>>>>>>> 9ee135ce8cb515c5f50549f4d00923c9a6de4366
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home Page";
 }
 
+<<<<<<< HEAD
 
 <div class="text-center">
     <h1 class="display-4">Forslag</h1>
     <p>Forslagsside</p>
 </div>
+=======
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Suggestion[0].title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Suggestion[0].description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Suggestion[0].timestamp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Suggestion[0].pdsa_plan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Suggestion[0].pdsa_do)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Suggestion[0].pdsa_study)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Suggestion[0].pdsa_act)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Suggestion[0].status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Suggestion[0].responsible)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Suggestion[0].resdept)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Suggestion[0].pic_before)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Suggestion[0].pic_after)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Suggestion[0].timeframe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Suggestion[0].deadline)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Suggestion) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.timestamp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pdsa_plan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pdsa_do)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pdsa_study)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pdsa_act)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.responsible)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.resdept)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pic_before)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pic_after)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.timeframe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.deadline)
+            </td>
+            <td>
+                <a asp-page="/Suggestions/Edit" asp-route-id="@item.case_num">Edit</a> |
+                <a asp-page="/Suggestions/Details" asp-route-id="@item.case_num">Details</a> |
+                <a asp-page="/Suggestions/Delete" asp-route-id="@item.case_num">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+>>>>>>> 9ee135ce8cb515c5f50549f4d00923c9a6de4366

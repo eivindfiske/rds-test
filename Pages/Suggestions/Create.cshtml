@@ -1,0 +1,94 @@
+@page
+@model rds_test.Pages.Suggestions.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Suggestion</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Suggestion.title" class="control-label"></label>
+                <input asp-for="Suggestion.title" class="form-control" />
+                <span asp-validation-for="Suggestion.title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Suggestion.description" class="control-label"></label>
+                <input asp-for="Suggestion.description" class="form-control" />
+                <span asp-validation-for="Suggestion.description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Suggestion.pdsa_plan" class="control-label"></label>
+                <input asp-for="Suggestion.pdsa_plan" class="form-control" />
+                <span asp-validation-for="Suggestion.pdsa_plan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Suggestion.pdsa_do" class="control-label"></label>
+                <input asp-for="Suggestion.pdsa_do" class="form-control" />
+                <span asp-validation-for="Suggestion.pdsa_do" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Suggestion.pdsa_study" class="control-label"></label>
+                <input asp-for="Suggestion.pdsa_study" class="form-control" />
+                <span asp-validation-for="Suggestion.pdsa_study" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Suggestion.pdsa_act" class="control-label"></label>
+                <input asp-for="Suggestion.pdsa_act" class="form-control" />
+                <span asp-validation-for="Suggestion.pdsa_act" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Suggestion.status" class="control-label"></label>
+                <input asp-for="Suggestion.status" class="form-control" />
+                <span asp-validation-for="Suggestion.status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Suggestion.responsible" class="control-label"></label>
+                <input asp-for="Suggestion.responsible" class="form-control" />
+                <span asp-validation-for="Suggestion.responsible" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Suggestion.resdept" class="control-label"></label>
+                <input asp-for="Suggestion.resdept" class="form-control" />
+                <span asp-validation-for="Suggestion.resdept" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Suggestion.pic_before" class="control-label"></label>
+                <input asp-for="Suggestion.pic_before" class="form-control" />
+                <span asp-validation-for="Suggestion.pic_before" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Suggestion.pic_after" class="control-label"></label>
+                <input asp-for="Suggestion.pic_after" class="form-control" />
+                <span asp-validation-for="Suggestion.pic_after" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Suggestion.timeframe" class="control-label"></label>
+                <input asp-for="Suggestion.timeframe" class="form-control" />
+                <span asp-validation-for="Suggestion.timeframe" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Suggestion.deadline" class="control-label"></label>
+                <input type="date" asp-for="Suggestion.deadline" class="form-control" />
+                <span asp-validation-for="Suggestion.deadline" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

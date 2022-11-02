@@ -1,0 +1,103 @@
+@page
+@model rds_test.Pages.Suggestions.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Suggestion</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Suggestion.title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Suggestion.title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Suggestion.description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Suggestion.description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Suggestion.timestamp)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Suggestion.timestamp)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Suggestion.pdsa_plan)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Suggestion.pdsa_plan)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Suggestion.pdsa_do)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Suggestion.pdsa_do)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Suggestion.pdsa_study)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Suggestion.pdsa_study)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Suggestion.pdsa_act)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Suggestion.pdsa_act)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Suggestion.status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Suggestion.status)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Suggestion.responsible)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Suggestion.responsible)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Suggestion.resdept)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Suggestion.resdept)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Suggestion.pic_before)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Suggestion.pic_before)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Suggestion.pic_after)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Suggestion.pic_after)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Suggestion.timeframe)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Suggestion.timeframe)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Suggestion.deadline)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Suggestion.deadline)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Suggestion?.case_num">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
