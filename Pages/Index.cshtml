@@ -63,38 +63,40 @@
     <thead>
     </thead>
     <tbody>
-@foreach (var item in Model.Suggestion) {
+        @foreach (var item in Model.Suggestion)
+        {
 
-        <tr class="trSuggestionIndex" style="cursor: pointer;" onclick="location.href = '/Suggestions/Details?id=@item.case_num'">
-            <td>
-                @Html.DisplayFor(modelItem => item.title)
-            </td>
-            <td>
-                <p></p>
-                @Html.DisplayFor(modelItem => item.description)
-            </td>
-            <td>
-                <p>Avdeling</p>
-                @Html.DisplayFor(modelItem => item.resdept)
-            </td>
-            <td>
-                <p>Ansvarlig</p>
-                @Html.DisplayFor(modelItem => item.responsible)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.deadline)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.status)
-            </td>
-            <td>
-                <a asp-page="/Suggestions/Edit" asp-route-id="@item.case_num">Edit</a> |
-                <a asp-page="/Suggestions/Delete" asp-route-id="@item.case_num">Delete</a>
-            </td>
-        </tr>
+            <tr onclick="location.href = '/Suggestions/Details?id=@item.case_num'">
+                <td>
+                    @Html.DisplayFor(modelItem => item.title)
+                </td>
+                <td>
+                    <p></p>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    <p>Avdeling</p>
+                    @Html.DisplayFor(modelItem => item.resdept)
+                </td>
+                <td>
+                    <p>Ansvarlig</p>
+                    @Html.DisplayFor(modelItem => item.responsible)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.deadline)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+                <td>
+                    <a asp-page="/Suggestions/Edit" asp-route-id="@item.case_num">Edit</a> |
+                    <a asp-page="/Suggestions/Details" asp-route-id="@item.case_num">Details</a> |
+                    <a asp-page="/Suggestions/Delete" asp-route-id="@item.case_num">Delete</a>
+                </td>
+            </tr>
 
-     
-}
+
+        }
 
     </tbody>
 </table>
