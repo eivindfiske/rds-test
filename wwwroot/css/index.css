@@ -7,7 +7,12 @@
 h2 {
 
     font-size: 20px;
+    margin-left: 30px;
 
+}
+
+.row {
+    margin-left: 10px;
 }
 
 button.teambtn {
@@ -24,58 +29,6 @@ button.prosessbtn {
     left: 15px;
 }
 
-div.topnav {
-    overflow: hidden;
-    background-color: white;
-}
-
-div.topnav div.search-container {
-    margin-left: 20px;
-    height: 20px;
-    width: 50px;
-}
-
-div.topnav input[type=text] {
-    padding: 6px;
-    margin-top: 8px;
-    font-size: 17px;
-    border: none;
-}
-
-div.search-container button {
-    cursor: pointer;
-    left: 230px;
-    top: 14px;
-    width: 50px;
-    height: 50px;
-
-}
-
-div.topnav {
-    float: right;
-    margin-top: 8px;
-    margin-right: 1px;
-    background: white;
-    font-size: 17px;
-    border: block;
-
-}
-
-div.topnav a,
-div.input[type=text],
-div.topnav {
-    float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    padding: 25px;
-}
-
-div.input[type=text] {
-    border: 5px solid #ccc;
-}
-
 .mainPartSuggestion {
     margin-left: 400px;
     width: 100%;
@@ -85,3 +38,27 @@ div.input[type=text] {
     font-size: 15px;
 }
 
+.form{
+    margin-top: 10px;
+}
+
+.form .fa-search{
+
+    position: absolute;
+    top:20px;
+    left: 20px;
+    color: #9ca3af;
+
+}
+
+.form-input{
+
+    height: 30px;
+    text-indent: 33px;
+    border-radius: 10px;
+}
+
+.form-input:focus{
+
+    box-shadow: none;   
+}
