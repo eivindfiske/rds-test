@@ -1,7 +1,12 @@
+.filterbar {
+    margin-left: 10px;
+    width: 50px;
+    position: fixed;
+}
+
 h2 {
 
-    margin-top: 35px;
-    left: 10px;
+    font-size: 20px;
 
 }
 
@@ -9,7 +14,7 @@ button.teambtn {
     color: black;
 
     margin-top: 70px;
-    left: 15px;
+
 }
 
 button.prosessbtn {
@@ -25,8 +30,9 @@ div.topnav {
 }
 
 div.topnav div.search-container {
-    float: left;
-
+    margin-left: 20px;
+    height: 20px;
+    width: 50px;
 }
 
 div.topnav input[type=text] {
@@ -69,3 +75,13 @@ div.topnav {
 div.input[type=text] {
     border: 5px solid #ccc;
 }
+
+.mainPartSuggestion {
+    margin-left: 400px;
+    width: 100%;
+}
+
+.trSuggestionIndex {
+    font-size: 15px;
+}
+
