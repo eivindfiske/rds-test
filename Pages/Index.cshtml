@@ -60,7 +60,8 @@
     <thead>
     </thead>
     <tbody>
-@foreach (var item in Model.Suggestion) {
+        @foreach (var item in Model.Suggestion)
+        {
 
         <tr class="trSuggestionIndex" style="cursor: pointer;" onclick="location.href = '/Suggestions/Details?id=@item.case_num'">
             <td>
