@@ -19,14 +19,30 @@ namespace rds_test.Pages
             _context = context;
         }
 
+        public string currentFilter {get; set;}
+
         public IList<Suggestion> Suggestion { get;set; } = default!;
 
-        public async Task OnGetAsync()
+        // public async Task OnGetAsync()
+        // {
+        //     if (_context.suggestion != null)
+        //     {
+        //         Suggestion = await _context.suggestion.ToListAsync();
+        //     }
+        // }
+
+        public async Task OnGetAsync(string searchString)
         {
-            if (_context.suggestion != null)
+            currentFilter = searchString;
+
+            IQueryable<Suggestion> getSuggestion = from s in _context.suggestion select s;
+
+            if (!String.IsNullOrEmpty(searchString))
             {
-                Suggestion = await _context.suggestion.ToListAsync();
+                getSuggestion = getSuggestion.Where(s => s.title.Contains(searchString));
             }
+
+            Suggestion = await getSuggestion.AsNoTracking().ToListAsync();
         }
     }
 }
