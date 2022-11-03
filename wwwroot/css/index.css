@@ -34,8 +34,9 @@ button.prosessbtn {
     width: 100%;
 }
 
-.trSuggestionIndex {
+.suggestionRowIndex {
     font-size: 15px;
+    color: aqua;
 }
 
 .form{
