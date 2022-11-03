@@ -1,115 +1,102 @@
 ﻿@page
-@using rds_test.Pages
-@model rds_test.Pages.Suggestions.IndexModel
+@using rds_test.Models
+@model rds_test.Pages.IndexModel
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<h1>Index</h1>
+<link rel="stylesheet" href="../css/index.css">
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
+
+<body>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-2 col-md-2 col-lg-2">
+    <div class="topnav">
+        <div class="search-row">
+            <form action="/action_page.php">
+                <input type="text" placeholder="Søk.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <h2 class="tekst">Filtrer</h2>
+        <div class="dropdown">
+            <button class="teambtn" type="button" data-toggle="dropdown">Team
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">Produksjon</a></li>
+                <li><a href="#">Teknisk</a></li>
+                <li><a href="#">Salg og marked</a></li>
+                <li><a href="#">Logistikk</a></li>
+                <li><a href="#">Ledergruppe</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="dropdown">
+            <button class="prosessbtn" type="button" data-toggle="dropdown">Prosess
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">Plan</a></li>
+                <li><a href="#">Do</a></li>
+                <li><a href="#">Study</a></li>
+                <li><a href="#">Act</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-sm-10 col-md-10 col-lg-10">
+    <div class="row align-items-center">
+<table class="suggestionTable">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Suggestion[0].title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Suggestion[0].description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Suggestion[0].timestamp)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Suggestion[0].pdsa_plan)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Suggestion[0].pdsa_do)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Suggestion[0].pdsa_study)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Suggestion[0].pdsa_act)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Suggestion[0].status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Suggestion[0].responsible)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Suggestion[0].resdept)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Suggestion[0].pic_before)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Suggestion[0].pic_after)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Suggestion[0].timeframe)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Suggestion[0].deadline)
-            </th>
-            <th></th>
-        </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Suggestion) {
-        <tr>
+        @foreach (var item in Model.Suggestion)
+        {
+
+        <tr class="trSuggestionIndex" style="cursor: pointer;" onclick="location.href = '/Suggestions/Details?id=@item.case_num'">
             <td>
                 @Html.DisplayFor(modelItem => item.title)
             </td>
             <td>
+                <p></p>
                 @Html.DisplayFor(modelItem => item.description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.timestamp)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.pdsa_plan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.pdsa_do)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.pdsa_study)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.pdsa_act)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.responsible)
-            </td>
-            <td>
+                <p>Avdeling</p>
                 @Html.DisplayFor(modelItem => item.resdept)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.pic_before)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.pic_after)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.timeframe)
+                <p>Ansvarlig</p>
+                @Html.DisplayFor(modelItem => item.responsible)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.deadline)
             </td>
             <td>
-                <a asp-page="/Suggestions/Edit" asp-route-id="@item.case_num">Edit</a> |
-                <a asp-page="/Suggestions/Details" asp-route-id="@item.case_num">Details</a> |
-                <a asp-page="/Suggestions/Delete" asp-route-id="@item.case_num">Delete</a>
+                @Html.DisplayFor(modelItem => item.status)
             </td>
-        </tr>
+        </tr>    
 }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</body>
+
+

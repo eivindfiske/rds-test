@@ -5,12 +5,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - IS202.website</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="../IS202.website.styles.css" asp-append-version="true" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> 
+
    
 
 
@@ -18,8 +23,9 @@
 
 <body>
     <header class="border-bottom header">
-        
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light" background-color:#F9F8F7 shadow p-3 mb-5 bg-body rounded">
+
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light" background-color:#F9F8F7 shadow p-3 mb-5
+            bg-body rounded">
             <div class="container-fluid">
             <a href="/Index" class="navbar-brand">
              <img
@@ -65,33 +71,37 @@
             </a>
         </nav>
     </header>
-    <div class="container">
+    <div class="container-fluid">
         <main role="main" class="pb-3">
             @RenderBody()
 
-    <style> 
-        .floating-btn {
-            width: 80px;
-            height: 80px;
-            background: #009879;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            border-radius: 50%;
-            color: #fff;
-            font-size: 40px; 
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            transition: background 0.25s;
-        }
-        .floating-btn:active {
-            background: #007D63;
-        }
-        </style>
-        <a href="/Suggestions/Create" class="material-icons floating-btn" >add</a>
+            <style>
+                .floating-btn {
+                    width: 80px;
+                    height: 80px;
+                    background: #009879;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-decoration: none;
+                    border-radius: 50%;
+                    color: #fff;
+                    font-size: 40px;
+                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+                    position: fixed;
+                    right: 20px;
+                    bottom: 20px;
+                    transition: background 0.25s;
+                }
+
+                .floating-btn:active {
+                    background: #007D63;
+                }
+            </style>
+            <a href="/Suggestions/Create" class="material-icons floating-btn">add</a>
+
+
+
 
 
 
@@ -99,16 +109,18 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
+        <div class="container-fluid">
             &copy; 2022 - Nordic Door Website - <a asp-area="" asp-page="/Privacy">Privacy</a>
 
 
         </div>
     </footer>
 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

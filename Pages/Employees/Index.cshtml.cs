@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using rds_test.Data;
 using rds_test.Models;
 
-namespace rds_test.Pages
+namespace rds_test.Pages_Employees
 {
     public class IndexModel : PageModel
     {
@@ -19,13 +19,14 @@ namespace rds_test.Pages
             _context = context;
         }
 
-        public IList<Suggestion> Suggestion { get;set; } = default!;
+        public IList<Emp> Emp { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            if (_context.suggestion != null)
+            if (_context.emp != null)
             {
-                Suggestion = await _context.suggestion.ToListAsync();
+                Emp = await _context.emp
+                .Include(e => e.dept).ToListAsync();
             }
         }
     }

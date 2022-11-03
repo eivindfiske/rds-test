@@ -42,6 +42,10 @@ body {
     text-decoration: none;
   }
 
+  a:visited {
+    color: black;
+  }
+
   .nav-item {
     color: rgb(47, 43, 43);
 
@@ -50,6 +54,7 @@ body {
   * {
     font-family: sans-serif;
   } 
+
 
   
   
