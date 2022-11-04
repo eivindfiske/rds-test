@@ -23,17 +23,21 @@ namespace rds_test.Pages.Suggestions
         {
             return Page();
         }
-
+ 
         [BindProperty]
         public Suggestion Suggestion { get; set; } = default!;
+        [BindProperty]
+        public Participants Participants {get; set;}
         
-
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
 
             var entry = _context.Add(new Suggestion());
+            var parEntry = _context.Add(new Participants());
+            
+            
             entry.CurrentValues.SetValues(Suggestion);
+            parEntry.CurrentValues.SetValues(Participants);
             
             await _context.SaveChangesAsync();
 
