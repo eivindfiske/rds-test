@@ -2,47 +2,33 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using rds_test.Data;
-using rds_test.Models;
+using rds_test;
+using rds_test.Areas.Identity.Data;
 
 namespace rds_test.Pages
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
-        private readonly rds_test.Data.AppDbContext _context;
+        private readonly rds_test.Areas.Identity.Data.ApplicationContext _context;
 
-        public IndexModel(rds_test.Data.AppDbContext context)
+        public IndexModel(rds_test.Areas.Identity.Data.ApplicationContext context)
         {
             _context = context;
         }
 
-        public string currentFilter {get; set;}
+        public IList<ApplicationUser> users { get; set; } = default!;
 
-        public IList<Suggestion> Suggestion { get;set; } = default!;
-
-        // public async Task OnGetAsync()
-        // {
-        //     if (_context.suggestion != null)
-        //     {
-        //         Suggestion = await _context.suggestion.ToListAsync();
-        //     }
-        // }
-
-        public async Task OnGetAsync(string searchString)
+        public async Task OnGetAsync()
         {
-            currentFilter = searchString;
-
-            IQueryable<Suggestion> getSuggestion = from s in _context.suggestion select s;
-
-            if (!String.IsNullOrEmpty(searchString))
+            if (_context.applicationUsers != null)
             {
-                getSuggestion = getSuggestion.Where(s => s.title.Contains(searchString));
+                users = await _context.applicationUsers.ToListAsync();
             }
-
-            Suggestion = await getSuggestion.AsNoTracking().ToListAsync();
         }
     }
 }
