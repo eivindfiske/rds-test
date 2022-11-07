@@ -2,16 +2,13 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using rds_test.Areas.Identity.Data;
+using rds_test.Models;
 
-namespace rds_test.Areas.Identity.Data;
+namespace rds_test.Data;
 
 public class ApplicationContext : IdentityDbContext<ApplicationUser>
 {
-    public ApplicationContext(DbContextOptions<ApplicationContext> options)
-        : base(options)
-    {
-    }
+    public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options) {}
 
     public DbSet<ApplicationUser> applicationUsers { get; set; }
 
@@ -29,9 +26,6 @@ public class ApplicationUserEntityConfigurations : IEntityTypeConfiguration<Appl
 {
     public void Configure(EntityTypeBuilder<ApplicationUser> builder)
     {
-
-        builder.Property(u => u.FirstName).HasMaxLength(100);
-        builder.Property(u => u.LastName).HasMaxLength(100);
     }
 }
 

@@ -1,6 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT license.
-#nullable disable
+﻿#nullable disable
 
 using System;
 using System.Collections.Generic;
@@ -14,9 +12,10 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using rds_test.Areas.Identity.Data;
+using rds_test.Models;
+using rds_test.Pages.Shared;
 
-namespace rds_test.Areas.Identity.Pages.Account
+namespace rds_test.Pages.Account
 {
     public class LoginModel : PageModel
     {

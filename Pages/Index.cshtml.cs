@@ -2,33 +2,65 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using rds_test;
-using rds_test.Areas.Identity.Data;
+using Microsoft.AspNetCore.Authorization;
+using rds_test.Data;
+using rds_test.Models;
 
 namespace rds_test.Pages
 {
     [Authorize]
     public class IndexModel : PageModel
     {
-        private readonly rds_test.Areas.Identity.Data.ApplicationContext _context;
+        private readonly rds_test.Data.AppDbContext _context;
 
-        public IndexModel(rds_test.Areas.Identity.Data.ApplicationContext context)
+        public IndexModel(rds_test.Data.AppDbContext context)
         {
             _context = context;
         }
 
-        public IList<ApplicationUser> users { get; set; } = default!;
+        public string timestampSort {get; set;}
+        public string timeframeSort {get; set;}
+        public string titleSort {get; set;}
+        public string currentFilter {get; set;}
 
-        public async Task OnGetAsync()
+        public IList<Suggestion> Suggestion { get;set; } = default!;
+
+        // public async Task OnGetAsync()
+        // {
+        //     if (_context.suggestion != null)
+        //     {
+        //         Suggestion = await _context.suggestion.ToListAsync();
+        //     }
+        // }
+
+        public async Task OnGetAsync(string sortData, string searchString)
         {
-            if (_context.applicationUsers != null)
+            timestampSort = sortData == "timestamp" ? "timestamp_desc" : "timestamp"; 
+            titleSort = String.IsNullOrEmpty(sortData) ? "title" : "";
+            timeframeSort = sortData == "timeframe" && sortData.Contains("just do it") ? "timeframe" : "timeframe";
+
+            currentFilter = searchString;
+
+            IQueryable<Suggestion> getSuggestion = from s in _context.suggestion select s;
+
+            switch(sortData)
             {
-                users = await _context.applicationUsers.ToListAsync();
+                case "timestamp": getSuggestion = getSuggestion.OrderByDescending(s => s.timestamp);
+                break;
+                case "title": getSuggestion = getSuggestion.OrderBy(s => s.title);
+                break;
             }
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                getSuggestion = getSuggestion.Where(s => s.title.Contains(searchString) || s.description.Contains(searchString) || 
+                s.timeframe.Contains(searchString));
+            }
+
+            Suggestion = await getSuggestion.AsNoTracking().ToListAsync();
         }
     }
 }

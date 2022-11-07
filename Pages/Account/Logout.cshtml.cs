@@ -9,9 +9,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using rds_test.Areas.Identity.Data;
+using rds_test.Models;
 
-namespace rds_test.Areas.Identity.Pages.Account
+namespace rds_test.Pages.Account
 {
     public class LogoutModel : PageModel
     {
