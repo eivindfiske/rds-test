@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using rds_test.Data;
 using rds_test.Models;
 
 namespace rds_test.Pages
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly rds_test.Data.AppDbContext _context;
