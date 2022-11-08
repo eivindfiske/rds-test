@@ -33,9 +33,11 @@ namespace rds_test.Pages.Suggestions
 
             return Page();
         }
-
+ 
         [BindProperty]
         public Suggestion Suggestion { get; set; } = default!;
+        [BindProperty]
+        public Participants Participants {get; set;}
         
         [BindProperty]
         public Participants Participants {get; set;}
@@ -48,7 +50,7 @@ namespace rds_test.Pages.Suggestions
             
             
             entry.CurrentValues.SetValues(Suggestion);
-            entry.CurrentValues.SetValues(Participants);
+            parEntry.CurrentValues.SetValues(Participants);
             
             await _context.SaveChangesAsync();
 

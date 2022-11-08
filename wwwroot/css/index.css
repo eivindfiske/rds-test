@@ -43,15 +43,18 @@ button.prosessbtn {
     margin-top: 10px;
 }
 
-.form .fa-search{
-
+.fa-search{
     position: absolute;
-    top:20px;
+    top: 40px;
     left: 20px;
     color: #9ca3af;
-
 }
 
+.button
+{
+    position: absolute;
+    color: white;
+}
 .form-input{
 
     height: 30px;
