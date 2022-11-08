@@ -27,11 +27,11 @@
             <h2 class="tekst">Filtrer</h2>
         </div>
         <div class="d-flex flex-column">
-            <div class="col-sm-2 col-md-2 col-lg-2">Nyeste øverst</div>
-            <div class="col-sm-2 col-md-2 col-lg-2">Tidsfrist</div>
+            <div class="col-sm-2 col-md-2 col-lg-2"> <a asp-page="/Index" asp-route-sortData="@Model.timestampSort">Nyeste øverst</a></div>
+            <div class="col-sm-2 col-md-2 col-lg-2"><a asp-page="/Index" asp-route-sortData="@Model.titleSort">Tidsfrist</a></div>
             <div class="col-sm-2 col-md-2 col-lg-2">Kortvarig</div>
             <div class="col-sm-2 col-md-2 col-lg-2">Langvarig</div>
-            <div class="col-sm-2 col-md-2 col-lg-2">Just do it</div>
+            <div class="col-sm-2 col-md-2 col-lg-2"><a asp-page="/Index" asp-route-sortData="@Model.timeframeSort">Just do it</a></div>
         </div>
 
         <div class="dropdown">
@@ -62,7 +62,7 @@
         </div>
         <div class="d-flex flex-column">
             <div class="col-sm-2 col-md-2 col-lg-2">Mine forslag</div>
-            <div class="col-sm-2 col-md-2 col-lg-2">Alle forslag</div>
+            <div class="col-sm-2 col-md-2 col-lg-2"><a asp-page="/Index">Alle forslag</a></div>
             <div class="col-sm-2 col-md-2 col-lg-2">Fullførte forslag</div>
             <div class="col-sm-2 col-md-2 col-lg-2">Avviste forslag</div>
         </div>
@@ -121,3 +121,4 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
     integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
     crossorigin="anonymous"></script>
+

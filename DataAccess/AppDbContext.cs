@@ -49,10 +49,15 @@ namespace rds_test.Data
             .WithMany(e => e.emp)
             .HasForeignKey(e => e.team);
 
+            modelBuilder.Entity<Suggestion>()
+            .HasOne(e => e.emp)
+            .WithMany(e => e.suggestions)
+            .HasForeignKey(e => e.emp_num);
 
             modelBuilder.Entity<Emp>()
             .Property(m => m.emp_num)
             .ValueGeneratedNever();
+
 
         }
     }
