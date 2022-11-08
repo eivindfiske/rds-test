@@ -12,15 +12,9 @@ namespace rds_test.Pages.Suggestions
 {
     public class CreateModel : PageModel
     {
-<<<<<<< HEAD
-        private readonly AppDbContext _context;
-
-        public CreateModel(AppDbContext context)
-=======
         private readonly rds_test.Data.ApplicationContext _context;
 
         public CreateModel(rds_test.Data.ApplicationContext context)
->>>>>>> 4331e712de7b0f072310bd613a95d48d4c919bdd
         {
             _context = context;
         }
@@ -30,7 +24,7 @@ namespace rds_test.Pages.Suggestions
         
         public IActionResult OnGet()
         {
-            empList = _context.emp.Select(a => new SelectListItem
+            empList = _context.applicationUsers.Select(a => new SelectListItem
             {
                 Value = a.emp_num.ToString(),
                 Text = a.name

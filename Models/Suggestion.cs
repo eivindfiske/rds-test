@@ -51,9 +51,7 @@ namespace rds_test.Models
 
         public DateOnly? deadline { get; set; }
 
-        public int emp_num {get; set;}
-
-        public Emp emp {get; set;}
+        public ApplicationUser applicationUser {get; set;}
 
         public List<Participants> participants { get; set; }
         public ApplicationUser? applicationUsers { get; set; }
