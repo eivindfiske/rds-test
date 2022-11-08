@@ -22,6 +22,7 @@ namespace rds_test.Pages.Suggestions
         [BindProperty]
         public List<SelectListItem> empList { get; set; }
         public string getUser {get; set;}
+        
         public IActionResult OnGet()
         {
             getUser = this.User.Identity.Name;
