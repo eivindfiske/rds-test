@@ -48,11 +48,6 @@ public class ApplicationContext : IdentityDbContext<ApplicationUser>
         .WithMany(e => e.applicationUsers)
         .HasForeignKey(e => e.team);
 
-
-        modelBuilder.Entity<ApplicationUser>()
-        .Property(m => m.emp_num)
-        .ValueGeneratedNever();
-
         modelBuilder.Entity<Suggestion>()
         .HasOne(e => e.applicationUsers)
         .WithMany(e => e.suggestions)
