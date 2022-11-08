@@ -11,16 +11,14 @@
 
 
 <div class="container-fluid">
-<div class="row">
-    <div class="col-sm-2 col-md-2 col-lg-2">
-        <div class="topnav">
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-lg-2">
             <div class="search-row">
                 <form asp-action="/Index" method="get">
-                <div class="form">
-                <i class="fa fa-search"></i>
-                <input type="text" class="form-control form-input" placeholder="Search anything..." name="searchString" value="@Model.currentFilter">
-                </div>
-                <button type="submit"><i class="fa fa-search"></i></button>
+                    <div class="form">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                        <input type="text" class="form-control form-input" placeholder="Søk..." name="searchString"
+                            value="@Model.currentFilter">
                 </form>
             </div>
         </div>
@@ -49,19 +47,19 @@
             </ul>
         </div>
 
-    <div class="row">
-        <div class="dropdown">
-            <button class="prosessbtn" type="button" data-toggle="dropdown">Prosess
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                <li><a href="#">Plan</a></li>
-                <li><a href="#">Do</a></li>
-                <li><a href="#">Study</a></li>
-                <li><a href="#">Act</a></li>
-            </ul>
+        <div class="row">
+            <div class="dropdown">
+                <button class="prosessbtn" type="button" data-toggle="dropdown">Prosess
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Plan</a></li>
+                    <li><a href="#">Do</a></li>
+                    <li><a href="#">Study</a></li>
+                    <li><a href="#">Act</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
         <div class="d-flex flex-column">
             <div class="col-sm-2 col-md-2 col-lg-2">Mine forslag</div>
             <div class="col-sm-2 col-md-2 col-lg-2">Alle forslag</div>
@@ -72,47 +70,48 @@
 </div>
 
 <div class="col-sm-10 col-md-10 col-lg-10">
-<div class="row align-items-center justify-content-start">
-<table class="suggestionTable">
-    <thead>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Suggestion)
-        {
+    <div class="row align-items-center justify-content-start">
+        <table class="suggestionTable">
+            <thead>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Suggestion)
+                {
 
-        <tr class="suggestionRowIndex" style="cursor: pointer;" onclick="location.href = '/Suggestions/Details?id=@item.case_num'">
-            <div class="col-sm-6 col-md-6 col-lg-6">
-            <td class="row">
-                @Html.DisplayFor(modelItem => item.title)
-            </td>
-            <td class="row">
-                <p></p>
-                @Html.DisplayFor(modelItem => item.description)
-            </td>
-            </div>
-            <div class="col-sm-4 col-md-4 col-lg-4">
-            <td>
-                <p>Avdeling</p>
-                @Html.DisplayFor(modelItem => item.resdept)
-            </td>
-            <td>
-                <p>Ansvarlig</p>
-                @Html.DisplayFor(modelItem => item.responsible)
-            </td>
-            </div>
-            <div class="col-sm-2 col-md-2 col-lg-2">
-            <td>
-                @Html.DisplayFor(modelItem => item.deadline)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.status)
-            </td>
-            </div>
-        </tr>    
-}
-        </tbody>
-    </table>
-</div>
+                    <tr class="suggestionRowIndex" style="cursor: pointer;"
+                    onclick="location.href = '/Suggestions/Details?id=@item.case_num'">
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+                            <td class="row">
+                                @Html.DisplayFor(modelItem => item.title)
+                            </td>
+                            <td class="row">
+                                <p></p>
+                                @Html.DisplayFor(modelItem => item.description)
+                            </td>
+                        </div>
+                        <div class="col-sm-4 col-md-4 col-lg-4">
+                            <td>
+                                <p>Avdeling</p>
+                                @Html.DisplayFor(modelItem => item.resdept)
+                            </td>
+                            <td>
+                                <p>Ansvarlig</p>
+                                @Html.DisplayFor(modelItem => item.responsible)
+                            </td>
+                        </div>
+                        <div class="col-sm-2 col-md-2 col-lg-2">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.deadline)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.status)
+                            </td>
+                        </div>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
 </div>
 </div>
