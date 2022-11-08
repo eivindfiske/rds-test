@@ -8,8 +8,8 @@ namespace rds_test.Models
         public int case_num { get; set; }
         public Suggestion suggestion { get; set; }
 
-        public int emp_num { get; set; }
-        public Emp emp { get; set; }
+        public string? emp_num { get; set; }
+        public ApplicationUser applicationUsers { get; set; }
 
     }
 }

@@ -38,9 +38,10 @@ namespace rds_test.Models
         public string? responsible { get; set; }
 
         [StringLength(50)]
-        public string? resdept { get; set; } 
+        public string? resdept { get; set; }
 
         public int case_num { get; set; }
+        public string? emp_num { get; set; }
 
         public byte[]? pic_before { get; set; }
         public byte[]? pic_after { get; set; }
@@ -50,11 +51,10 @@ namespace rds_test.Models
 
         public DateOnly? deadline { get; set; }
 
-        public int emp_num {get; set;}
-
-        public Emp emp {get; set;}
+        public ApplicationUser applicationUser {get; set;}
 
         public List<Participants> participants { get; set; }
+        public ApplicationUser? applicationUsers { get; set; }
 
     }
 }

@@ -13,9 +13,9 @@ namespace rds_test.Pages.Suggestions
 {
     public class EditModel : PageModel
     {
-        private readonly rds_test.Data.AppDbContext _context;
+        private readonly rds_test.Data.ApplicationContext _context;
 
-        public EditModel(rds_test.Data.AppDbContext context)
+        public EditModel(rds_test.Data.ApplicationContext context)
         {
             _context = context;
         }
@@ -30,7 +30,7 @@ namespace rds_test.Pages.Suggestions
                 return NotFound();
             }
 
-            var suggestion =  await _context.suggestion.FirstOrDefaultAsync(m => m.case_num == id);
+            var suggestion = await _context.suggestion.FirstOrDefaultAsync(m => m.case_num == id);
             if (suggestion == null)
             {
                 return NotFound();
@@ -41,26 +41,31 @@ namespace rds_test.Pages.Suggestions
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see https://aka.ms/RazorPagesCRUD.
-       public async Task<IActionResult> OnPostAsync(int id)
+        public async Task<IActionResult> OnPostAsync(int id)
         {
-        var emptySuggestion = await _context.suggestion.FindAsync(id);
+            var emptySuggestion = await _context.suggestion.FindAsync(id);
 
-        if (emptySuggestion == null) 
-        {
-            return NotFound();
-        }
+            if (emptySuggestion == null)
+            {
+                return NotFound();
+            }
 
-        await TryUpdateModelAsync<Suggestion>(
-            emptySuggestion,
-            "suggestion",
-            m => m.title, m => m.description, m => m.pdsa_plan,
-            m => m.pdsa_do, m => m.pdsa_study, m => m.pdsa_act,
-            m => m.status, m => m.responsible, m => m.resdept,
-            m => m.pic_before, m => m.pic_after, m => m.timeframe,
-            m => m.deadline);
-        
+            await TryUpdateModelAsync<Suggestion>(
+                emptySuggestion,
+                "suggestion",
+                m => m.title, m => m.description);
+
+            await TryUpdateModelAsync<Suggestion>(
+                emptySuggestion,
+                "suggestion",
+                m => m.title, m => m.description, m => m.pdsa_plan,
+                m => m.pdsa_do, m => m.pdsa_study, m => m.pdsa_act,
+                m => m.status, m => m.responsible, m => m.resdept,
+                m => m.pic_before, m => m.pic_after, m => m.timeframe,
+                m => m.deadline);
+
             await _context.SaveChangesAsync();
-            return RedirectToPage("./Details", new {id = id});
+            return RedirectToPage("./Details", new { id = id });
         }
-}
+    }
 }
