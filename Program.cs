@@ -17,7 +17,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseMySql(builder.Configuration.GetConnectionString("appDb"), serverVersion));
 
 builder.Services.AddDbContext<ApplicationContext>(options =>
-            options.UseMySql(builder.Configuration.GetConnectionString("appDb"), serverVersion));
+            options.UseMySql(builder.Configuration.GetConnectionString("identityDb"), serverVersion));
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<ApplicationContext>();

@@ -12,9 +12,9 @@ namespace rds_test.Pages.Suggestions
 {
     public class CreateModel : PageModel
     {
-        private readonly rds_test.Data.AppDbContext _context;
+        private readonly AppDbContext _context;
 
-        public CreateModel(rds_test.Data.AppDbContext context)
+        public CreateModel(AppDbContext context)
         {
             _context = context;
         }
@@ -39,15 +39,10 @@ namespace rds_test.Pages.Suggestions
         [BindProperty]
         public Participants Participants {get; set;}
         
-        [BindProperty]
-        public Participants Participants {get; set;}
-        
         public async Task<IActionResult> OnPostAsync()
         {
-
             var entry = _context.Add(new Suggestion());
             var parEntry = _context.Add(new Participants());
-            
             
             entry.CurrentValues.SetValues(Suggestion);
             parEntry.CurrentValues.SetValues(Participants);
