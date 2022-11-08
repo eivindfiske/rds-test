@@ -12,6 +12,7 @@ namespace rds_test.Models;
 public class ApplicationUser : IdentityUser
 {
     [PersonalData]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Display(Name = "Ansattnummer")]
     public string? emp_num { get; set; }
 
