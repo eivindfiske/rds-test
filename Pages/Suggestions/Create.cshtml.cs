@@ -23,18 +23,32 @@ namespace rds_test.Pages.Suggestions
         {
             return Page();
         }
-
+ 
         [BindProperty]
         public Suggestion Suggestion { get; set; } = default!;
+<<<<<<< HEAD
 
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+=======
+        [BindProperty]
+        public Participants Participants {get; set;}
+        
+>>>>>>> a6a1f53ba731754683b8a628cbbd78221f871a2f
         public async Task<IActionResult> OnPostAsync()
         {
 
             var entry = _context.Add(new Suggestion());
+            var parEntry = _context.Add(new Participants());
+            
+            
             entry.CurrentValues.SetValues(Suggestion);
+<<<<<<< HEAD
 
+=======
+            parEntry.CurrentValues.SetValues(Participants);
+            
+>>>>>>> a6a1f53ba731754683b8a628cbbd78221f871a2f
             await _context.SaveChangesAsync();
 
             return RedirectToPage("/Index");

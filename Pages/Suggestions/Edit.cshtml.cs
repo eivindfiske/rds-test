@@ -55,6 +55,18 @@ namespace rds_test.Pages.Suggestions
                 "suggestion",
                 m => m.title, m => m.description);
 
+<<<<<<< HEAD
+=======
+        await TryUpdateModelAsync<Suggestion>(
+            emptySuggestion,
+            "suggestion",
+            m => m.title, m => m.description, m => m.pdsa_plan,
+            m => m.pdsa_do, m => m.pdsa_study, m => m.pdsa_act,
+            m => m.status, m => m.responsible, m => m.resdept,
+            m => m.pic_before, m => m.pic_after, m => m.timeframe,
+            m => m.deadline);
+        
+>>>>>>> a6a1f53ba731754683b8a628cbbd78221f871a2f
             await _context.SaveChangesAsync();
             return RedirectToPage("./Details", new { id = id });
         }
