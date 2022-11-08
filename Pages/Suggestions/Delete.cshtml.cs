@@ -12,15 +12,15 @@ namespace rds_test.Pages.Suggestions
 {
     public class DeleteModel : PageModel
     {
-        private readonly rds_test.Data.AppDbContext _context;
+        private readonly rds_test.Data.ApplicationContext _context;
 
-        public DeleteModel(rds_test.Data.AppDbContext context)
+        public DeleteModel(rds_test.Data.ApplicationContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-      public Suggestion Suggestion { get; set; } = default!;
+        public Suggestion Suggestion { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -35,7 +35,7 @@ namespace rds_test.Pages.Suggestions
             {
                 return NotFound();
             }
-            else 
+            else
             {
                 Suggestion = suggestion;
             }

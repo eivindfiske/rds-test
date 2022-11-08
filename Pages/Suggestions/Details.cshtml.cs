@@ -12,14 +12,14 @@ namespace rds_test.Pages.Suggestions
 {
     public class DetailsModel : PageModel
     {
-        private readonly rds_test.Data.AppDbContext _context;
+        private readonly rds_test.Data.ApplicationContext _context;
 
-        public DetailsModel(rds_test.Data.AppDbContext context)
+        public DetailsModel(rds_test.Data.ApplicationContext context)
         {
             _context = context;
         }
 
-      public Suggestion Suggestion { get; set; } = default!; 
+        public Suggestion Suggestion { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -33,7 +33,7 @@ namespace rds_test.Pages.Suggestions
             {
                 return NotFound();
             }
-            else 
+            else
             {
                 Suggestion = suggestion;
             }

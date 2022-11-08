@@ -12,9 +12,9 @@ namespace rds_test.Pages.Suggestions
 {
     public class CreateModel : PageModel
     {
-        private readonly rds_test.Data.AppDbContext _context;
+        private readonly rds_test.Data.ApplicationContext _context;
 
-        public CreateModel(rds_test.Data.AppDbContext context)
+        public CreateModel(rds_test.Data.ApplicationContext context)
         {
             _context = context;
         }
@@ -23,22 +23,22 @@ namespace rds_test.Pages.Suggestions
         {
             return Page();
         }
- 
+
         [BindProperty]
         public Suggestion Suggestion { get; set; } = default!;
         [BindProperty]
-        public Participants Participants {get; set;}
-        
+        public Participants Participants { get; set; }
+
         public async Task<IActionResult> OnPostAsync()
         {
 
             var entry = _context.Add(new Suggestion());
             var parEntry = _context.Add(new Participants());
-            
-            
+
+
             entry.CurrentValues.SetValues(Suggestion);
             parEntry.CurrentValues.SetValues(Participants);
-            
+
             await _context.SaveChangesAsync();
 
             return RedirectToPage("/Index");
