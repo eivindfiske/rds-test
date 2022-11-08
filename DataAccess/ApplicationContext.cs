@@ -20,7 +20,9 @@ public class ApplicationContext : IdentityDbContext<ApplicationUser>
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+
         base.OnModelCreating(modelBuilder);
+
         modelBuilder.Entity<Suggestion>()
             .HasKey(c => c.case_num);
 
