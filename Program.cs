@@ -13,7 +13,7 @@ builder.Services.AddRazorPages();
 
 
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 29));
-builder.Services.AddDbContext<AppDbContext>(options =>
+builder.Services.AddDbContext<ApplicationContext>(options =>
         options.UseMySql(builder.Configuration.GetConnectionString("appDb"), serverVersion));
 
 builder.Services.AddDbContext<ApplicationContext>(options =>

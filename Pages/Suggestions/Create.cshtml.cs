@@ -12,9 +12,9 @@ namespace rds_test.Pages.Suggestions
 {
     public class CreateModel : PageModel
     {
-        private readonly rds_test.Data.AppDbContext _context;
+        private readonly rds_test.Data.ApplicationContext _context;
 
-        public CreateModel(rds_test.Data.AppDbContext context)
+        public CreateModel(rds_test.Data.ApplicationContext context)
         {
             _context = context;
         }
@@ -26,7 +26,7 @@ namespace rds_test.Pages.Suggestions
 
         [BindProperty]
         public Suggestion Suggestion { get; set; } = default!;
-        
+
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -34,7 +34,7 @@ namespace rds_test.Pages.Suggestions
 
             var entry = _context.Add(new Suggestion());
             entry.CurrentValues.SetValues(Suggestion);
-            
+
             await _context.SaveChangesAsync();
 
             return RedirectToPage("/Index");
