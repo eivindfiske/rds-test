@@ -11,8 +11,8 @@ using rds_test.Data;
 namespace rds_test.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221031152900_AddFieldsAndUpdate")]
-    partial class AddFieldsAndUpdate
+    [Migration("20221107164707_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

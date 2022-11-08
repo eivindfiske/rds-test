@@ -19,21 +19,36 @@ namespace rds_test.Pages.Suggestions
             _context = context;
         }
 
+        [BindProperty]
+        public List<SelectListItem> empList {get; set;}
+        
         public IActionResult OnGet()
         {
+            empList = _context.emp.Select(a => new SelectListItem
+            {
+                Value = a.emp_num.ToString(),
+                Text = a.name
+            }).ToList();
+
+
             return Page();
         }
 
         [BindProperty]
         public Suggestion Suggestion { get; set; } = default!;
         
-
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+        [BindProperty]
+        public Participants Participants {get; set;}
+        
         public async Task<IActionResult> OnPostAsync()
         {
 
             var entry = _context.Add(new Suggestion());
+            var parEntry = _context.Add(new Participants());
+            
+            
             entry.CurrentValues.SetValues(Suggestion);
+            entry.CurrentValues.SetValues(Participants);
             
             await _context.SaveChangesAsync();
 

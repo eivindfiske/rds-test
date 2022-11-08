@@ -11,8 +11,8 @@ using rds_test.Data;
 namespace rds_test.Migrations.Application
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20221106182441_Test")]
-    partial class Test
+    [Migration("20221107165334_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -166,7 +166,6 @@ namespace rds_test.Migrations.Application
                         .HasColumnType("longtext");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("varchar(256)");
 
