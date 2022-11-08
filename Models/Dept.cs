@@ -10,7 +10,7 @@ namespace rds_test.Models
         [Column(TypeName = "varchar(50)")]
         public string team { get; set; }
 
-        public List<Emp> emp { get; set; }
+        public List<ApplicationUser> applicationUsers { get; set; }
 
     }
 

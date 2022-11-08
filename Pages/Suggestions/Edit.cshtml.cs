@@ -13,9 +13,9 @@ namespace rds_test.Pages.Suggestions
 {
     public class EditModel : PageModel
     {
-        private readonly AppDbContext _context;
+        private readonly rds_test.Data.ApplicationContext _context;
 
-        public EditModel(AppDbContext context)
+        public EditModel(rds_test.Data.ApplicationContext context)
         {
             _context = context;
         }
@@ -44,7 +44,7 @@ namespace rds_test.Pages.Suggestions
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see https://aka.ms/RazorPagesCRUD.
-       public async Task<IActionResult> OnPostAsync(int id)
+        public async Task<IActionResult> OnPostAsync(int id)
         {
         var editSuggestion = await _context.suggestion.FindAsync(id);
         var editParticipants = await _context.participants.FindAsync(id);

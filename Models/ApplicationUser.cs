@@ -36,6 +36,5 @@ public class ApplicationUser : IdentityUser
     public List<Participants> participants { get; set; }
 
     public List<Suggestion> suggestions { get; set; }
-
 }
 
