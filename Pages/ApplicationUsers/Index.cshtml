@@ -25,9 +25,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.ApplicationUser[0].dept)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ApplicationUser[0].admin)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -46,9 +43,6 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.dept.dept)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.admin)
                 </td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.emp_num">Rediger</a> |

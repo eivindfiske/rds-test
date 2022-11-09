@@ -29,10 +29,6 @@ public class ApplicationUser : IdentityUser
     [Display(Name = "Avdeling")]
     public Dept? dept { get; set; }
 
-    [PersonalData]
-    [Display(Name = "Admin")]
-    public bool admin { get; set; }
-
     public List<Participants> participants { get; set; }
 
     public List<Suggestion> suggestions { get; set; }
