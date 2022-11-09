@@ -65,7 +65,7 @@ namespace rds_test.Pages.Account
             [Required]
             [StringLength(100, ErrorMessage = "The first name field should have a maximum of 100 characters")]
             [Display(Name = "Ansattnummer")]
-            public string Emp_num { get; set; }
+            public string emp_num { get; set; }
 
             [Required]
             [EmailAddress]
@@ -99,11 +99,11 @@ namespace rds_test.Pages.Account
             {
                 var user = new ApplicationUser
                 {
-                    emp_num = Input.Emp_num, 
-                    Email = Input.Email, 
+                    emp_num = Input.emp_num,
+                    Email = Input.Email,
                     UserName = Input.Email
                 };
-                
+
                 // await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 // await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
