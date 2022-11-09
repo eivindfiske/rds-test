@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System;
 using rds_test.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,7 +17,7 @@ var serverVersion = new MySqlServerVersion(new Version(8, 0, 29));
 builder.Services.AddDbContext<ApplicationContext>(options =>
             options.UseMySql(builder.Configuration.GetConnectionString("identityDb"), serverVersion));
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => 
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => 
     {
     options.SignIn.RequireConfirmedAccount = false;
     options.Password.RequireNonAlphanumeric = false;
