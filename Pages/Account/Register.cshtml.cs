@@ -43,7 +43,7 @@ namespace rds_test.Pages.Account
             _emailStore = GetEmailStore();
             _signInManager = signInManager;
             _logger = logger;
-            _emailSender = emailSender;
+            //_emailSender = emailSender;
         }
 
         /// <summary>
@@ -68,6 +68,10 @@ namespace rds_test.Pages.Account
             public string name { get; set; }
 
             public string LastName { get; set; }
+
+            [Required]
+            [Display(Name = "Employee number")]
+            public string emp_num { get; set; }
 
             [Required]
             [EmailAddress]

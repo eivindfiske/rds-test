@@ -16,8 +16,9 @@ var serverVersion = new MySqlServerVersion(new Version(8, 0, 29));
 builder.Services.AddDbContext<ApplicationContext>(options =>
             options.UseMySql(builder.Configuration.GetConnectionString("appDb"), serverVersion));
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<ApplicationContext>();
+
 
 var app = builder.Build();
 if (!app.Environment.IsDevelopment())
