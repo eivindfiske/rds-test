@@ -19,19 +19,30 @@ namespace rds_test.Pages.Suggestions
             _context = context;
         }
 
+        [BindProperty]
+        public List<SelectListItem> empList { get; set; }
+        public string getUser {get; set;}
+        
         public IActionResult OnGet()
         {
+            getUser = this.User.Identity.Name;
+
+            empList = _context.applicationUsers.Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.UserName
+            }).ToList();
+            
             return Page();
         }
 
         [BindProperty]
         public Suggestion Suggestion { get; set; } = default!;
         [BindProperty]
-        public Participants Participants { get; set; }
+        public Participants? Participants { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
-
             var entry = _context.Add(new Suggestion());
             var parEntry = _context.Add(new Participants());
 

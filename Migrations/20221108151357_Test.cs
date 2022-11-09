@@ -4,27 +4,28 @@
 
 namespace rds_test.Migrations
 {
-    public partial class ForeignKeyAdd : Migration
+    public partial class Test : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "emp_num",
+            migrationBuilder.AddColumn<string>(
+                name: "applicationUseremp_num",
                 table: "suggestion",
-                type: "int",
+                type: "varchar(255)",
                 nullable: false,
-                defaultValue: 0);
+                defaultValue: "")
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_suggestion_emp_num",
+                name: "IX_suggestion_applicationUseremp_num",
                 table: "suggestion",
-                column: "emp_num");
+                column: "applicationUseremp_num");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_suggestion_emp_emp_num",
+                name: "FK_suggestion_AspNetUsers_applicationUseremp_num",
                 table: "suggestion",
-                column: "emp_num",
-                principalTable: "emp",
+                column: "applicationUseremp_num",
+                principalTable: "AspNetUsers",
                 principalColumn: "emp_num",
                 onDelete: ReferentialAction.Cascade);
         }
@@ -32,15 +33,15 @@ namespace rds_test.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_suggestion_emp_emp_num",
+                name: "FK_suggestion_AspNetUsers_applicationUseremp_num",
                 table: "suggestion");
 
             migrationBuilder.DropIndex(
-                name: "IX_suggestion_emp_num",
+                name: "IX_suggestion_applicationUseremp_num",
                 table: "suggestion");
 
             migrationBuilder.DropColumn(
-                name: "emp_num",
+                name: "applicationUseremp_num",
                 table: "suggestion");
         }
     }

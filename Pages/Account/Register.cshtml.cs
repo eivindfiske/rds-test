@@ -64,10 +64,8 @@ namespace rds_test.Pages.Account
         {
             [Required]
             [StringLength(100, ErrorMessage = "The first name field should have a maximum of 100 characters")]
-            [Display(Name = "Navn")]
-            public string name { get; set; }
-
-            public string LastName { get; set; }
+            [Display(Name = "Ansattnummer")]
+            public string Emp_num { get; set; }
 
             [Required]
             [EmailAddress]
@@ -80,10 +78,6 @@ namespace rds_test.Pages.Account
             [Display(Name = "Password")]
             public string Password { get; set; }
 
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
@@ -103,10 +97,15 @@ namespace rds_test.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = CreateUser();
-
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
-                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+                var user = new ApplicationUser
+                {
+                    emp_num = Input.Emp_num, 
+                    Email = Input.Email, 
+                    UserName = Input.Email
+                };
+                
+                // await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+                // await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
