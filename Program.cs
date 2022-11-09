@@ -4,16 +4,25 @@ using rds_test.Data;
 using System.ComponentModel.DataAnnotations;
 using System;
 using rds_test.Models;
+using Microsoft.AspNetCore.Identity;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
 
-var serverVersion = new MySqlServerVersion(new Version(8, 0, 29));
-builder.Services.AddDbContext<AppDbContext>(options =>
-        options.UseMySql(builder.Configuration.GetConnectionString("appDb"), serverVersion));
 
+var serverVersion = new MySqlServerVersion(new Version(8, 0, 29));
+builder.Services.AddDbContext<ApplicationContext>(options =>
+            options.UseMySql(builder.Configuration.GetConnectionString("identityDb"), serverVersion));
+
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => 
+    {
+    options.SignIn.RequireConfirmedAccount = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    })
+    .AddEntityFrameworkStores<ApplicationContext>();
 
 var app = builder.Build();
 if (!app.Environment.IsDevelopment())
@@ -27,10 +36,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
 
 app.Run();
-
