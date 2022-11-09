@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using rds_test.Data;
 using rds_test.Models;
 
-namespace rds_test.Pages_Employees
+namespace rds_test.Pages_ApplicationUsers
 {
     public class EditModel : PageModel
     {

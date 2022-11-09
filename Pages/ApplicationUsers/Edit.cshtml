@@ -1,5 +1,5 @@
 @page
-@model rds_test.Pages_Employees.EditModel
+@model rds_test.Pages_ApplicationUsers.EditModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -18,6 +18,11 @@
                 <label asp-for="ApplicationUser.name" class="control-label"></label>
                 <input asp-for="ApplicationUser.name" class="form-control" />
                 <span asp-validation-for="ApplicationUser.name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicationUser.PasswordHash" class="control-label"></label>
+                <input asp-for="ApplicationUser.PasswordHash" class="form-control" />
+                <span asp-validation-for="ApplicationUser.PasswordHash" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ApplicationUser.team" class="control-label"></label>

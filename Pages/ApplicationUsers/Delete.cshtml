@@ -1,5 +1,5 @@
 @page
-@model rds_test.Pages_Employees.DeleteModel
+@model rds_test.Pages_ApplicationUsers.DeleteModel
 
 @{
    ViewData["Title"] = "Delete";
@@ -17,6 +17,12 @@
       </dt>
       <dd class="col-sm-10">
          @Html.DisplayFor(model => model.ApplicationUser.name)
+      </dd>
+      <dt class="col-sm-2">
+         @Html.DisplayNameFor(model => model.ApplicationUser.PasswordHash)
+      </dt>
+      <dd class="col-sm-10">
+         @Html.DisplayFor(model => model.ApplicationUser.PasswordHash)
       </dd>
       <dt class="col-sm-2">
          @Html.DisplayNameFor(model => model.ApplicationUser.dept)
