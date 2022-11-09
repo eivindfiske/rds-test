@@ -29,6 +29,7 @@ public class ApplicationUser : IdentityUser
     [Display(Name = "Avdeling")]
     public Dept? dept { get; set; }
 
+
     public List<Participants> participants { get; set; }
 
     public List<Suggestion> suggestions { get; set; }
