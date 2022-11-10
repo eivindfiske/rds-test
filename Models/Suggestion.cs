@@ -49,7 +49,10 @@ namespace rds_test.Models
         [StringLength(50)]
         public string? timeframe { get; set; }
 
-        public DateOnly? deadline { get; set; }
+        [DataType(DataType.Date)]
+        [Column(TypeName = "Date")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? deadline { get; set; }
 
         public ApplicationUser applicationUsers {get; set;}
 

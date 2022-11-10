@@ -70,12 +70,17 @@
             </div>
             <div class="form-group">
                 <label asp-for="Suggestion.timeframe" class="control-label"></label>
-                <input asp-for="Suggestion.timeframe" class="form-control" />
+                <select asp-for="Suggestion.timeframe" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <option selected>Tidsramme</option>
+                <option value="Just do it">Just do it</option>
+                <option value="Kortsiktig">Kortsiktig</option>
+                <option value="Langsiktig">Langsiktig</option>
+                </select>
                 <span asp-validation-for="Suggestion.timeframe" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Suggestion.deadline" class="control-label"></label>
-                <input type="date" asp-for="Suggestion.deadline" class="form-control" />
+                <input type="date" asp-for="Suggestion.deadline" class="form-control" value="(DATE)"/>
                 <span asp-validation-for="Suggestion.deadline" class="text-danger"></span>
             </div>
             
