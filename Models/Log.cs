@@ -6,7 +6,7 @@ namespace rds_test.Models
     public class Log
     {
         [ForeignKey("emp_num")]
-        public string? emp_num { get; set; }
+        public string emp_num { get; set; }
 
         [Key]
         public DateTime timestamp { get; set; }

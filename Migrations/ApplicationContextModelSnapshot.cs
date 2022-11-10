@@ -94,12 +94,10 @@ namespace rds_test.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("varchar(128)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("varchar(128)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("longtext");
@@ -136,12 +134,10 @@ namespace rds_test.Migrations
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("varchar(128)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("varchar(128)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("Value")
                         .HasColumnType("longtext");
@@ -154,7 +150,6 @@ namespace rds_test.Migrations
             modelBuilder.Entity("rds_test.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("emp_num")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("varchar(255)");
 
                     b.Property<int>("AccessFailedCount")
@@ -207,13 +202,11 @@ namespace rds_test.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("varchar(256)");
 
-                    b.Property<bool>("admin")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<string>("name")
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("team")
+                        .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.HasKey("emp_num");
@@ -255,6 +248,7 @@ namespace rds_test.Migrations
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("emp_num")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("timestamp");
@@ -283,10 +277,6 @@ namespace rds_test.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("applicationUseremp_num")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
-
                     b.Property<DateOnly?>("deadline")
                         .HasColumnType("date");
 
@@ -295,6 +285,7 @@ namespace rds_test.Migrations
                         .HasColumnType("varchar(500)");
 
                     b.Property<string>("emp_num")
+                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("pdsa_act")
@@ -346,8 +337,6 @@ namespace rds_test.Migrations
                         .HasColumnType("varchar(50)");
 
                     b.HasKey("case_num");
-
-                    b.HasIndex("applicationUseremp_num");
 
                     b.HasIndex("emp_num");
 
@@ -409,7 +398,9 @@ namespace rds_test.Migrations
                 {
                     b.HasOne("rds_test.Models.Dept", "dept")
                         .WithMany("applicationUsers")
-                        .HasForeignKey("team");
+                        .HasForeignKey("team")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("dept");
                 });
@@ -435,17 +426,11 @@ namespace rds_test.Migrations
 
             modelBuilder.Entity("rds_test.Models.Suggestion", b =>
                 {
-                    b.HasOne("rds_test.Models.ApplicationUser", "applicationUser")
-                        .WithMany()
-                        .HasForeignKey("applicationUseremp_num")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("rds_test.Models.ApplicationUser", "applicationUsers")
                         .WithMany("suggestions")
-                        .HasForeignKey("emp_num");
-
-                    b.Navigation("applicationUser");
+                        .HasForeignKey("emp_num")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("applicationUsers");
                 });
