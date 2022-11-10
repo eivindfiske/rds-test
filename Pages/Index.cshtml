@@ -12,42 +12,35 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-2 col-md-2 col-lg-2">
+        <div class="col-4">
             <div class="search-row">
                 <form asp-action="/Index" method="get">
                     <div class="form">
-                        <button type="submit"><i class="fa fa-search"></i></button>
                         <input type="text" class="form-control form-input" placeholder="Søk..." name="searchString"
                             value="@Model.currentFilter">
+                        <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
             </div>
-        </div>
-
-        <div>
             <h2 class="tekst">Filtrer</h2>
-        </div>
-        <div class="d-flex flex-column">
-            <div class="col-sm-2 col-md-2 col-lg-2"> <a asp-page="/Index" asp-route-sortData="@Model.timestampSort">Nyeste øverst</a></div>
-            <div class="col-sm-2 col-md-2 col-lg-2"><a asp-page="/Index" asp-route-sortData="@Model.titleSort">Tidsfrist</a></div>
-            <div class="col-sm-2 col-md-2 col-lg-2">Kortvarig</div>
-            <div class="col-sm-2 col-md-2 col-lg-2">Langvarig</div>
-            <div class="col-sm-2 col-md-2 col-lg-2"><a asp-page="/Index" asp-route-sortData="@Model.timeframeSort">Just do it</a></div>
-        </div>
+            <div><a asp-page="/Index" asp-route-sortData="@Model.timestampSort">Nyeste øverst</a></div>
+            <div><a asp-page="/Index" asp-route-sortData="@Model.titleSort">Tidsfrist</a></div>
+            <div>Kortvarig</div>
+            <div>Langvarig</div>
+            <div><a asp-page="/Index" asp-route-sortData="@Model.timeframeSort">Just do it</a></div>
 
-        <div class="dropdown">
-            <button class="teambtn" type="button" data-toggle="dropdown">Team
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                <li><a href="#">Produksjon</a></li>
-                <li><a href="#">Teknisk</a></li>
-                <li><a href="#">Salg og marked</a></li>
-                <li><a href="#">Logistikk</a></li>
-                <li><a href="#">Ledergruppe</a></li>
-            </ul>
-        </div>
+            <div class="dropdown">
+                <button class="teambtn" type="button" data-toggle="dropdown">Team
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Produksjon</a></li>
+                    <li><a href="#">Teknisk</a></li>
+                    <li><a href="#">Salg og marked</a></li>
+                    <li><a href="#">Logistikk</a></li>
+                    <li><a href="#">Ledergruppe</a></li>
+                </ul>
+            </div>
 
-        <div class="row">
             <div class="dropdown">
                 <button class="prosessbtn" type="button" data-toggle="dropdown">Prosess
                     <span class="caret"></span>
@@ -59,12 +52,11 @@
                     <li><a href="#">Act</a></li>
                 </ul>
             </div>
-        </div>
-        <div class="d-flex flex-column">
-            <div class="col-sm-2 col-md-2 col-lg-2">Mine forslag</div>
-            <div class="col-sm-2 col-md-2 col-lg-2"><a asp-page="/Index">Alle forslag</a></div>
-            <div class="col-sm-2 col-md-2 col-lg-2">Fullførte forslag</div>
-            <div class="col-sm-2 col-md-2 col-lg-2">Avviste forslag</div>
+
+            <div>Mine forslag</div>
+            <div><a asp-page="/Index">Alle forslag</a></div>
+            <div>Fullførte forslag</div>
+            <div>Avviste forslag</div>
         </div>
     </div>
 </div>
@@ -121,4 +113,3 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
     integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
     crossorigin="anonymous"></script>
-
