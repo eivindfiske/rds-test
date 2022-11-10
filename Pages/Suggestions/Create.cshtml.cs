@@ -43,11 +43,14 @@ namespace rds_test.Pages.Suggestions
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var entry = _context.Add(new Suggestion());
-            entry.CurrentValues.SetValues(Suggestion);
+            Suggestion = new Suggestion();
+            Participants = new Participants();
+
+            var entry = _context.suggestion.Add(Suggestion);
+            var parEntry = _context.participants.Add(Participants);
             
-            var parEntry = _context.Add(new Participants());
             parEntry.CurrentValues.SetValues(Participants);
+            entry.CurrentValues.SetValues(Suggestion);
 
             await _context.SaveChangesAsync();
 
