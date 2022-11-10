@@ -22,7 +22,7 @@ namespace rds_test.Pages.Suggestions
 
         [BindProperty]
         public Suggestion Suggestion { get; set; } = default!;
-        public Participants Participants { get; set; } = default!;
+        // public Participants Participants { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -32,13 +32,13 @@ namespace rds_test.Pages.Suggestions
             }
 
             var suggestion =  await _context.suggestion.FirstOrDefaultAsync(m => m.case_num == id);
-            var participants =  await _context.participants.FirstOrDefaultAsync(m => m.case_num == id);
+            // var participants =  await _context.participants.FirstOrDefaultAsync(m => m.case_num == id);
             if (suggestion == null)
             {
                 return NotFound();
             }
             Suggestion = suggestion;
-            Participants = participants;
+            // Participants = participants;
             return Page();
         }
 
@@ -47,7 +47,7 @@ namespace rds_test.Pages.Suggestions
         public async Task<IActionResult> OnPostAsync(int id)
         {
         var editSuggestion = await _context.suggestion.FindAsync(id);
-        var editParticipants = await _context.participants.FindAsync(id);
+        // var editParticipants = await _context.participants.FindAsync(id);
 
         if (editSuggestion == null) 
         {
@@ -62,8 +62,8 @@ namespace rds_test.Pages.Suggestions
             m => m.pic_before, m => m.pic_after, m => m.timeframe,
             m => m.deadline);
         
-        await TryUpdateModelAsync<Participants>(
-        editParticipants, "participants", m => m.emp_num);
+        // await TryUpdateModelAsync<Participants>(
+        // editParticipants, "participants", m => m.emp_num);
         
 
         await _context.SaveChangesAsync();

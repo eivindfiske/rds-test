@@ -5,10 +5,11 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-
 <div>
-    <h4>Suggestion</h4>
+    <div>
+        <h4> Forslag - Saksnummer: @Html.DisplayFor(model => model.Suggestion.case_num)</h4>
+    </div>
+    
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -95,10 +96,16 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Suggestion.deadline)
         </dd>
+        <dt class="col-sm-2">
+            <p>Ansatt Registrert</p>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Suggestion.emp_num)
+        </dd>
     </dl>
 </div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Suggestion.case_num">Edit</a> |
     <a asp-page="/Suggestions/Delete" asp-route-id="@Model.Suggestion?.case_num">Delete</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="/Index">Back to List</a>
 </div>

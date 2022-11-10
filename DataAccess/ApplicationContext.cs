@@ -33,9 +33,6 @@ public class ApplicationContext : IdentityDbContext<ApplicationUser>
         .HasKey(c => c.team);
 
         modelBuilder.Entity<Participants>()
-        .HasKey(t => new { t.case_num, t.emp_num });
-
-        modelBuilder.Entity<Participants>()
         .HasOne(e => e.applicationUsers)
         .WithMany(e => e.participants)
         .HasForeignKey(e => e.emp_num);
@@ -44,6 +41,9 @@ public class ApplicationContext : IdentityDbContext<ApplicationUser>
         .HasOne(e => e.suggestion)
         .WithMany(e => e.participants)
         .HasForeignKey(e => e.case_num);
+
+        modelBuilder.Entity<Participants>()
+        .HasKey(t => new { t.case_num, t.emp_num });
 
         modelBuilder.Entity<ApplicationUser>()
         .HasOne(e => e.dept)

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using rds_test.Data;
 
@@ -10,9 +11,10 @@ using rds_test.Data;
 namespace rds_test.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20221110131533_Test2")]
+    partial class Test2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -277,8 +279,8 @@ namespace rds_test.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("deadline")
-                        .HasColumnType("Date");
+                    b.Property<DateOnly?>("deadline")
+                        .HasColumnType("date");
 
                     b.Property<string>("description")
                         .HasMaxLength(500)
