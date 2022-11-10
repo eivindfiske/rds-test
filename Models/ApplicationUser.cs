@@ -13,7 +13,7 @@ public class ApplicationUser : IdentityUser
 {
     [PersonalData]
     [Display(Name = "Ansattnummer")]
-    public string? emp_num { get; set; }
+    public string emp_num { get; set; }
 
     [PersonalData]
     [Display(Name = "Navn")]
@@ -23,12 +23,9 @@ public class ApplicationUser : IdentityUser
     [PersonalData]
     [Display(Name = "Team")]
     [Column(TypeName = "varchar(50)")]
-    public string? team { get; set; }
+    public string team { get; set; }
 
-    [PersonalData]
-    [Display(Name = "Avdeling")]
-    public Dept? dept { get; set; }
-
+    public Dept dept { get; set; }
 
     public List<Participants> participants { get; set; }
 

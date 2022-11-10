@@ -16,9 +16,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using rds_test.Models;
+using rds_test.Data;
 
 namespace rds_test.Pages.Account
 {
@@ -30,11 +32,14 @@ namespace rds_test.Pages.Account
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
 
+        private readonly ApplicationContext _context;
+
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
-            ILogger<RegisterModel> logger
+            ILogger<RegisterModel> logger,
+            ApplicationContext context
             )
         {
             _userManager = userManager;
@@ -42,6 +47,7 @@ namespace rds_test.Pages.Account
             _emailStore = GetEmailStore();
             _signInManager = signInManager;
             _logger = logger;
+            _context = context;
         }
 
         [BindProperty]
@@ -66,6 +72,10 @@ namespace rds_test.Pages.Account
             public string name { get; set; }
 
             [Required]
+            [Display(Name = "Team")]
+            public string team { get; set; }
+
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -82,9 +92,16 @@ namespace rds_test.Pages.Account
             public string ConfirmPassword { get; set; }
         }
 
+        public List<SelectListItem> teamList { get; set; }
 
         public async Task OnGetAsync(string returnUrl = null)
         {
+            teamList = _context.dept.Select(a => new SelectListItem
+            {
+                Value = a.team.ToString(),
+                Text = a.team
+            }).ToList();
+
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
@@ -99,6 +116,7 @@ namespace rds_test.Pages.Account
                 {
                     emp_num = Input.emp_num,
                     name = Input.name, 
+                    team = Input.team,
                     Email = Input.Email, 
                     UserName = Input.Email
                 };
@@ -112,13 +130,13 @@ namespace rds_test.Pages.Account
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    var callbackUrl = Url.Page(
-                        "/Account/ConfirmEmail",
-                        pageHandler: null,
-                        values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
-                        protocol: Request.Scheme);
+                    // var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    // code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                    // var callbackUrl = Url.Page(
+                    //     "/Account/ConfirmEmail",
+                    //     pageHandler: null,
+                    //     values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
+                    //     protocol: Request.Scheme);
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {

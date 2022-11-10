@@ -78,15 +78,17 @@
                 <input type="date" asp-for="Suggestion.deadline" class="form-control" />
                 <span asp-validation-for="Suggestion.deadline" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Participants.emp_num" class="control-label"></label>
-                <select asp-for="Participants.emp_num" class="form-control" asp-items="@Model.empList" multiple></select>
-                <span asp-validation-for="Participants.emp_num" class="text-danger"></span>
-            </div>
+            
             <div class="form-group">
                 <label asp-for="Suggestion.emp_num" class="control-label"></label>
-                <input type="text" asp-for="Suggestion.emp_num" value="@Model.getUser" class="form-control" />
+                <input type="text" asp-for="Suggestion.emp_num" class="form-control" />
                 <span asp-validation-for="Suggestion.emp_num" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Participants.emp_num" class="control-label">Deltakere</label>
+                <input asp-for="Participants.emp_num" class="form-control" />
+                @* <select asp-for="Participants.emp_num" class="form-control" asp-items="@Model.empList"></select>  *@
+                <span asp-validation-for="Participants.emp_num" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
