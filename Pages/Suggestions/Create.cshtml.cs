@@ -19,38 +19,36 @@ namespace rds_test.Pages.Suggestions
             _context = context;
         }
 
-        [BindProperty]
-        public List<SelectListItem> empList { get; set; }
+        // [BindProperty]
+        // public List<SelectListItem> empList { get; set; }
         // public string getUser {get; set;}
         
         public IActionResult OnGet()
         {
             // getUser = this.User.Identity.Name;
 
-            empList = _context.applicationUsers.Select(a => new SelectListItem
-            {
-                Value = a.emp_num.ToString(),
-                Text = a.name
-            }).ToList();
+            // empList = _context.applicationUsers.Select(a => new SelectListItem
+            // {
+            //     Value = a.emp_num.ToString(),
+            //     Text = a.name
+            // }).ToList();
             
             return Page();
         }
 
         [BindProperty]
         public Suggestion Suggestion { get; set; } = default!;
-        [BindProperty]
-        public Participants Participants { get; set; }
+        // [BindProperty]
+        // public Participants Participants { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            Suggestion = new Suggestion();
-            Participants = new Participants();
-
-            var entry = _context.suggestion.Add(Suggestion);
-            var parEntry = _context.participants.Add(Participants);
-            
-            parEntry.CurrentValues.SetValues(Participants);
+            var entry = _context.Add(new Suggestion());
             entry.CurrentValues.SetValues(Suggestion);
+
+            // var parEntry = _context.Add(new Participants());
+            // parEntry.CurrentValues.SetValues(Participants);
+            
 
             await _context.SaveChangesAsync();
 
