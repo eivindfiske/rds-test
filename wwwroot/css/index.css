@@ -7,7 +7,7 @@
 h2 {
 
     font-size: 20px;
-    margin-left: 30px;
+    margin-top: 10px;
 
 }
 
@@ -18,14 +18,14 @@ h2 {
 button.teambtn {
     color: black;
 
-    margin-top: 70px;
+    margin-top: 10px;
 
 }
 
 button.prosessbtn {
     color: black;
 
-    margin-top: 100px;
+    margin-top: 10px;
     left: 15px;
 }
 
@@ -44,7 +44,7 @@ button.prosessbtn {
 }
 
 .fa-search{
-    position: absolute;
+    
     top: 40px;
     left: 20px;
     color: #9ca3af;
