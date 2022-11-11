@@ -3,101 +3,52 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - IS202.website</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="../IS202.website.styles.css" asp-append-version="true" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - ND.website</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
 </head>
 
 <body>
-    <header class="border-bottom header">
-
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light" background-color:#F9F8F7 shadow p-3 mb-5
-            bg-body rounded">
-            <div class="container-fluid">
-
-                       <a href="/Index" class="navbar-brand">
-                    <img src="../images/nordicdoor.png" alt="Logo" height="60" width="200"
-                        class="d-inline-block align-top" />
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#toggleNavBar"
-                        aria-controls="toggleNavBar" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    </button>
-                    <div class="collapse navbar-collapse" id="toggleNavBar">
-                        <ul class="navbar-nav ms-auto h5">
-                            <li class="nav-item">
-                                <a class="navbar-brand" asp-area="" asp-page="/Index">Forslag</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="navbar-brand" asp-area="" asp-page="/Statistics">Statistikk</a>
-                            </li>
-                            <a class="navbar-brand" asp-area="" asp-page="/Settings"><svg
-                                    xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                                    class="bi bi-gear" viewBox="0 0 16 16">
-                                    <path
-                                        d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
-                                    <path
-                                        d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
-                                </svg></a>
-                            <ul />
-                    </div>
-                    <partial name="_LoginPartial" />
-            </div>
+    <header class="container-fluid">
+        <nav class="navbar navbar-expand shadow">
+            <a class="navbar-brand" href="/Index">
+                <img src="../images/nordicdoor.png" alt="Logo" class="ndimg d-block"/>
             </a>
-        </nav>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="navbar-brand" asp-page="/Index">Forslag</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="navbar-brand" asp-page="/Statistics">Statistikk</a>
+                    </li>
+                    <li class="nav-item">
+                        <partial name="_LoginPartial"/>
+                    </li>
+                    <li class="nav-item">
+                        <a class="navbar-brand" asp-page="/Settings">
+                            <div class="settingsbtn material-icons">settings</div>
+                        </a>
+                    </li>            
+                 </ul>
+        </nav> 
     </header>
-    <div class="container-fluid">
-        <main role="main" class="pb-3">
-            @RenderBody()
 
-            <style>
-                .floating-btn {
-                    width: 80px;
-                    height: 80px;
-                    background: #009879;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    text-decoration: none;
-                    border-radius: 50%;
-                    color: #fff;
-                    font-size: 40px;
-                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
-                    position: fixed;
-                    right: 20px;
-                    bottom: 20px;
-                    transition: background 0.25s;
-                }
-
-                .floating-btn:active {
-                    background: #007D63;
-                }
-            </style>
-            <a href="/Suggestions/Create" class="material-icons floating-btn">add</a>
-
-
-
-
-
-
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container-fluid">
-            &copy; 2022 - Nordic Door Website - <a asp-area="" asp-page="/Privacy">Privacy</a>
-
-
-        </div>
+    
+    <main role="main" class="container-fluid">
+        @RenderBody()
+            
+        <a href="/Suggestions/Create" class="material-icons floating-btn">add</a>
+    </main>
+    
+    <footer class="container-fluid border-top text-muted">   
+        &copy; 2022 - Nordic Door Website - <a asp-page="/Privacy">Privacy</a>
     </footer>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -105,8 +56,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-
 </html>

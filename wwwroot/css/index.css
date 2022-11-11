@@ -1,15 +1,15 @@
-.filterbar {
-    margin-left: 10px;
-    width: 50px;
-    position: fixed;
-}
-
 h2 {
 
     font-size: 20px;
     margin-top: 10px;
 
 }
+
+.main.container-fluid {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
 
 .row {
     margin-left: 10px;

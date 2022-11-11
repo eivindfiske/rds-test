@@ -10,9 +10,9 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min">
 
 
-<div class="container-fluid">
+<div class="main container-fluid">
     <div class="row">
-        <div class="col-2">
+        <div class="col-2 border border-right align-items-left">
             <div class="topnav">
                 <div class="search-row">
                 <form asp-action="/Index" method="get">
@@ -28,7 +28,7 @@
 
 
 
-            <div class="container">
+            <div >
                 <div class="row">
                     <div>Filtrer</div>
                     <div><a asp-page="/Index" asp-route-sortData="@Model.timestampSort">Nyeste øverst</a></div>
@@ -39,7 +39,7 @@
                 </div>
             </div>
 
-            <div class="container">
+            <div >
                 <div class="row">
                     <div class="dropdown">
                         <button class="teambtn" type="button" data-toggle="dropdown">Team
@@ -69,7 +69,7 @@
                 </div>
             </div>
 
-            <div class="container">
+            <div >
                 <div class="row">
                     <div>Mine forslag</div>
                     <div><a asp-page="/Index">Alle forslag</a></div>
