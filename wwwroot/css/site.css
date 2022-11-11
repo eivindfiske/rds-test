@@ -11,7 +11,8 @@ html {
 } 
 
 header {
-  position: fixed;
+  position: sticky;
+  top: 0;
 }
 
 header.container-fluid {
@@ -29,7 +30,6 @@ main.container-fluid {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  padding-top: 60px;
 }
 
 footer {
@@ -52,12 +52,17 @@ ul.navbar-nav.ms-auto {
 }
 
 .settingsbtn.material-icons {
-  font-size: 24px;
+  font-size: 30px;
   color: #868FA0;
 }
 
+a.setbrand {
+  padding: 20px;
+}
+
+
 a:link {
-  color: black;
+  color: rgb(82, 81, 81);
   text-decoration: none;
 }
 

@@ -12,7 +12,19 @@ h2 {
   }
 
 .row {
-    margin-left: 10px;
+    margin: 0;
+    padding: 0;
+}
+
+.row.suggestions {
+    justify-items: center;
+}
+
+.filterbar.col-2 {
+    border-right: 2px;
+    border-color:#000000;
+    padding-left: 10px;
+    align-items: left;
 }
 
 button.teambtn {
