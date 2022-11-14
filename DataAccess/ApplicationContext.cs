@@ -27,7 +27,7 @@ public class ApplicationContext : IdentityDbContext<ApplicationUser>
             .HasKey(c => c.case_num);
 
         modelBuilder.Entity<ApplicationUser>()
-        .HasKey(c => c.emp_num);
+        .HasKey(c => c.Id);
 
         modelBuilder.Entity<Dept>()
         .HasKey(c => c.team);
@@ -35,7 +35,7 @@ public class ApplicationContext : IdentityDbContext<ApplicationUser>
         modelBuilder.Entity<Participants>()
         .HasOne(e => e.applicationUsers)
         .WithMany(e => e.participants)
-        .HasForeignKey(e => e.emp_num);
+        .HasForeignKey(e => e.Id);
 
         modelBuilder.Entity<Participants>()
         .HasOne(e => e.suggestion)
@@ -43,7 +43,7 @@ public class ApplicationContext : IdentityDbContext<ApplicationUser>
         .HasForeignKey(e => e.case_num);
 
         modelBuilder.Entity<Participants>()
-        .HasKey(t => new { t.case_num, t.emp_num });
+        .HasKey(t => new { t.case_num, t.Id });
 
         modelBuilder.Entity<ApplicationUser>()
         .HasOne(e => e.dept)
@@ -53,7 +53,7 @@ public class ApplicationContext : IdentityDbContext<ApplicationUser>
         modelBuilder.Entity<Suggestion>()
         .HasOne(e => e.applicationUsers)
         .WithMany(e => e.suggestions)
-        .HasForeignKey(e => e.emp_num);
+        .HasForeignKey(e => e.Id);
 
 
         modelBuilder.ApplyConfiguration(new ApplicationUserEntityConfigurations());

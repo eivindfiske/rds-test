@@ -11,7 +11,7 @@ using rds_test.Data;
 namespace rds_test.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20221109225631_InitCreate")]
+    [Migration("20221114112925_InitCreate")]
     partial class InitCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -151,7 +151,7 @@ namespace rds_test.Migrations
 
             modelBuilder.Entity("rds_test.Models.ApplicationUser", b =>
                 {
-                    b.Property<string>("emp_num")
+                    b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
 
                     b.Property<int>("AccessFailedCount")
@@ -167,9 +167,6 @@ namespace rds_test.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("Id")
-                        .HasColumnType("longtext");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("tinyint(1)");
@@ -204,6 +201,10 @@ namespace rds_test.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("varchar(256)");
 
+                    b.Property<string>("emp_num")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<string>("name")
                         .HasColumnType("varchar(50)");
 
@@ -211,7 +212,7 @@ namespace rds_test.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
-                    b.HasKey("emp_num");
+                    b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -243,15 +244,15 @@ namespace rds_test.Migrations
                     b.Property<DateTime>("timestamp")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<string>("Id")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<int>("case_num")
                         .HasColumnType("int");
 
                     b.Property<string>("edit_msg")
                         .HasColumnType("varchar(50)");
-
-                    b.Property<string>("emp_num")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.HasKey("timestamp");
 
@@ -263,12 +264,12 @@ namespace rds_test.Migrations
                     b.Property<int>("case_num")
                         .HasColumnType("int");
 
-                    b.Property<string>("emp_num")
+                    b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
 
-                    b.HasKey("case_num", "emp_num");
+                    b.HasKey("case_num", "Id");
 
-                    b.HasIndex("emp_num");
+                    b.HasIndex("Id");
 
                     b.ToTable("participants");
                 });
@@ -279,16 +280,15 @@ namespace rds_test.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateOnly?>("deadline")
-                        .HasColumnType("date");
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<DateTime?>("deadline")
+                        .HasColumnType("Date");
 
                     b.Property<string>("description")
                         .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
-
-                    b.Property<string>("emp_num")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("pdsa_act")
                         .HasMaxLength(500)
@@ -340,7 +340,7 @@ namespace rds_test.Migrations
 
                     b.HasKey("case_num");
 
-                    b.HasIndex("emp_num");
+                    b.HasIndex("Id");
 
                     b.ToTable("suggestion");
                 });
@@ -409,15 +409,15 @@ namespace rds_test.Migrations
 
             modelBuilder.Entity("rds_test.Models.Participants", b =>
                 {
-                    b.HasOne("rds_test.Models.Suggestion", "suggestion")
+                    b.HasOne("rds_test.Models.ApplicationUser", "applicationUsers")
                         .WithMany("participants")
-                        .HasForeignKey("case_num")
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("rds_test.Models.ApplicationUser", "applicationUsers")
+                    b.HasOne("rds_test.Models.Suggestion", "suggestion")
                         .WithMany("participants")
-                        .HasForeignKey("emp_num")
+                        .HasForeignKey("case_num")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -430,9 +430,7 @@ namespace rds_test.Migrations
                 {
                     b.HasOne("rds_test.Models.ApplicationUser", "applicationUsers")
                         .WithMany("suggestions")
-                        .HasForeignKey("emp_num")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Id");
 
                     b.Navigation("applicationUsers");
                 });
