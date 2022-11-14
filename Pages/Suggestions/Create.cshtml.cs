@@ -47,6 +47,10 @@ namespace rds_test.Pages.Suggestions
             var entry = _context.Add(new Suggestion());
             entry.CurrentValues.SetValues(Suggestion);
 
+            // List<Participants> parEntry = new List<Participants>() {new Participants() {Id = Participants.Id}};
+            // parEntry.Add(Participants);
+            // _context.participants.AddRange(parEntry);
+
             var parEntry = _context.Add(new Participants(){Id = Participants.Id});
             parEntry.CurrentValues.SetValues(Participants);
             
