@@ -80,18 +80,17 @@
         </div>
 
 
-        <div class="col-10">
-            <div class="row suggestions">
+        <div class="col-10 suggestionsIndex">
+            <div class="row">
                 <table class="suggestionTable">
                     <thead>
                     </thead>
                     <tbody>
                         @foreach (var item in Model.Suggestion)
                         {
-
-                            <tr class="suggestionRowIndex" style="cursor: pointer;"
-                            onclick="location.href = '/Suggestions/Details?id=@item.case_num'">
-                                <div class="col-sm-6 col-md-6 col-lg-6">
+                            <div >                          
+                            <tr class="suggestionRow" onclick="location.href = '/Suggestions/Details?id=@item.case_num'">
+                                <div class="col-6">
                                     <td class="row">
                                         @Html.DisplayFor(modelItem => item.title)
                                     </td>
@@ -100,25 +99,26 @@
                                         @Html.DisplayFor(modelItem => item.description)
                                     </td>
                                 </div>
-                                <div class="col-sm-4 col-md-4 col-lg-4">
-                                    <td>
+                                <div class="col-2">
+                                    <td class="row">
                                         <p>Avdeling</p>
                                         @Html.DisplayFor(modelItem => item.resdept)
                                     </td>
-                                    <td>
+                                    <td class="row">
                                         <p>Ansvarlig</p>
                                         @Html.DisplayFor(modelItem => item.responsible)
                                     </td>
                                 </div>
-                                <div class="col-sm-2 col-md-2 col-lg-2">
-                                    <td>
+                                <div class="col-2">
+                                    <td class="row">
                                         @Html.DisplayFor(modelItem => item.deadline)
                                     </td>
-                                    <td>
+                                    <td class="row">
                                         @Html.DisplayFor(modelItem => item.status)
                                     </td>
                                 </div>
                             </tr>
+                            </div>
                         }
                     </tbody>
                 </table>

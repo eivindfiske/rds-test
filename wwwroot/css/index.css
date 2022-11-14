@@ -16,10 +16,6 @@ h2 {
     padding: 0;
 }
 
-.row.suggestions {
-    justify-items: center;
-}
-
 .filterbar.col-2 {
     border-right: 2px;
     border-color:#000000;
@@ -41,14 +37,13 @@ button.prosessbtn {
     left: 15px;
 }
 
-.mainPartSuggestion {
-    margin-left: 400px;
-    width: 100%;
-}
 
-.suggestionRowIndex {
+.suggestionRow {
+    cursor: pointer;
+    border: 2px solid;
+    border-color: blue;
     font-size: 15px;
-    color: aqua;
+    color: #424242;
 }
 
 .form{
