@@ -73,8 +73,8 @@ namespace rds_test.Models
         public DateTime? deadline { get; set; }
 
         public ApplicationUser applicationUsers { get; set; }
-
         public List<Participants> participants { get; set; }
+        public List<Log> log { get; set; }
 
 
     }

@@ -11,8 +11,8 @@ using rds_test.Data;
 namespace rds_test.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20221115112045_InitCreate")]
-    partial class InitCreate
+    [Migration("20221115132229_InitalCreate")]
+    partial class InitalCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

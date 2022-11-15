@@ -5,17 +5,20 @@ namespace rds_test.Models
 {
     public class Log
     {
-        [ForeignKey("Id")]
         public string Id { get; set; }
 
-        [Key]
+        [Timestamp]
+        [Column(TypeName = "datetime(0)")]
         public DateTime timestamp { get; set; }
 
-        [ForeignKey("case_num")]
         public int case_num { get; set; }
 
-        [Column(TypeName = "varchar(50)")]
+        [StringLength(100)]
         public string? edit_msg { get; set; }
+
+        public ApplicationUser applicationUsers {get; set;}
+
+        public Suggestion suggestion {get; set;}
 
     }
 
