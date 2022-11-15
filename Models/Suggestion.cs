@@ -52,11 +52,13 @@ namespace rds_test.Models
         public int case_num { get; set; }
         public string Id { get; set; }
 
+        [Display(Name = "Bilde før endring")]
         public string? pic_before_data { get; set; }
 
         [NotMapped]
         public IFormFile? pic_before { get; set; }
 
+        [Display(Name = "Bilde etter endring")]
         public string? pic_after_data { get; set; }
 
         [NotMapped]

@@ -12,15 +12,14 @@ div.filterbar {
 
 button.teambtn {
     color: black;
-
     margin-top: 10px;
+    
 
 }
 
 button.prosessbtn {
     color: black;
     margin-top: 10px;
-    left: 15px;
 }
 
 .suggestionCulumn {

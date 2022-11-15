@@ -44,6 +44,7 @@ namespace rds_test.Pages.Suggestions
 
         public async Task<IActionResult> OnPostAsync()
         {
+            //image byte kode kommer fra: https://www.youtube.com/watch?v=K61wZruCJl8&t=1586s&ab_channel=DigitalTechJoint
             byte[] bytes = null;
             if (Suggestion.pic_before != null)
             {

@@ -31,7 +31,7 @@ namespace rds_test.Pages.Suggestions
                 return NotFound();
             }
 
-            var suggestion =  await _context.suggestion.FirstOrDefaultAsync(m => m.case_num == id);
+            var suggestion = await _context.suggestion.FirstOrDefaultAsync(m => m.case_num == id);
             // var participants =  await _context.participants.FirstOrDefaultAsync(m => m.case_num == id);
             if (suggestion == null)
             {
@@ -46,28 +46,28 @@ namespace rds_test.Pages.Suggestions
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync(int id)
         {
-        var editSuggestion = await _context.suggestion.FindAsync(id);
-        // var editParticipants = await _context.participants.FindAsync(id);
+            var editSuggestion = await _context.suggestion.FindAsync(id);
+            // var editParticipants = await _context.participants.FindAsync(id);
 
-        if (editSuggestion == null) 
-        {
-            return NotFound();
+            if (editSuggestion == null)
+            {
+                return NotFound();
+            }
+
+            await TryUpdateModelAsync<Suggestion>(
+             editSuggestion, "suggestion",
+                m => m.title, m => m.description, m => m.pdsa_plan,
+                m => m.pdsa_do, m => m.pdsa_study, m => m.pdsa_act,
+                m => m.status, m => m.responsible, m => m.resdept,
+                m => m.pic_before, m => m.pic_after, m => m.timeframe,
+                m => m.deadline);
+
+            // await TryUpdateModelAsync<Participants>(
+            // editParticipants, "participants", m => m.emp_num);
+
+
+            await _context.SaveChangesAsync();
+            return RedirectToPage("./Details", new { id = id });
         }
-
-        await TryUpdateModelAsync<Suggestion>(
-         editSuggestion, "suggestion",
-            m => m.title, m => m.description, m => m.pdsa_plan,
-            m => m.pdsa_do, m => m.pdsa_study, m => m.pdsa_act,
-            m => m.status, m => m.responsible, m => m.resdept,
-            m => m.pic_before, m => m.pic_after, m => m.timeframe,
-            m => m.deadline);
-        
-        // await TryUpdateModelAsync<Participants>(
-        // editParticipants, "participants", m => m.emp_num);
-        
-
-        await _context.SaveChangesAsync();
-        return RedirectToPage("./Details", new {id = id});
-        }             
-}
+    }
 }
