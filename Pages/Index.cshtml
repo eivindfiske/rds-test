@@ -1,5 +1,4 @@
 ﻿@page
-@using rds_test.Models
 @model rds_test.Pages.IndexModel
 
 @{
@@ -15,6 +14,7 @@
         <div class="filterbar col-2">
             <div class="topnav">
                 <div class="search-row">
+<<<<<<< HEAD
                     <form asp-action="/Index" method="get">
                         <div class="form">
                             <button type="submit"><i class="fa fa-search"></i></button>
@@ -22,19 +22,29 @@
                                 name="searchString" value="@Model.currentFilter">
                         </div>
                     </form>
+=======
+                <form asp-action="/Index" method="get">
+                <div class="form">
+                <i class="fa fa-search"></i>
+                <input type="text" class="form-control form-input" placeholder="Search anything..."
+                name="searchString" value="@Model.currentFilter">
+>>>>>>> 0fe257d5f2ceae139f71bb40b69b0bd3a176c6e4
                 </div>
-            </div>
+                <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+                </div>
+                </div> 
 
 
 
             <div>
                 <div class="row">
-                    <div>Fildiver</div>
-                    <div><a asp-page="/Index" asp-route-sordivata="@Model.timestampSort">Nyeste øverst</a></div>
-                    <div><a asp-page="/Index" asp-route-sordivata="@Model.deadlineSort">Tidsfrist</a></div>
-                    <div><a asp-page="/Index" asp-route-sordivata="@Model.timeframeJDISort">Just do it</a></div>
-                    <div><a asp-page="/Index" asp-route-sordivata="@Model.timeframeShortSort">Kortsiktig</a></div>
-                    <div><a asp-page="/Index" asp-route-sordivata="@Model.timeframeLongSort">Langsiktig</a></div>
+                    <div>Filtrer</div>
+                    <div><a asp-page="/Index" asp-route-sortData="@Model.timestampSort">Nyeste øverst</a></div>
+                    <div><a asp-page="/Index" asp-route-sortData="@Model.deadlineSort">Tidsfrist</a></div>
+                    <div><a asp-page="/Index" asp-route-sortData="@Model.timeframeJDISort">Just do it</a></div>
+                    <div><a asp-page="/Index" asp-route-sortData="@Model.timeframeShortSort">Kortsiktig</a></div>
+                    <div><a asp-page="/Index" asp-route-sortData="@Model.timeframeLongSort">Langsiktig</a></div>
                 </div>
             </div>
 
@@ -78,41 +88,42 @@
             </div>
         </div>
 
-
         <div class="suggestionColumn col-10">
             <div class="suggestionLayout row">
-                @foreach (var item in Model.Suggestion)
-                {
-                    <div class="suggestionRow" onclick="location.href = '/Suggestions/Details?id=@item.case_num'">
-                        <div class="col-6">
-                            <div class="row">
-                                @Html.DisplayFor(modelItem => item.title)
+                        @foreach (var item in Model.Suggestion)
+                        {                         
+                            <div class="suggestionRow" onclick="location.href = '/Suggestions/Details?id=@item.case_num'">
+                                <div class="col-6">
+                                    <div class="row">
+                                        @Html.DisplayFor(modelItem => item.title)
+                                    </div>
+                                    <div class="row">
+                                        @Html.DisplayFor(modelItem => item.description)
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="row">
+                                        <p>Avdeling</p>
+                                        @Html.DisplayFor(modelItem => item.resdept)
+                                    </div>
+                                    <div class="row">
+                                        <p>Ansvarlig</p>
+                                        @Html.DisplayFor(modelItem => item.responsible)
+                                    </div>
+                                </div>
+                                <div class="col-2 order-last">
+                                    <div class="row">
+                                        @Html.DisplayFor(modelItem => item.deadline)
+                                    </div>
+                                    <div class="row">
+                                        @Html.DisplayFor(modelItem => item.status)
+                                    </div>
+                                </div>
                             </div>
-                            <div class="row">
-                                @Html.DisplayFor(modelItem => item.description)
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <div class="row">
-                                <p>Avdeling</p>
-                                @Html.DisplayFor(modelItem => item.resdept)
-                            </div>
-                            <div class="row">
-                                <p>Ansvarlig</p>
-                                @Html.DisplayFor(modelItem => item.responsible)
-                            </div>
-                        </div>
-                        <div class="col-2 order-last">
-                            <div class="row">
-                                @Html.DisplayFor(modelItem => item.deadline)
-                            </div>
-                            <div class="row">
-                                @Html.DisplayFor(modelItem => item.status)
-                            </div>
-                        </div>
-                    </div>
-                }
+                        }
             </div>
-        </div>
+        </div> 
     </div>
 </div>
+
+

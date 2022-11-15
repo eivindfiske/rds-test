@@ -65,7 +65,6 @@ namespace rds_test.Models
         public IFormFile? pic_after { get; set; }
 
         [StringLength(50)]
-        [Display(Name = "Tidsramme")]
         public string? timeframe { get; set; }
 
         [DataType(DataType.Date)]
