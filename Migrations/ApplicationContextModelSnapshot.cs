@@ -234,7 +234,7 @@ namespace rds_test.Migrations
 
                     b.HasKey("team");
 
-                    b.ToTable("dept");
+                    b.ToTable("dept", (string)null);
                 });
 
             modelBuilder.Entity("rds_test.Models.Log", b =>
@@ -258,7 +258,7 @@ namespace rds_test.Migrations
 
                     b.HasIndex("Id");
 
-                    b.ToTable("log");
+                    b.ToTable("log", (string)null);
                 });
 
             modelBuilder.Entity("rds_test.Models.Participants", b =>
@@ -273,7 +273,7 @@ namespace rds_test.Migrations
 
                     b.HasIndex("Id");
 
-                    b.ToTable("participants");
+                    b.ToTable("participants", (string)null);
                 });
 
             modelBuilder.Entity("rds_test.Models.Suggestion", b =>
@@ -338,7 +338,7 @@ namespace rds_test.Migrations
 
                     b.HasIndex("Id");
 
-                    b.ToTable("suggestion");
+                    b.ToTable("suggestion", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
