@@ -14,43 +14,46 @@ namespace rds_test.Pages.Suggestions
     public class CreateModel : PageModel
     {
         private readonly ApplicationContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public CreateModel(ApplicationContext context)
+        public CreateModel(ApplicationContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
-        // [BindProperty]
-        // public List<SelectListItem> empList { get; set; }
-        // public string user {get; set;}
+        [BindProperty]
+        public List<SelectListItem> empList { get; set; }
         
-        public IActionResult OnGet()
-        {
-            // user = this.User.Identity.Name;
 
-            // empList = _context.applicationUsers.Select(a => new SelectListItem
-            // {
-            //     Value = a.emp_num.ToString(),
-            //     Text = a.name
-            // }).ToList();
+        public IActionResult OnGet()
+        {          
+            empList = _context.applicationUsers.Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.name
+            }).ToList();
             
             return Page();
         }
 
         [BindProperty]
         public Suggestion Suggestion { get; set; } = default!;
-        // [BindProperty]
-        // public Participants Participants { get; set; }
+        [BindProperty]
+        public Participants Participants { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
             var entry = _context.Add(new Suggestion());
             entry.CurrentValues.SetValues(Suggestion);
 
-            // var parEntry = _context.Add(new Participants());
-            // parEntry.CurrentValues.SetValues(Participants);
-            
+            // List<Participants> parEntry = new List<Participants>() {new Participants() {Id = Participants.Id}};
+            // parEntry.Add(Participants);
+            // _context.participants.AddRange(parEntry);
 
+            var parEntry = _context.Add(new Participants(){Id = Participants.Id});
+            parEntry.CurrentValues.SetValues(Participants);
+            
             await _context.SaveChangesAsync();
 
             return RedirectToPage("/Index");

@@ -43,8 +43,10 @@ namespace rds_test.Models
         public int case_num { get; set; }
         public string Id { get; set; }
 
-        public byte[]? pic_before { get; set; }
-        public byte[]? pic_after { get; set; }
+        [NotMapped]
+        public IFormFile? pic_before { get; set; }
+        [NotMapped]
+        public IFormFile? pic_after { get; set; }
 
         [StringLength(50)]
         public string? timeframe { get; set; }

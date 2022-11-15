@@ -112,6 +112,7 @@ namespace rds_test.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
+
                 var user = new ApplicationUser
                 {
                     emp_num = Input.emp_num,

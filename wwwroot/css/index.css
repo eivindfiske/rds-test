@@ -1,26 +1,13 @@
-h2 {
-
-    font-size: 20px;
-    margin-top: 10px;
-
-}
-
 .main.container-fluid {
     min-height: 100vh;
     margin: 0;
     padding: 0;
   }
 
-.row {
-    margin: 0;
-    padding: 0;
-}
-
-.filterbar.col-2 {
-    border-right: 2px;
-    border-color:#000000;
-    padding-left: 10px;
-    align-items: left;
+div.filterbar {
+    border-right: 1px solid;
+    border-color:#868FA0;
+    padding-left: 30px;
 }
 
 button.teambtn {
@@ -32,18 +19,26 @@ button.teambtn {
 
 button.prosessbtn {
     color: black;
-
     margin-top: 10px;
     left: 15px;
 }
 
+.suggestionCulumn {
+    margin-top: 30px;
+    color: #868FA0;
+}
+
+.suggestionLayout {
+    width: 90%;
+    margin-left: 5%;
+}
 
 .suggestionRow {
     cursor: pointer;
     border: 2px solid;
     border-color: blue;
-    font-size: 15px;
-    color: #424242;
+    border-radius: 5px;
+    margin-bottom: 30px;
 }
 
 .form{
