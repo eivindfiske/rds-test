@@ -1,12 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
-using rds_test.Data;
 using rds_test.Models;
 
 namespace rds_test.Pages
@@ -22,10 +15,11 @@ namespace rds_test.Pages
         }
 
         public string timestampSort { get; set; }
+        public string deadlineSort { get; set; }
         public string timeframeJDISort { get; set; }
         public string timeframeShortSort { get; set; }
         public string timeframeLongSort { get; set; }
-        public string deadlineSort { get; set; }
+
         public string currentFilter { get; set; }
 
         public IList<Suggestion> Suggestion { get; set; } = default!;
