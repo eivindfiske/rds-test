@@ -23,8 +23,15 @@ public class ApplicationContext : IdentityDbContext<ApplicationUser>
 
         base.OnModelCreating(modelBuilder);
 
+        // modelBuilder.Entity<ApplicationUser>()
+        // .Ignore(c => c.AccessFailedCount)
+        // .Ignore(c=> c.LockoutEnabled)
+        // .Ignore(c=>c.PhoneNumberConfirmed)
+        // .Ignore(c=>c.TwoFactorEnabled)
+        // .Ignore(c=>c.EmailConfirmed);
+
         modelBuilder.Entity<Suggestion>()
-            .HasKey(c => c.case_num);
+        .HasKey(c => c.case_num);
 
         modelBuilder.Entity<ApplicationUser>()
         .HasKey(c => c.Id);
@@ -54,6 +61,24 @@ public class ApplicationContext : IdentityDbContext<ApplicationUser>
         .HasOne(e => e.applicationUsers)
         .WithMany(e => e.suggestions)
         .HasForeignKey(e => e.Id);
+
+        modelBuilder.Entity<Log>()
+        .HasOne(e => e.suggestion)
+        .WithMany(e => e.log)
+        .HasForeignKey(e => e.case_num);
+
+        modelBuilder.Entity<Log>()
+        .HasOne(e => e.applicationUsers)
+        .WithMany(e => e.log)
+        .HasForeignKey(e => e.Id);
+
+         modelBuilder.Entity<Log>()
+        .Property(e => e.timestamp)
+        .ValueGeneratedOnAdd();
+
+        modelBuilder.Entity<Log>()
+        .HasKey(e => new {e.case_num, e.Id, e.timestamp});
+    
 
 
         modelBuilder.ApplyConfiguration(new ApplicationUserEntityConfigurations());
