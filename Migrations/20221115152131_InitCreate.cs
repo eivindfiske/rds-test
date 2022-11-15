@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace rds_test.Migrations
 {
-    public partial class InitalCreate : Migration
+    public partial class InitCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,23 +44,6 @@ namespace rds_test.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_dept", x => x.team);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "log",
-                columns: table => new
-                {
-                    timestamp = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    Id = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    case_num = table.Column<int>(type: "int", nullable: false),
-                    edit_msg = table.Column<string>(type: "varchar(50)", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_log", x => x.timestamp);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -282,6 +265,36 @@ namespace rds_test.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "log",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    timestamp = table.Column<DateTime>(type: "datetime(0)", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    case_num = table.Column<int>(type: "int", nullable: false),
+                    edit_msg = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_log", x => new { x.case_num, x.Id, x.timestamp });
+                    table.ForeignKey(
+                        name: "FK_log_AspNetUsers_Id",
+                        column: x => x.Id,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_log_suggestion_case_num",
+                        column: x => x.case_num,
+                        principalTable: "suggestion",
+                        principalColumn: "case_num",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "participants",
                 columns: table => new
                 {
@@ -348,6 +361,11 @@ namespace rds_test.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_log_Id",
+                table: "log",
+                column: "Id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_participants_Id",

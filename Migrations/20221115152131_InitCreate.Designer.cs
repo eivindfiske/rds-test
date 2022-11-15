@@ -11,8 +11,8 @@ using rds_test.Data;
 namespace rds_test.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20221115132229_InitalCreate")]
-    partial class InitalCreate
+    [Migration("20221115152131_InitCreate")]
+    partial class InitCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -241,20 +241,24 @@ namespace rds_test.Migrations
 
             modelBuilder.Entity("rds_test.Models.Log", b =>
                 {
-                    b.Property<DateTime>("timestamp")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Id")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<int>("case_num")
                         .HasColumnType("int");
 
-                    b.Property<string>("edit_msg")
-                        .HasColumnType("varchar(50)");
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)");
 
-                    b.HasKey("timestamp");
+                    b.Property<DateTime>("timestamp")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime(0)");
+
+                    b.Property<string>("edit_msg")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.HasKey("case_num", "Id", "timestamp");
+
+                    b.HasIndex("Id");
 
                     b.ToTable("log");
                 });
@@ -401,6 +405,25 @@ namespace rds_test.Migrations
                     b.Navigation("dept");
                 });
 
+            modelBuilder.Entity("rds_test.Models.Log", b =>
+                {
+                    b.HasOne("rds_test.Models.ApplicationUser", "applicationUsers")
+                        .WithMany("log")
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("rds_test.Models.Suggestion", "suggestion")
+                        .WithMany("log")
+                        .HasForeignKey("case_num")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("applicationUsers");
+
+                    b.Navigation("suggestion");
+                });
+
             modelBuilder.Entity("rds_test.Models.Participants", b =>
                 {
                     b.HasOne("rds_test.Models.ApplicationUser", "applicationUsers")
@@ -431,6 +454,8 @@ namespace rds_test.Migrations
 
             modelBuilder.Entity("rds_test.Models.ApplicationUser", b =>
                 {
+                    b.Navigation("log");
+
                     b.Navigation("participants");
 
                     b.Navigation("suggestions");
@@ -443,6 +468,8 @@ namespace rds_test.Migrations
 
             modelBuilder.Entity("rds_test.Models.Suggestion", b =>
                 {
+                    b.Navigation("log");
+
                     b.Navigation("participants");
                 });
 #pragma warning restore 612, 618
