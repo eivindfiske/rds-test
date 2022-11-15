@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Suggestion.title" class="control-label"></label>
@@ -60,30 +60,31 @@
             </div>
             <div class="form-group">
                 <label asp-for="Suggestion.pic_before" class="control-label"></label>
-                <input asp-for="Suggestion.pic_before" class="form-control" />
+                <input type="file" asp-for="Suggestion.pic_before" class="form-control" />
                 <span asp-validation-for="Suggestion.pic_before" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Suggestion.pic_after" class="control-label"></label>
-                <input asp-for="Suggestion.pic_after" class="form-control" />
+                <input type="file" asp-for="Suggestion.pic_after" class="form-control" />
                 <span asp-validation-for="Suggestion.pic_after" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Suggestion.timeframe" class="control-label"></label>
-                <select asp-for="Suggestion.timeframe" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                <option selected>Tidsramme</option>
-                <option value="Just do it">Just do it</option>
-                <option value="Kortsiktig">Kortsiktig</option>
-                <option value="Langsiktig">Langsiktig</option>
+                <select asp-for="Suggestion.timeframe" class="form-select form-select-lg mb-3"
+                    aria-label=".form-select-lg example">
+                    <option selected>Tidsramme</option>
+                    <option value="Just do it">Just do it</option>
+                    <option value="Kortsiktig">Kortsiktig</option>
+                    <option value="Langsiktig">Langsiktig</option>
                 </select>
                 <span asp-validation-for="Suggestion.timeframe" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Suggestion.deadline" class="control-label"></label>
-                <input type="date" asp-for="Suggestion.deadline" class="form-control" value="(DATE)"/>
+                <input type="date" asp-for="Suggestion.deadline" class="form-control" value="(DATE)" />
                 <span asp-validation-for="Suggestion.deadline" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group">
                 <label asp-for="Suggestion.Id" class="control-label"></label>
                 <select asp-for="Suggestion.Id" class="form-control" asp-items="@Model.empList"></select>
@@ -91,7 +92,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Participants.Id" class="control-label">Deltakere</label>
-                <select asp-for="Participants.Id" class="form-control" asp-items="@Model.empList" multiple></select>  
+                <select asp-for="Participants.Id" class="form-control" asp-items="@Model.empList" multiple></select>
                 <span asp-validation-for="Participants.Id" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -102,9 +103,9 @@
 </div>
 
 <div>
-    <a asp-page="/Index">Back to List</a>
+    <a asp-page="/Index">Tilbake til forslag</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
