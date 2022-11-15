@@ -24,16 +24,16 @@ namespace rds_test.Pages.Suggestions
 
         [BindProperty]
         public List<SelectListItem> empList { get; set; }
-        
+
 
         public IActionResult OnGet()
-        {          
+        {
             empList = _context.applicationUsers.Select(a => new SelectListItem
             {
                 Value = a.Id.ToString(),
                 Text = a.name
             }).ToList();
-            
+
             return Page();
         }
 
@@ -44,6 +44,32 @@ namespace rds_test.Pages.Suggestions
 
         public async Task<IActionResult> OnPostAsync()
         {
+            byte[] bytes = null;
+            if (Suggestion.pic_before != null)
+            {
+                using (Stream fs = Suggestion.pic_before.OpenReadStream())
+                {
+                    using (BinaryReader br = new BinaryReader(fs))
+                    {
+                        bytes = br.ReadBytes((Int32)fs.Length);
+                    }
+                }
+                Suggestion.pic_before_data = Convert.ToBase64String(bytes, 0, bytes.Length);
+            }
+
+            byte[] bytes2 = null;
+            if (Suggestion.pic_after != null)
+            {
+                using (Stream fs = Suggestion.pic_after.OpenReadStream())
+                {
+                    using (BinaryReader br = new BinaryReader(fs))
+                    {
+                        bytes2 = br.ReadBytes((Int32)fs.Length);
+                    }
+                }
+                Suggestion.pic_after_data = Convert.ToBase64String(bytes2, 0, bytes2.Length);
+            }
+
             var entry = _context.Add(new Suggestion());
             entry.CurrentValues.SetValues(Suggestion);
 
@@ -51,11 +77,11 @@ namespace rds_test.Pages.Suggestions
             // parEntry.Add(Participants);
             // _context.participants.AddRange(parEntry);
 
-            var parEntry = _context.Add(new Participants(){Id = Participants.Id});
+            var parEntry = _context.Add(new Participants() { Id = Participants.Id });
             parEntry.CurrentValues.SetValues(Participants);
-            
-            await _context.SaveChangesAsync();
 
+
+            await _context.SaveChangesAsync();
             return RedirectToPage("/Index");
         }
     }

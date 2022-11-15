@@ -9,7 +9,7 @@
     <div>
         <h4> Forslag - Saksnummer: @Html.DisplayFor(model => model.Suggestion.case_num)</h4>
     </div>
-    
+
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -73,16 +73,18 @@
             @Html.DisplayFor(model => model.Suggestion.resdept)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Suggestion.pic_before)
+            @Html.DisplayNameFor(model => model.Suggestion.pic_before_data)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Suggestion.pic_before)
+            <img src="data:image/jpg;base64,@Html.DisplayFor(model => model.Suggestion.pic_before_data)" width="120px"
+                height="120px" />
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Suggestion.pic_after)
+        <dt class=" col-sm-2">
+            @Html.DisplayNameFor(model => model.Suggestion.pic_after_data)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Suggestion.pic_after)
+            <img src="data:image/jpg;base64,@Html.DisplayFor(model => model.Suggestion.pic_after_data)" width="120px"
+                height="120px" />
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Suggestion.timeframe)
