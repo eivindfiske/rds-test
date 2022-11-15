@@ -83,7 +83,8 @@
             @Html.DisplayNameFor(model => model.Suggestion.pic_after_data)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Suggestion.pic_after_data)
+            <img src="data:image/jpg;base64,@Html.DisplayFor(model => model.Suggestion.pic_after_data)" width="120px"
+                height="120px" />
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Suggestion.timeframe)

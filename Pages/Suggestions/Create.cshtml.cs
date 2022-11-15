@@ -57,6 +57,19 @@ namespace rds_test.Pages.Suggestions
                 Suggestion.pic_before_data = Convert.ToBase64String(bytes, 0, bytes.Length);
             }
 
+            byte[] bytes2 = null;
+            if (Suggestion.pic_after != null)
+            {
+                using (Stream fs = Suggestion.pic_after.OpenReadStream())
+                {
+                    using (BinaryReader br = new BinaryReader(fs))
+                    {
+                        bytes2 = br.ReadBytes((Int32)fs.Length);
+                    }
+                }
+                Suggestion.pic_after_data = Convert.ToBase64String(bytes2, 0, bytes2.Length);
+            }
+
             var entry = _context.Add(new Suggestion());
             entry.CurrentValues.SetValues(Suggestion);
 
