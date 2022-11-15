@@ -304,12 +304,6 @@ namespace rds_test.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
 
-                    b.Property<byte[]>("pic_after")
-                        .HasColumnType("longblob");
-
-                    b.Property<byte[]>("pic_before")
-                        .HasColumnType("longblob");
-
                     b.Property<string>("resdept")
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");

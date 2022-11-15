@@ -11,7 +11,7 @@ using rds_test.Data;
 namespace rds_test.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20221114112925_InitCreate")]
+    [Migration("20221115112045_InitCreate")]
     partial class InitCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -305,12 +305,6 @@ namespace rds_test.Migrations
                     b.Property<string>("pdsa_study")
                         .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
-
-                    b.Property<byte[]>("pic_after")
-                        .HasColumnType("longblob");
-
-                    b.Property<byte[]>("pic_before")
-                        .HasColumnType("longblob");
 
                     b.Property<string>("resdept")
                         .HasMaxLength(50)

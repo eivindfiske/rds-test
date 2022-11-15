@@ -266,8 +266,6 @@ namespace rds_test.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Id = table.Column<string>(type: "varchar(255)", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    pic_before = table.Column<byte[]>(type: "longblob", nullable: true),
-                    pic_after = table.Column<byte[]>(type: "longblob", nullable: true),
                     timeframe = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     deadline = table.Column<DateTime>(type: "Date", nullable: true)
