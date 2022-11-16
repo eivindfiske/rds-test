@@ -19,6 +19,7 @@ namespace rds_test.Models
 
         [Timestamp]
         [Column(TypeName = "datetime(0)")]
+        [Display(Name = "Tid opprettet")]
         public DateTime timestamp { get; set; }
 
         [StringLength(500)]

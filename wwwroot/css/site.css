@@ -23,9 +23,14 @@ h1 {
   margin: 5vh;
 }
 
+h3 {
+  margin: 5vh;
+}
+
 .btn-primary {
   margin-right: 20px;
 }
+
 
 body {
     background-color:#F9F8F7;
@@ -42,6 +47,14 @@ main.container-fluid {
 footer {
     bottom: 0;
     position: static;
+}
+
+.detailsRow {
+  margin-bottom: 8vh;
+}
+
+.card-body {
+  min-height: 40px;
 }
 
 img.ndimg {
