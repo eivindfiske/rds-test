@@ -4,23 +4,46 @@
     padding: 0;
   }
 
-div.filterbar {
+  body {
+    background-color:#F9F8F7;
+    min-height: 100vh;
+  }
+
+.filterbar {
     border-right: 1px solid;
-    border-color:#868FA0;
-    padding-left: 30px;
+    border-color:#b9b9b9;
+    margin-top: 15px;
+    padding-left: 2vh;
 }
 
-button.teambtn {
-    color: black;
+.filterRow {
+    margin-top: 15px;
+    padding-left: 5vh;
+}
 
-    margin-top: 10px;
+
+.btn-src {
+    border-radius: 4px;
+    border-color: #b9b9b9;
+    border-style: solid;
 
 }
 
-button.prosessbtn {
+.teambtn {
     color: black;
     margin-top: 10px;
-    left: 15px;
+    border-radius: 4px;
+    border-color:#b9b9b9;
+    border-style: solid;
+
+}
+
+.prosessbtn {
+    color: black;
+    margin-top: 10px;
+    border-radius: 4px;
+    border-color:#b9b9b9;
+    border-style: solid;
 }
 
 .suggestionCulumn {
@@ -30,34 +53,36 @@ button.prosessbtn {
 
 .suggestionLayout {
     width: 90%;
-    margin-left: 5%;
+    margin-left: 5vh;
     margin-top: 5vh;
 }
 
-.suggestionRow {
+.card {
+    cursor: pointer;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    padding-left: 15px;  
+}
+
+/* .suggestionRow {
     cursor: pointer;
     border: 2px solid;
     border-color: blue;
     border-radius: 5px;
     margin-bottom: 30px;
-}
+} */
 
 .form{
     margin-top: 10px;
 }
 
 .fa-search{
-    
-    top: 40px;
-    left: 20px;
     color: #9ca3af;
+    margin-top: 10px;
+    border-radius: 4px;
 }
 
-.button
-{
-    position: absolute;
-    color: white;
-}
+
 .form-input{
 
     height: 30px;

@@ -16,19 +16,15 @@
                 <div class="search-row">
                     <form asp-action="/Index" method="get">
                         <div class="form">
-                            <button type="submit"><i class="fa fa-search"></i></button>
                             <input type="text" class="form-control form-input" placeholder="Search anything..."
                                 name="searchString" value="@Model.currentFilter">
+                                @* <button type="submit" class="btn-src"><i class="fa fa-search"></i></button> *@
                         </div>
-
                     </form>
                 </div>
             </div>
-
-
-
             <div>
-                <div class="row">
+                <div class="filterRow row">
                     <div>Filtrer</div>
                     <div><a asp-page="/Index" asp-route-sortData="@Model.timestampSort">Nyeste øverst</a></div>
                     <div><a asp-page="/Index" asp-route-sortData="@Model.deadlineSort">Tidsfrist</a></div>
@@ -39,7 +35,7 @@
             </div>
 
             <div>
-                <div class="row">
+                <div class="filterRow row">
                     <div class="dropdown">
                         <button class="teambtn" type="button" data-toggle="dropdown">Team
                             <span class="caret"></span>
@@ -52,8 +48,6 @@
                             <li><a href="#">Ledergruppe</a></li>
                         </ul>
                     </div>
-
-
                     <div class="dropdown">
                         <button class="prosessbtn" type="button" data-toggle="dropdown">Prosess
                             <span class="caret"></span>
@@ -69,7 +63,7 @@
             </div>
 
             <div>
-                <div class="row">
+                <div class="filterRow row">
                     <div>Mine forslag</div>
                     <div><a asp-page="/Index">Alle forslag</a></div>
                     <div>Fullførte forslag</div>
@@ -82,10 +76,11 @@
             <div class="suggestionLayout row">
                 @foreach (var item in Model.Suggestion)
                 {
-                    <div class="suggestionRow" onclick="location.href = '/Suggestions/Details?id=@item.case_num'">
+                <div class="card" onclick="location.href = '/Suggestions/Details?id=@item.case_num'">
+                    <div class="card-body">
                         <div class="col-6">
                             <div class="row">
-                                @Html.DisplayFor(modelItem => item.title)
+                                <h4>@Html.DisplayFor(modelItem => item.title)</h4>
                             </div>
                             <div class="row">
                                 @Html.DisplayFor(modelItem => item.description)
@@ -110,6 +105,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
                 }
             </div>
         </div>

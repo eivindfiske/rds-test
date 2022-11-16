@@ -57,13 +57,14 @@ footer {
   min-height: 40px;
 }
 
-img.ndimg {
+.ndimg {
   height: auto;
-  width: 200px;
+  width: 240px;
+  margin-bottom: 15px;
 }
 
 nav.navbar {
-  background-color:#F9F8F7;
+  background-color: white;
   margin: 0;
 }
 
