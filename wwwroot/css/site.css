@@ -1,10 +1,3 @@
-html {
-    font-size: 30px;
-    color: rgb(47, 43, 43);
-    min-height: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-  }
 
 * {
    font-family: sans-serif;
@@ -21,20 +14,32 @@ header.container-fluid {
   padding: 0;
 }
 
+.row {
+  margin-left: 5vh;
+  margin-right: 5vh;
+}
+
+h1 {
+  margin: 5vh;
+}
+
+h3 {
+  margin: 5vh;
+}
+
+.btn-primary {
+  margin-right: 20px;
+}
+
+
 body {
     background-color:#F9F8F7;
     min-height: 100vh;
   }
 
-main {
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  z-index: 1;
-}
 
 main.container-fluid {
-  min-height: 100vh;
+  min-height: 85vh;
   margin: 0;
   padding: 0;
 }
@@ -44,13 +49,22 @@ footer {
     position: static;
 }
 
-img.ndimg {
+.detailsRow {
+  margin-bottom: 8vh;
+}
+
+.card-body {
+  min-height: 40px;
+}
+
+.ndimg {
   height: auto;
-  width: 200px;
+  width: 240px;
+  margin-bottom: 15px;
 }
 
 nav.navbar {
-  background-color:#F9F8F7;
+  background-color: white;
   margin: 0;
 }
 

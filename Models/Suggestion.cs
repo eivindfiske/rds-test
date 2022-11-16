@@ -19,6 +19,7 @@ namespace rds_test.Models
 
         [Timestamp]
         [Column(TypeName = "datetime(0)")]
+        [Display(Name = "Tid opprettet")]
         public DateTime timestamp { get; set; }
 
         [StringLength(500)]
@@ -50,19 +51,26 @@ namespace rds_test.Models
         public string? resdept { get; set; }
 
         public int case_num { get; set; }
+        [Display(Name = "Opprettet av")]
         public string Id { get; set; }
 
+
+        [Display(Name = "Bilde før endring")]
         public string? pic_before_data { get; set; }
 
         [NotMapped]
+        [Display(Name = "Bilde før endring")]
         public IFormFile? pic_before { get; set; }
 
+        [Display(Name = "Bilde etter endring")]
         public string? pic_after_data { get; set; }
 
         [NotMapped]
+        [Display(Name = "Bilde etter endring")]
         public IFormFile? pic_after { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Tidsramme")]
         public string? timeframe { get; set; }
 
         [DataType(DataType.Date)]
