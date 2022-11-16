@@ -1,0 +1,52 @@
+@page
+@model rds_test.Pages_ApplicationUsers.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Ansatt</h1>
+
+<p>
+    <a asp-page="Create">Opprett en ny bruker</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicationUser[0].name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicationUser[0].PasswordHash)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicationUser[0].team)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ApplicationUser)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PasswordHash)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dept.team)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dept.dept)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.emp_num">Rediger</a> |
+                    <a asp-page="./Details" asp-route-id="@item.emp_num">Detaljer</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.emp_num">Slett</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

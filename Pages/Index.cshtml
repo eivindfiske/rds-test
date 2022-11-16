@@ -1,5 +1,4 @@
 ﻿@page
-@using rds_test.Models
 @model rds_test.Pages.IndexModel
 
 @{
@@ -7,118 +6,108 @@
 }
 
 <link rel="stylesheet" href="../css/index.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min">
 
 
-<div class="container-fluid">
+
+<div class="main container-fluid">
     <div class="row">
-        <div class="col-sm-2 col-md-2 col-lg-2">
-            <div class="search-row">
-                <form asp-action="/Index" method="get">
-                    <div class="form">
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                        <input type="text" class="form-control form-input" placeholder="Søk..." name="searchString"
-                            value="@Model.currentFilter">
-                </form>
+        <div class="filterbar col-2">
+            <div class="topnav">
+                <div class="search-row">
+                    <form asp-action="/Index" method="get">
+                        <div class="form">
+                            <input type="text" class="form-control form-input" placeholder="Search anything..."
+                                name="searchString" value="@Model.currentFilter">
+                                @* <button type="submit" class="btn-src"><i class="fa fa-search"></i></button> *@
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div>
+                <div class="filterRow row">
+                    <div>Filtrer</div>
+                    <div><a asp-page="/Index" asp-route-sortData="@Model.timestampSort">Nyeste øverst</a></div>
+                    <div><a asp-page="/Index" asp-route-sortData="@Model.deadlineSort">Tidsfrist</a></div>
+                    <div><a asp-page="/Index" asp-route-sortData="@Model.timeframeJDISort">Just do it</a></div>
+                    <div><a asp-page="/Index" asp-route-sortData="@Model.timeframeShortSort">Kortsiktig</a></div>
+                    <div><a asp-page="/Index" asp-route-sortData="@Model.timeframeLongSort">Langsiktig</a></div>
+                </div>
+            </div>
+
+            <div>
+                <div class="filterRow row">
+                    <div class="dropdown">
+                        <button class="teambtn" type="button" data-toggle="dropdown">Team
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Produksjon</a></li>
+                            <li><a href="#">Teknisk</a></li>
+                            <li><a href="#">Salg og marked</a></li>
+                            <li><a href="#">Logistikk</a></li>
+                            <li><a href="#">Ledergruppe</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <button class="prosessbtn" type="button" data-toggle="dropdown">Prosess
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Plan</a></li>
+                            <li><a href="#">Do</a></li>
+                            <li><a href="#">Study</a></li>
+                            <li><a href="#">Act</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="filterRow row">
+                    <div>Mine forslag</div>
+                    <div><a asp-page="/Index">Alle forslag</a></div>
+                    <div>Fullførte forslag</div>
+                    <div>Avviste forslag</div>
+                </div>
             </div>
         </div>
 
-        <div>
-            <h2 class="tekst">Filtrer</h2>
-        </div>
-        <div class="d-flex flex-column">
-            <div class="col-sm-2 col-md-2 col-lg-2"> <a asp-page="/Index" asp-route-sortData="@Model.timestampSort">Nyeste øverst</a></div>
-            <div class="col-sm-2 col-md-2 col-lg-2"><a asp-page="/Index" asp-route-sortData="@Model.titleSort">Tidsfrist</a></div>
-            <div class="col-sm-2 col-md-2 col-lg-2">Kortvarig</div>
-            <div class="col-sm-2 col-md-2 col-lg-2">Langvarig</div>
-            <div class="col-sm-2 col-md-2 col-lg-2"><a asp-page="/Index" asp-route-sortData="@Model.timeframeSort">Just do it</a></div>
-        </div>
-
-        <div class="dropdown">
-            <button class="teambtn" type="button" data-toggle="dropdown">Team
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                <li><a href="#">Produksjon</a></li>
-                <li><a href="#">Teknisk</a></li>
-                <li><a href="#">Salg og marked</a></li>
-                <li><a href="#">Logistikk</a></li>
-                <li><a href="#">Ledergruppe</a></li>
-            </ul>
-        </div>
-
-        <div class="row">
-            <div class="dropdown">
-                <button class="prosessbtn" type="button" data-toggle="dropdown">Prosess
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Plan</a></li>
-                    <li><a href="#">Do</a></li>
-                    <li><a href="#">Study</a></li>
-                    <li><a href="#">Act</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="d-flex flex-column">
-            <div class="col-sm-2 col-md-2 col-lg-2">Mine forslag</div>
-            <div class="col-sm-2 col-md-2 col-lg-2"><a asp-page="/Index">Alle forslag</a></div>
-            <div class="col-sm-2 col-md-2 col-lg-2">Fullførte forslag</div>
-            <div class="col-sm-2 col-md-2 col-lg-2">Avviste forslag</div>
-        </div>
-    </div>
-</div>
-
-<div class="col-sm-10 col-md-10 col-lg-10">
-    <div class="row align-items-center justify-content-start">
-        <table class="suggestionTable">
-            <thead>
-            </thead>
-            <tbody>
+        <div class="suggestionColumn col-10">
+            <div class="suggestionLayout row">
                 @foreach (var item in Model.Suggestion)
                 {
-
-                    <tr class="suggestionRowIndex" style="cursor: pointer;"
-                    onclick="location.href = '/Suggestions/Details?id=@item.case_num'">
-                        <div class="col-sm-6 col-md-6 col-lg-6">
-                            <td class="row">
-                                @Html.DisplayFor(modelItem => item.title)
-                            </td>
-                            <td class="row">
-                                <p></p>
+                <div class="card" onclick="location.href = '/Suggestions/Details?id=@item.case_num'">
+                    <div class="card-body">
+                        <div class="col-6">
+                            <div class="row">
+                                <h4>@Html.DisplayFor(modelItem => item.title)</h4>
+                            </div>
+                            <div class="row">
                                 @Html.DisplayFor(modelItem => item.description)
-                            </td>
+                            </div>
                         </div>
-                        <div class="col-sm-4 col-md-4 col-lg-4">
-                            <td>
+                        <div class="col-2">
+                            <div class="row">
                                 <p>Avdeling</p>
                                 @Html.DisplayFor(modelItem => item.resdept)
-                            </td>
-                            <td>
+                            </div>
+                            <div class="row">
                                 <p>Ansvarlig</p>
                                 @Html.DisplayFor(modelItem => item.responsible)
-                            </td>
+                            </div>
                         </div>
-                        <div class="col-sm-2 col-md-2 col-lg-2">
-                            <td>
+                        <div class="col-2 order-last">
+                            <div class="row">
                                 @Html.DisplayFor(modelItem => item.deadline)
-                            </td>
-                            <td>
+                            </div>
+                            <div class="row">
                                 @Html.DisplayFor(modelItem => item.status)
-                            </td>
+                            </div>
                         </div>
-                    </tr>
+                    </div>
+                </div>
                 }
-            </tbody>
-        </table>
+            </div>
+        </div>
     </div>
 </div>
-</div>
-</div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
-    integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
-    crossorigin="anonymous"></script>
-

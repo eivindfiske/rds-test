@@ -13,7 +13,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using rds_test.Models;
-using rds_test.Pages.Shared;
 
 namespace rds_test.Pages.Account
 {

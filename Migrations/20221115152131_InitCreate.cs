@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace rds_test.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,23 +48,6 @@ namespace rds_test.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "log",
-                columns: table => new
-                {
-                    timestamp = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    emp_num = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    case_num = table.Column<int>(type: "int", nullable: false),
-                    edit_msg = table.Column<string>(type: "varchar(50)", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_log", x => x.timestamp);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -93,14 +76,13 @@ namespace rds_test.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
-                    emp_num = table.Column<string>(type: "varchar(255)", nullable: false)
+                    Id = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    emp_num = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     name = table.Column<string>(type: "varchar(50)", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    team = table.Column<string>(type: "varchar(50)", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    admin = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    Id = table.Column<string>(type: "longtext", nullable: true)
+                    team = table.Column<string>(type: "varchar(50)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     UserName = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -127,12 +109,13 @@ namespace rds_test.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUsers", x => x.emp_num);
+                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                     table.ForeignKey(
                         name: "FK_AspNetUsers_dept_team",
                         column: x => x.team,
                         principalTable: "dept",
-                        principalColumn: "team");
+                        principalColumn: "team",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -156,7 +139,7 @@ namespace rds_test.Migrations
                         name: "FK_AspNetUserClaims_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "emp_num",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
@@ -165,9 +148,9 @@ namespace rds_test.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false)
+                    LoginProvider = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    ProviderKey = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false)
+                    ProviderKey = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ProviderDisplayName = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -181,7 +164,7 @@ namespace rds_test.Migrations
                         name: "FK_AspNetUserLogins_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "emp_num",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
@@ -208,7 +191,7 @@ namespace rds_test.Migrations
                         name: "FK_AspNetUserRoles_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "emp_num",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
@@ -219,9 +202,9 @@ namespace rds_test.Migrations
                 {
                     UserId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    LoginProvider = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false)
+                    LoginProvider = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Name = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false)
+                    Name = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Value = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
@@ -233,7 +216,7 @@ namespace rds_test.Migrations
                         name: "FK_AspNetUserTokens_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "emp_num",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
@@ -264,22 +247,50 @@ namespace rds_test.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     resdept = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    emp_num = table.Column<string>(type: "varchar(255)", nullable: true)
+                    Id = table.Column<string>(type: "varchar(255)", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    pic_before = table.Column<byte[]>(type: "longblob", nullable: true),
-                    pic_after = table.Column<byte[]>(type: "longblob", nullable: true),
                     timeframe = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    deadline = table.Column<DateOnly>(type: "date", nullable: true)
+                    deadline = table.Column<DateTime>(type: "Date", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_suggestion", x => x.case_num);
                     table.ForeignKey(
-                        name: "FK_suggestion_AspNetUsers_emp_num",
-                        column: x => x.emp_num,
+                        name: "FK_suggestion_AspNetUsers_Id",
+                        column: x => x.Id,
                         principalTable: "AspNetUsers",
-                        principalColumn: "emp_num");
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "log",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    timestamp = table.Column<DateTime>(type: "datetime(0)", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    case_num = table.Column<int>(type: "int", nullable: false),
+                    edit_msg = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_log", x => new { x.case_num, x.Id, x.timestamp });
+                    table.ForeignKey(
+                        name: "FK_log_AspNetUsers_Id",
+                        column: x => x.Id,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_log_suggestion_case_num",
+                        column: x => x.case_num,
+                        principalTable: "suggestion",
+                        principalColumn: "case_num",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -288,17 +299,17 @@ namespace rds_test.Migrations
                 columns: table => new
                 {
                     case_num = table.Column<int>(type: "int", nullable: false),
-                    emp_num = table.Column<string>(type: "varchar(255)", nullable: false)
+                    Id = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_participants", x => new { x.case_num, x.emp_num });
+                    table.PrimaryKey("PK_participants", x => new { x.case_num, x.Id });
                     table.ForeignKey(
-                        name: "FK_participants_AspNetUsers_emp_num",
-                        column: x => x.emp_num,
+                        name: "FK_participants_AspNetUsers_Id",
+                        column: x => x.Id,
                         principalTable: "AspNetUsers",
-                        principalColumn: "emp_num",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_participants_suggestion_case_num",
@@ -352,14 +363,19 @@ namespace rds_test.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_participants_emp_num",
-                table: "participants",
-                column: "emp_num");
+                name: "IX_log_Id",
+                table: "log",
+                column: "Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_suggestion_emp_num",
+                name: "IX_participants_Id",
+                table: "participants",
+                column: "Id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_suggestion_Id",
                 table: "suggestion",
-                column: "emp_num");
+                column: "Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using rds_test.Data;
 using rds_test.Models;
 
-namespace rds_test.Pages.Suggestions
+namespace rds_test.Pages_ApplicationUsers
 {
     public class DetailsModel : PageModel
     {
@@ -19,26 +19,23 @@ namespace rds_test.Pages.Suggestions
             _context = context;
         }
 
-        public Suggestion Suggestion { get; set; } = default!;
-        public Participants Participants { get; set; }
+        public ApplicationUser ApplicationUser { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(string? id)
         {
-            if (id == null || _context.suggestion == null)
+            if (id == null || _context.applicationUsers == null)
             {
                 return NotFound();
             }
 
-            var suggestion = await _context.suggestion.FirstOrDefaultAsync(m => m.case_num == id);
-            var participants = await _context.participants.FirstOrDefaultAsync(m => m.case_num == id);
-            if (suggestion == null)
+            var applicationUsers = await _context.applicationUsers.FirstOrDefaultAsync(m => m.emp_num == id);
+            if (applicationUsers == null)
             {
                 return NotFound();
             }
             else
             {
-                Participants = participants;
-                Suggestion = suggestion;
+                ApplicationUser = applicationUsers;
             }
             return Page();
         }

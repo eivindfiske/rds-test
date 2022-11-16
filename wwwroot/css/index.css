@@ -1,60 +1,88 @@
+.main.container-fluid {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color:#F9F8F7;
+    min-height: 100vh;
+  }
+
 .filterbar {
-    margin-left: 10px;
-    width: 50px;
-    position: fixed;
+    border-right: 1px solid;
+    border-color:#b9b9b9;
+    margin-top: 15px;
+    padding-left: 2vh;
 }
 
-h2 {
+.filterRow {
+    margin-top: 15px;
+    padding-left: 5vh;
+}
 
-    font-size: 20px;
-    margin-left: 30px;
+
+.btn-src {
+    border-radius: 4px;
+    border-color: #b9b9b9;
+    border-style: solid;
 
 }
 
-.row {
-    margin-left: 10px;
-}
-
-button.teambtn {
+.teambtn {
     color: black;
-
-    margin-top: 70px;
+    margin-top: 10px;
+    border-radius: 4px;
+    border-color:#b9b9b9;
+    border-style: solid;
 
 }
 
-button.prosessbtn {
+.prosessbtn {
     color: black;
-
-    margin-top: 100px;
-    left: 15px;
+    margin-top: 10px;
+    border-radius: 4px;
+    border-color:#b9b9b9;
+    border-style: solid;
 }
 
-.mainPartSuggestion {
-    margin-left: 400px;
-    width: 100%;
+.suggestionCulumn {
+    margin-top: 30px;
+    color: #868FA0;
 }
 
-.suggestionRowIndex {
-    font-size: 15px;
-    color: aqua;
+.suggestionLayout {
+    width: 90%;
+    margin-left: 5vh;
+    margin-top: 5vh;
 }
+
+.card {
+    cursor: pointer;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    padding-left: 15px;  
+}
+
+/* .suggestionRow {
+    cursor: pointer;
+    border: 2px solid;
+    border-color: blue;
+    border-radius: 5px;
+    margin-bottom: 30px;
+} */
 
 .form{
     margin-top: 10px;
 }
 
 .fa-search{
-    position: absolute;
-    top: 40px;
-    left: 20px;
     color: #9ca3af;
+    margin-top: 10px;
+    border-radius: 4px;
 }
 
-.button
-{
-    position: absolute;
-    color: white;
-}
+
 .form-input{
 
     height: 30px;
