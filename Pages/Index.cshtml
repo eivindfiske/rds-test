@@ -16,16 +16,16 @@
                 <div class="search-row">
                     <form asp-action="/Index" method="get">
                         <div class="form">
-                            <input type="text" class="form-control form-input" placeholder="Search anything..."
+                            <input type="text" class="form-control form-input" placeholder="Søk på forslag..."
                                 name="searchString" value="@Model.currentFilter">
-                                @* <button type="submit" class="btn-src"><i class="fa fa-search"></i></button> *@
+                            @* <button type="submit" class="btn-src"><i class="fa fa-search"></i></button> *@
                         </div>
                     </form>
                 </div>
             </div>
             <div>
                 <div class="filterRow row">
-                    <div>Filtrer</div>
+                    <h4>Filtrer</h4>
                     <div><a asp-page="/Index" asp-route-sortData="@Model.timestampSort">Nyeste øverst</a></div>
                     <div><a asp-page="/Index" asp-route-sortData="@Model.deadlineSort">Tidsfrist</a></div>
                     <div><a asp-page="/Index" asp-route-sortData="@Model.timeframeJDISort">Just do it</a></div>
@@ -37,26 +37,26 @@
             <div>
                 <div class="filterRow row">
                     <div class="dropdown">
-                        <button class="teambtn" type="button" data-toggle="dropdown">Team
+                        <button class="teambtn" type="button" data-toggle="dropdown">Avdeling
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Produksjon</a></li>
-                            <li><a href="#">Teknisk</a></li>
-                            <li><a href="#">Salg og marked</a></li>
-                            <li><a href="#">Logistikk</a></li>
-                            <li><a href="#">Ledergruppe</a></li>
+                            <li><a asp-page="/Index" asp-route-sortData="@Model.deptProduksjonSort">Produksjon</a></li>
+                            <li><a asp-page="/Index" asp-route-sortData="@Model.deptSalgSort">Salg og marked</a></li>
+                            <li><a asp-page="/Index" asp-route-sortData="@Model.deptLogistikkSort">Logistikk</a></li>
+                            <li><a asp-page="/Index" asp-route-sortData="@Model.deptLederSort">Ledergruppe</a></li>
+                            <li><a asp-page="/Index" asp-route-sortData="@Model.deptTekniskSort">Teknisk</a></li>
                         </ul>
                     </div>
                     <div class="dropdown">
-                        <button class="prosessbtn" type="button" data-toggle="dropdown">Prosess
+                        <button class="prosessbtn" type="button" data-toggle="dropdown">Status
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Plan</a></li>
-                            <li><a href="#">Do</a></li>
-                            <li><a href="#">Study</a></li>
-                            <li><a href="#">Act</a></li>
+                            <li><a asp-page="/Index" asp-route-sortData="@Model.statusPlanSort">Plan</a></li>
+                            <li><a asp-page="/Index" asp-route-sortData="@Model.statusDoSort">Do</a></li>
+                            <li><a asp-page="/Index" asp-route-sortData="@Model.statusStudySort">Study</a></li>
+                            <li><a asp-page="/Index" asp-route-sortData="@Model.statusActSort">Act</a></li>
                         </ul>
                     </div>
                 </div>
@@ -76,36 +76,32 @@
             <div class="suggestionLayout row">
                 @foreach (var item in Model.Suggestion)
                 {
-                <div class="card" onclick="location.href = '/Suggestions/Details?id=@item.case_num'">
-                    <div class="card-body">
-                        <div class="col-6">
+                    <div class="card" onclick="location.href = '/Suggestions/Details?id=@item.case_num'">
+                        <div class="card-body">
                             <div class="row">
-                                <h4>@Html.DisplayFor(modelItem => item.title)</h4>
+                                <div class="col-6">
+                                    <h4>@Html.DisplayFor(modelItem => item.title)</h4>
+                                </div>
+                                <div class="col-3" style="padding-top: 15px;">
+                                    <p>Avdeling: @Html.DisplayFor(modelItem => item.resdept)</p>
+                                </div>
+                                <div class="col-2" style="padding-top: 15px;">
+                                    <p>Tidsfrist: @Html.DisplayFor(modelItem => item.deadline)</p>
+                                </div>
                             </div>
                             <div class="row">
-                                @Html.DisplayFor(modelItem => item.description)
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <div class="row">
-                                <p>Avdeling</p>
-                                @Html.DisplayFor(modelItem => item.resdept)
-                            </div>
-                            <div class="row">
-                                <p>Ansvarlig</p>
-                                @Html.DisplayFor(modelItem => item.responsible)
-                            </div>
-                        </div>
-                        <div class="col-2 order-last">
-                            <div class="row">
-                                @Html.DisplayFor(modelItem => item.deadline)
-                            </div>
-                            <div class="row">
-                                @Html.DisplayFor(modelItem => item.status)
+                                <div class="col-6">
+                                    @Html.DisplayFor(modelItem => item.description)
+                                </div>
+                                <div class="col-3">
+                                    <p>Ansvarlig: @Html.DisplayFor(modelItem => item.responsible) </p>
+                                </div>
+                                <div class="col-2">
+                                    <p>Status: @Html.DisplayFor(modelItem => item.status)</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 }
             </div>
         </div>

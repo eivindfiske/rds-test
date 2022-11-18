@@ -24,6 +24,8 @@ namespace rds_test.Pages.Suggestions
 
         [BindProperty]
         public List<SelectListItem> empList { get; set; }
+        [BindProperty]
+        public List<SelectListItem> deptList { get; set; }
 
 
         public IActionResult OnGet()
@@ -34,6 +36,12 @@ namespace rds_test.Pages.Suggestions
                 Text = a.name
             }).ToList();
 
+            deptList = _context.dept.Select(a => new SelectListItem
+            {
+                Value = a.dept.ToString(),
+                Text = a.dept
+            }).ToList();
+
             return Page();
         }
 
@@ -41,6 +49,7 @@ namespace rds_test.Pages.Suggestions
         public Suggestion Suggestion { get; set; } = default!;
         [BindProperty]
         public Participants Participants { get; set; }
+
 
         public async Task<IActionResult> OnPostAsync()
         {

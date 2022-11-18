@@ -2,6 +2,7 @@
     min-height: 100vh;
     margin: 0;
     padding: 0;
+    max-width: 100%;
   }
 
   body {
@@ -12,13 +13,26 @@
 .filterbar {
     border-right: 1px solid;
     border-color:#b9b9b9;
-    margin-top: 15px;
-    padding-left: 2vh;
+    padding: 20px;
+    padding-left: 30px;
 }
+
+.col-6 {
+    border-right: 1px solid;
+    border-color:#b9b9b9;
+    margin-right: 20px;
+}
+
+.col-3 {
+    border-right: 1px solid;
+    border-color:#b9b9b9;
+    margin-right: 20px;
+}
+
 
 .filterRow {
     margin-top: 15px;
-    padding-left: 5vh;
+    padding-left: 30px;
 }
 
 
@@ -76,11 +90,11 @@
     margin-top: 10px;
 }
 
-.fa-search{
+/* .fa-search{
     color: #9ca3af;
     margin-top: 10px;
     border-radius: 4px;
-}
+} */
 
 
 .form-input{

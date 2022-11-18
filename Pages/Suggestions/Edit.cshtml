@@ -5,93 +5,151 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<head>
+    <link rel="stylesheet" href="../css/site.css">
+</head>
 
-<h4>Suggestion</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<h1>Endre forslag</h1>
+
+<form method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row">
+        <div class="col-4">
             <div class="form-group">
                 <label asp-for="Suggestion.title" class="control-label"></label>
                 <input asp-for="Suggestion.title" class="form-control" />
                 <span asp-validation-for="Suggestion.title" class="text-danger"></span>
             </div>
+        </div>
+        <div class="col-2">
             <div class="form-group">
-                <label asp-for="Suggestion.description" class="control-label"></label>
-                <input asp-for="Suggestion.description" class="form-control" />
-                <span asp-validation-for="Suggestion.description" class="text-danger"></span>
+                <label asp-for="Suggestion.deadline" class="control-label"></label>
+                <input type="date" asp-for="Suggestion.deadline" class="form-control" value="(DATE)" />
+                <span asp-validation-for="Suggestion.deadline" class="text-danger"></span>
             </div>
+        </div>
+        <div class="col-2">
             <div class="form-group">
-                <label asp-for="Suggestion.pdsa_plan" class="control-label"></label>
-                <input asp-for="Suggestion.pdsa_plan" class="form-control" />
-                <span asp-validation-for="Suggestion.pdsa_plan" class="text-danger"></span>
+                <label asp-for="Suggestion.timeframe" class="control-label"></label>
+                <select asp-for="Suggestion.timeframe" class="form-select form-select-lg mb-3"
+                    aria-label=".form-select-lg example">
+                    <option selected>Tidsramme</option>
+                    <option value="Just do it">Just do it</option>
+                    <option value="Kortsiktig">Kortsiktig</option>
+                    <option value="Langsiktig">Langsiktig</option>
+                </select>
+                <span asp-validation-for="Suggestion.timeframe" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Suggestion.pdsa_do" class="control-label"></label>
-                <input asp-for="Suggestion.pdsa_do" class="form-control" />
-                <span asp-validation-for="Suggestion.pdsa_do" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Suggestion.pdsa_study" class="control-label"></label>
-                <input asp-for="Suggestion.pdsa_study" class="form-control" />
-                <span asp-validation-for="Suggestion.pdsa_study" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Suggestion.pdsa_act" class="control-label"></label>
-                <input asp-for="Suggestion.pdsa_act" class="form-control" />
-                <span asp-validation-for="Suggestion.pdsa_act" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Suggestion.status" class="control-label"></label>
-                <input asp-for="Suggestion.status" class="form-control" />
-                <span asp-validation-for="Suggestion.status" class="text-danger"></span>
-            </div>
+        </div>
+        <div class="col-1">
+        </div>
+        <div class="col-2">
             <div class="form-group">
                 <label asp-for="Suggestion.responsible" class="control-label"></label>
                 <input asp-for="Suggestion.responsible" class="form-control" />
                 <span asp-validation-for="Suggestion.responsible" class="text-danger"></span>
             </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-8">
+            <div class="form-group">
+                <label asp-for="Suggestion.description" class="control-label"></label>
+                <textarea asp-for="Suggestion.description" cols="30" rows="7" class="form-control"></textarea>
+                <span asp-validation-for="Suggestion.description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-2">
+            @* <div class="form-group">
+                <label asp-for="Participants.Id" class="control-label">Deltakere</label>
+                <select asp-for="Participants.Id" class="form-control" asp-items="@Model.empList" multiple></select>
+                <span asp-validation-for="Participants.Id" class="text-danger"></span>
+                </div> *@
             <div class="form-group">
                 <label asp-for="Suggestion.resdept" class="control-label"></label>
                 <input asp-for="Suggestion.resdept" class="form-control" />
                 <span asp-validation-for="Suggestion.resdept" class="text-danger"></span>
             </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Suggestion.pdsa_plan" class="control-label"></label>
+                <textarea asp-for="Suggestion.pdsa_plan" cols="30" rows="3" class="form-control"></textarea>
+                <span asp-validation-for="Suggestion.pdsa_plan" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Suggestion.pdsa_do" class="control-label"></label>
+                <textarea asp-for="Suggestion.pdsa_do" cols="30" rows="3" class="form-control"></textarea>
+                <span asp-validation-for="Suggestion.pdsa_do" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Suggestion.pdsa_study" class="control-label"></label>
+                <textarea asp-for="Suggestion.pdsa_study" cols="30" rows="3" class="form-control"></textarea>
+                <span asp-validation-for="Suggestion.pdsa_study" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Suggestion.pdsa_act" class="control-label"></label>
+                <textarea asp-for="Suggestion.pdsa_act" cols="30" rows="3" class="form-control"></textarea>
+                <span asp-validation-for="Suggestion.pdsa_act" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-1">
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Suggestion.status" class="control-label"></label>
+                <input asp-for="Suggestion.status" class="form-control" />
+                <span asp-validation-for="Suggestion.status" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-4">
             <div class="form-group">
                 <label asp-for="Suggestion.pic_before" class="control-label"></label>
-                <input asp-for="Suggestion.pic_before" class="form-control" />
+                <input type="file" asp-for="Suggestion.pic_before" class="form-control" />
                 <span asp-validation-for="Suggestion.pic_before" class="text-danger"></span>
             </div>
+        </div>
+        <div class="col-4">
             <div class="form-group">
                 <label asp-for="Suggestion.pic_after" class="control-label"></label>
-                <input asp-for="Suggestion.pic_after" class="form-control" />
+                <input type="file" asp-for="Suggestion.pic_after" class="form-control" />
                 <span asp-validation-for="Suggestion.pic_after" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Suggestion.timeframe" class="control-label"></label>
-                <select asp-for="Suggestion.timeframe" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                <option selected>Tidsramme</option>
-                <option value="Just do it">Just do it</option>
-                <option value="Kortsiktig">Kortsiktig</option>
-                <option value="Langsiktig">Langsiktig</option>
-                </select>
-                <span asp-validation-for="Suggestion.timeframe" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Suggestion.deadline" class="control-label"></label>
-                <input asp-for="Suggestion.deadline" class="form-control" />
-                <span asp-validation-for="Suggestion.deadline" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-2">
+            @* <div class="form-group">
+                <label asp-for="Suggestion.Id" class="control-label"></label>
+                <select asp-for="Suggestion.Id" class="form-control" asp-items="@Model.empList"></select>
+                <span asp-validation-for="Suggestion.Id" class="text-danger"></span>
+                </div> *@
+        </div>
     </div>
-</div>
+
+    <div class="row">
+        <div class="form-group">
+            <input type="submit" value="Lagre" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
 
 <div>
-    <a asp-page="/Index">Back to List</a>
+    <a asp-page="/Index">Tilbake</a>
 </div>
 
 @section Scripts {
