@@ -23,7 +23,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-4"></div>
         <div class="col-2">
             <dt>
                 @Html.DisplayNameFor(model => model.Suggestion.deadline)
@@ -44,22 +43,7 @@
                 </div>
             </div>
         </div>
-    </dl>
-
-    <dl class="detailsRow row">
-        <div class="col-6">
-            <dt>
-                @Html.DisplayNameFor(model => model.Suggestion.description)
-            </dt>
-            <div class="card">
-                <div class="card-body">
-                    @Html.DisplayFor(model => model.Suggestion.description)
-                </div>
-            </div>
-        </div>
-    </dl>
-
-    <dl class="detailsRow row">
+        <div class="col-1"></div>
         <div class="col-2">
             <dt>
                 @Html.DisplayNameFor(model => model.Suggestion.responsible)
@@ -70,16 +54,20 @@
                 </div>
             </div>
         </div>
-        <div class="col-2">
+    </dl>
+
+    <dl class="detailsRow row">
+        <div class="col-8">
             <dt>
-                @Html.DisplayNameFor(model => model.Suggestion.resdept)
+                @Html.DisplayNameFor(model => model.Suggestion.description)
             </dt>
-            <div class="card">
+            <div class="card" style="height: 20vh;">
                 <div class="card-body">
-                    @Html.DisplayFor(model => model.Suggestion.resdept)
+                    @Html.DisplayFor(model => model.Suggestion.description)
                 </div>
             </div>
         </div>
+        <div class="col-1"></div>
         <div class="col-2">
             <dt>
                 <p>Deltakere</p>
@@ -89,15 +77,23 @@
                     @Html.DisplayFor(model => model.Participants.Id)
                 </div>
             </div>
+            <br>
+            <dt>
+                @Html.DisplayNameFor(model => model.Suggestion.resdept)
+            </dt>
+            <div class="card">
+                <div class="card-body">
+                    @Html.DisplayFor(model => model.Suggestion.resdept)
+                </div>
+            </div>
         </div>
     </dl>
-
     <dl class="detailsRow row">
         <div class="col-2">
             <dt>
                 @Html.DisplayNameFor(model => model.Suggestion.pdsa_plan)
             </dt>
-            <div class="card">
+            <div class="card" style="height: 10vh;">
                 <div class="card-body">
                     @Html.DisplayFor(model => model.Suggestion.pdsa_plan)
                 </div>
@@ -107,7 +103,7 @@
             <dt>
                 @Html.DisplayNameFor(model => model.Suggestion.pdsa_do)
             </dt>
-            <div class="card">
+            <div class="card" style="height: 10vh;">
                 <div class="card-body">
                     @Html.DisplayFor(model => model.Suggestion.pdsa_do)
                 </div>
@@ -117,7 +113,7 @@
             <dt>
                 @Html.DisplayNameFor(model => model.Suggestion.pdsa_study)
             </dt>
-            <div class="card">
+            <div class="card" style="height: 10vh;">
                 <div class="card-body">
                     @Html.DisplayFor(model => model.Suggestion.pdsa_study)
                 </div>
@@ -127,7 +123,7 @@
             <dt>
                 @Html.DisplayNameFor(model => model.Suggestion.pdsa_act)
             </dt>
-            <div class="card">
+            <div class="card" style="height: 10vh;">
                 <div class="card-body">
                     @Html.DisplayFor(model => model.Suggestion.pdsa_act)
                 </div>
@@ -147,7 +143,7 @@
     </dl>
 
     <dl class="detailsRow row">
-        <div class="col-2">
+        <div class="col-4">
             <dt>
                 @Html.DisplayNameFor(model => model.Suggestion.pic_before_data)
             </dt>
@@ -158,7 +154,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-2">
+        <div class="col-4">
             <dt>
                 @Html.DisplayNameFor(model => model.Suggestion.pic_after_data)
             </dt>
@@ -169,39 +165,37 @@
                 </div>
             </div>
         </div>
+        <div class="col-1">
+        </div>
+        <div class="col-2">
+            <dt>
+                <p>Opprettet av</p>
+            </dt>
+            <div class="card">
+                <div class="card-body">
+                    @Html.DisplayFor(model => model.Suggestion.Id)
+                </div>
+            </div>
+            <br>
+            <dt>
+                @Html.DisplayNameFor(model => model.Suggestion.timestamp)
+            </dt>
+            <div class="card">
+                <div class="card-body">
+                    @Html.DisplayFor(model => model.Suggestion.timestamp)
+                </div>
+            </div>
+        </div>
     </dl>
-
-
 </div>
 
 
-<dl class="detailsRow row">
-    <div class="col-2">
-        <dt>
-            <p>Opprettet av</p>
-        </dt>
-        <div class="card">
-            <div class="card-body">
-                @Html.DisplayFor(model => model.Suggestion.Id)
-            </div>
-        </div>
-        <dt>
-            @Html.DisplayNameFor(model => model.Suggestion.timestamp)
-        </dt>
-        <div class="card">
-            <div class="card-body">
-                @Html.DisplayFor(model => model.Suggestion.timestamp)
-            </div>
-        </div>
-    </div>
-</dl>
-
 <div class="row">
     <div class="form-group">
-        <button class="btn btn-success"> <a asp-page="./Edit" asp-route-id="@Model.Suggestion.case_num">Edit</a>
+        <button class="btn btn-success"> <a asp-page="./Edit" asp-route-id="@Model.Suggestion.case_num">Rediger</a>
         </button>
         <button class="btn btn-danger"> <a asp-page="/Suggestions/Delete"
-                asp-route-id="@Model.Suggestion?.case_num">Delete</a> </button>
+                asp-route-id="@Model.Suggestion?.case_num">Slett</a> </button>
         <a asp-page="/Index">Tilbake</a>
     </div>
 

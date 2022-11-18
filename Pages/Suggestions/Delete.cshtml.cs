@@ -21,6 +21,7 @@ namespace rds_test.Pages.Suggestions
 
         [BindProperty]
         public Suggestion Suggestion { get; set; } = default!;
+        public Participants Participants { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,6 +31,7 @@ namespace rds_test.Pages.Suggestions
             }
 
             var suggestion = await _context.suggestion.FirstOrDefaultAsync(m => m.case_num == id);
+            var participants = await _context.participants.FirstOrDefaultAsync(m => m.case_num == id);
 
             if (suggestion == null)
             {
@@ -37,6 +39,7 @@ namespace rds_test.Pages.Suggestions
             }
             else
             {
+                Participants = participants;
                 Suggestion = suggestion;
             }
             return Page();

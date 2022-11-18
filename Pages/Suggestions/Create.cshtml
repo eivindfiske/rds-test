@@ -48,7 +48,10 @@
         <div class="col-2">
             <div class="form-group">
                 <label asp-for="Suggestion.responsible" class="control-label"></label>
-                <input asp-for="Suggestion.responsible" class="form-control" />
+                <select asp-for="Suggestion.responsible" class="form-select form-select-lg mb-3"
+                    asp-items="@Model.empList">
+                    <option>Velg en ansvarlig</option>
+                </select>
                 <span asp-validation-for="Suggestion.responsible" class="text-danger"></span>
             </div>
         </div>
@@ -71,7 +74,10 @@
             </div>
             <div class="form-group">
                 <label asp-for="Suggestion.resdept" class="control-label"></label>
-                <input asp-for="Suggestion.resdept" class="form-control" />
+                <select asp-for="Suggestion.resdept" class="form-select form-select-lg mb-3"
+                    asp-items="@Model.deptList">
+                    <option>Velg en avdeling</option>
+                </select>
                 <span asp-validation-for="Suggestion.resdept" class="text-danger"></span>
             </div>
         </div>
@@ -81,28 +87,28 @@
         <div class="col-2">
             <div class="form-group">
                 <label asp-for="Suggestion.pdsa_plan" class="control-label"></label>
-                <input asp-for="Suggestion.pdsa_plan" class="form-control" />
+                <textarea asp-for="Suggestion.pdsa_plan" cols="30" rows="3" class="form-control"></textarea>
                 <span asp-validation-for="Suggestion.pdsa_plan" class="text-danger"></span>
             </div>
         </div>
         <div class="col-2">
             <div class="form-group">
                 <label asp-for="Suggestion.pdsa_do" class="control-label"></label>
-                <input asp-for="Suggestion.pdsa_do" class="form-control" />
+                <textarea asp-for="Suggestion.pdsa_do" cols="30" rows="3" class="form-control"></textarea>
                 <span asp-validation-for="Suggestion.pdsa_do" class="text-danger"></span>
             </div>
         </div>
         <div class="col-2">
             <div class="form-group">
                 <label asp-for="Suggestion.pdsa_study" class="control-label"></label>
-                <input asp-for="Suggestion.pdsa_study" class="form-control" />
+                <textarea asp-for="Suggestion.pdsa_study" cols="30" rows="3" class="form-control"></textarea>
                 <span asp-validation-for="Suggestion.pdsa_study" class="text-danger"></span>
             </div>
         </div>
         <div class="col-2">
             <div class="form-group">
                 <label asp-for="Suggestion.pdsa_act" class="control-label"></label>
-                <input asp-for="Suggestion.pdsa_act" class="form-control" />
+                <textarea asp-for="Suggestion.pdsa_act" cols="30" rows="3" class="form-control"></textarea>
                 <span asp-validation-for="Suggestion.pdsa_act" class="text-danger"></span>
             </div>
         </div>
