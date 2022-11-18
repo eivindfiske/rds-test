@@ -50,8 +50,7 @@ namespace rds_test.Pages.Suggestions
         [BindProperty]
         public Participants Participants { get; set; }
 
-
-        public async Task<IActionResult> OnPostAsync()
+        public void ImageBeforeUpload()
         {
             byte[] bytes = null;
             if (Suggestion.pic_before != null)
@@ -65,7 +64,10 @@ namespace rds_test.Pages.Suggestions
                 }
                 Suggestion.pic_before_data = Convert.ToBase64String(bytes, 0, bytes.Length);
             }
+        }
 
+        public void ImageAfterUpload()
+        {
             byte[] bytes2 = null;
             if (Suggestion.pic_after != null)
             {
@@ -78,7 +80,13 @@ namespace rds_test.Pages.Suggestions
                 }
                 Suggestion.pic_after_data = Convert.ToBase64String(bytes2, 0, bytes2.Length);
             }
+        }
 
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            ImageBeforeUpload();
+            ImageAfterUpload();
             var entry = _context.Add(new Suggestion());
             entry.CurrentValues.SetValues(Suggestion);
 
