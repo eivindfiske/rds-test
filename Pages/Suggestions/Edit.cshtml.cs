@@ -51,8 +51,8 @@ namespace rds_test.Pages.Suggestions
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
+        
+        
         public async Task<IActionResult> OnPostAsync(int id)
         {
             var editSuggestion = await _context.suggestion.FindAsync(id);
