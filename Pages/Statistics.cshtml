@@ -57,29 +57,37 @@
 
             <script type="text/javascript">
                 google.charts.load('current', {'packages':['corechart']});
-                google.charts.setOnLoadCallback(drawChart);
+                google.charts.setOnLoadCallback(LoadData);
 
-                function drawChart() {
-                var jsonData = $.ajax({
-                    url: "/Statistics?handler=ChartData",
+                function LoadData() {
+                $.ajax({
+                    url: '/Statistics?handler=ChartData',
                     dataType: "json",
-                    async: false
-                    }).responseText;
+                    type: "GET",
+                    success: function (data) {
+                        drawChart(data);
+                    }
+                });
+                }
 
-                var data = new google.visualization.DataTable(jsonData);
+                function drawChart(statData) {
+
+                var data = new google.visualization.DataTable();
                     
-                    data.addColumn('string', 'name');//create title
-                    data.addColumn('number', 'case_num');//create title
-                    for (var i = 0; i < jsonData.length; i++) { //loop through the json data and assign the value to data
-                        data.addRow([jsonData[i].case_num, jsonData[i].name]);
+                    data.addColumn('string', 'title');
+                    data.addColumn('number', 'case_num');
+
+                    for (var i = 0; i < statData.length; i++) {
+                        
+                        data.addRow([statData[i].title, statData[i].case_num]);
                     }
                 // Set chart options
                 var options = {'title':'Participants',
-                            'width':600,
+                            'width':500,
                             'height':500};
 
                 // Instantiate and draw our chart, passing in some options.
-                var chart = new google.visualization.BarChart(document.getElementById('chart'));
+                var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
                 chart.draw(data, options);
             }
             </script>

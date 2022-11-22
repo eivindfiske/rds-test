@@ -23,7 +23,7 @@
                 <span asp-validation-for="Input.name" class="text-danger"></span>
             </div>
             <div class="form-floating">
-                <select asp-for="Input.team" class="form-select" asp-items="@Model.teamList">
+                <select asp-for="Input.team" class="form-select form-select-lg mb-3" asp-items="@Model.teamList">
                     <option>Team</option>
                 </select>
                 <span asp-validation-for="Input.team" class="text-danger"></span>
