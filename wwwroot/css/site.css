@@ -93,6 +93,7 @@ ul.navbar-nav.ms-auto {
 .settingsbtn.material-icons {
   font-size: 30px;
   color: #868FA0;
+  cursor: pointer;
 }
 
 a.setbrand {
@@ -135,6 +136,32 @@ a:visited {
 .floating-btn:active {
  background: #007D63;
 }
+
+.modal {
+  overflow-y: auto;
+}
+
+.modal-open[style] {
+  overflow: auto;
+  padding-right: 0px !important;
+}
+
+.modal-dialog {
+  margin-top: 20px;
+  margin-right: 40px;
+  max-width: 300px;
+  float: right;
+}
+
+.modal-header {
+  justify-content: start;
+  padding-top: 15px;
+}
+
+.modalx {
+  margin-left: 160px;
+}
+
 
 
   

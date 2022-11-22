@@ -14,13 +14,13 @@ namespace rds_test.Pages
             _context = context;
         }
 
+        public string currentFilter { get; set; }
+
         public string timestampSort { get; set; }
         public string deadlineSort { get; set; }
         public string timeframeJDISort { get; set; }
         public string timeframeShortSort { get; set; }
         public string timeframeLongSort { get; set; }
-
-        public string currentFilter { get; set; }
 
         public string statusPlanSort { get; set; }
         public string statusDoSort { get; set; }
@@ -51,7 +51,6 @@ namespace rds_test.Pages
             deptSalgSort = sortData == "deptSalg" ? "deptSalg" : "deptSalg";
             deptLederSort = sortData == "deptLeder" ? "deptLeder" : "deptLeder";
             deptTekniskSort = sortData == "deptTeknisk" ? "deptTeknisk" : "deptTeknisk";
-
 
             currentFilter = searchString;
 

@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Identity;
@@ -27,20 +23,29 @@ namespace rds_test.Pages.Suggestions
         [BindProperty]
         public List<SelectListItem> deptList { get; set; }
 
-
-        public IActionResult OnGet()
+        public void getEmpList()
         {
             empList = _context.applicationUsers.Select(a => new SelectListItem
             {
                 Value = a.Id.ToString(),
                 Text = a.name
             }).ToList();
+        }
 
+        public void getDeptList()
+        {
             deptList = _context.dept.Select(a => new SelectListItem
             {
                 Value = a.dept.ToString(),
                 Text = a.dept
             }).ToList();
+        }
+
+
+        public IActionResult OnGet()
+        {
+            getEmpList();
+            getDeptList();
 
             return Page();
         }
