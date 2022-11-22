@@ -3,14 +3,10 @@
     margin: 0;
     padding: 0;
     max-width: 100%;
-  }
-
-  body {
-    background-color:#F9F8F7;
-    min-height: 100vh;
-  }
+}
 
 .filterbar {
+    min-height: 100vh;
     border-right: 1px solid;
     border-color:#b9b9b9;
     padding: 20px;
@@ -60,9 +56,9 @@
     border-style: solid;
 }
 
-.suggestionCulumn {
-    margin-top: 30px;
-    color: #868FA0;
+.suggestionColumn {
+    min-height: 100vh;
+    background-color: #868FA0;
 }
 
 .suggestionLayout {

@@ -1,10 +1,5 @@
 ﻿#nullable disable
-
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
@@ -102,8 +97,6 @@ namespace rds_test.Pages.Account
                     return Page();
                 }
             }
-
-            // If we got this far, something failed, redisplay form
             return Page();
         }
     }
