@@ -15,17 +15,22 @@ namespace rds_test.Pages
             _context = context;
         }
 
-        public string data;
 
         public IActionResult OnGetChartData()
         {
-            var countRevenue = (from s in _context.suggestion
-                                join a in _context.applicationUsers on s.Id equals a.Id
-                                select new {a.name, s.case_num}
-                                ).ToArray().Count();
-                return new JsonResult(countRevenue);
+            var suggestions = (from s in _context.suggestion
+                                
+                                select new {s.case_num, s.title}
+                                ).ToArray();
+
+                return new JsonResult(suggestions);
         }
 
+//select AspNetUsers.name, suggestion.Id, count(*) from suggestion join AspNetUsers on 
+//suggestion.Id = AspNetUsers.Id group by id order by count(*) desc limit 3;
+
+//select AspNetUsers.team, suggestion.Id, count(*) from suggestion join 
+//AspNetUsers on suggestion.Id = AspNetUsers.Id group by team order by count(*) desc;
         
         public IActionResult onGet()
         {
