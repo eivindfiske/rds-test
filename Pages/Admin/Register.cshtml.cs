@@ -24,8 +24,11 @@ using rds_test.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
+
+
 namespace rds_test.Pages.Admin
 {
+    [Authorize(Roles = "Admin")]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -129,12 +132,12 @@ namespace rds_test.Pages.Admin
                 var user = new ApplicationUser
                 {
                     emp_num = Input.emp_num,
-                    name = Input.name, 
+                    name = Input.name,
                     team = Input.team,
-                    Email = Input.Email, 
+                    Email = Input.Email,
                     UserName = Input.Email
                 };
-                
+
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
@@ -142,11 +145,11 @@ namespace rds_test.Pages.Admin
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
-                        
-                        
 
 
-                        var userId = await _userManager.GetUserIdAsync(user);
+
+
+                    var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     var callbackUrl = Url.Page(

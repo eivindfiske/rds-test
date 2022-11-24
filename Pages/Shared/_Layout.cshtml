@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="device-width, initial-scale=1" />
@@ -43,27 +44,21 @@
         @RenderBody()
 
         <div class="modal" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="MyModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="MyModalLabel">Instillinger</h4>
-                <button type="button" class="modalx close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="MyModalLabel">Instillinger</h4>
+                        <button type="button" class="modalx close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h5>
+                            <partial name="_LoginPartial" />
+                        </h5>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <h5>
-                    <a asp-page="/ApplicationUsers/Index">Rediger brukere</a>
-                </h5>
-                <h5>
-                    <a asp-page="/Account/Index">Identity brukere</a>
-                </h5>
-                <h5>
-                    <partial name="_LoginPartial" />
-                </h5>
-            </div>
-            </div>
-        </div>
         </div>
 
         <a href="/Suggestions/Create" class="material-icons floating-btn">add</a>
@@ -79,7 +74,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
         integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
         crossorigin="anonymous"></script>
 
