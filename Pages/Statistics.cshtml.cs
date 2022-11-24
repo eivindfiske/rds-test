@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using rds_test.Data;
-using rds_test.Models;
+using rds_test.Models.StatModels;
 
 namespace rds_test.Pages
 {
@@ -31,11 +31,11 @@ namespace rds_test.Pages
                                 select g.Count() 
                                 ).ToArray();
             
-            var stats = new List<Statistic>();
+            var stats = new List<StatAllTeams>();
         
             for (int i = 0; i < teams.Length; i++)
             {
-                var stat = new Statistic();
+                var stat = new StatAllTeams();
                 stat.count = suggestions[i];
                 stat.teams = teams[i];
                 stats.Add(stat);
