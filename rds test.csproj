@@ -8,10 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Pages\Shared\_Layout - Copy.cshtml.css" />
     <None Remove="Pages\Shared\_Layout.cshtml.css" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Pages\Shared\_AdminLayout.cshtml.css" />
     <Compile Include="Pages\Shared\_Layout.cshtml.css" />
   </ItemGroup>
 

@@ -4,9 +4,9 @@
     ViewData["Title"] = "Register";
 }
 
-<div class="container-fluid">
-<div class="row justify-content-center">
-    <div class="col-md-4">
+
+<div class="row">
+    <div class="col-sm-4">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
             <h2>Create a new account</h2>
             <hr />
@@ -17,40 +17,104 @@
                 <label asp-for="Input.emp_num"></label>
                 <span asp-validation-for="Input.emp_num" class="text-danger"></span>
             </div>
+            <h1> </h1>
             <div class="form-floating">
                 <input asp-for="Input.name" class="form-control" aria-required="true" />
                 <label asp-for="Input.name"></label>
                 <span asp-validation-for="Input.name" class="text-danger"></span>
             </div>
+            <h1> </h1>
             <div class="form-floating">
+<<<<<<< HEAD:Pages/Account/Register.cshtml
                 <select asp-for="Input.team" class="form-select form-select-lg mb-3" asp-items="@Model.teamList">
                     <option>Team</option>
+=======
+                <select asp-for="Input.team" class="form-select" asp-items="@Model.teamList">
+                    <option>
+                        Team
+                    </option>
+>>>>>>> 7dd1cf9c567b2f81ebea64aff326af372587f0ac:Pages/Admin/Register.cshtml
                 </select>
                 <span asp-validation-for="Input.team" class="text-danger"></span>
             </div>
+            <h1></h1>
             <div class="form-floating">
                 <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
                 <label asp-for="Input.Email"></label>
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
+            <h1></h1>
             <div class="form-floating">
                 <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
                 <label asp-for="Input.Password"></label>
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
+            <h1></h1>
             <div class="form-floating">
                 <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password"
-                    aria-required="true" />
+                       aria-required="true" />
                 <label asp-for="Input.ConfirmPassword"></label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
+            <h1></h1>
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
         </form>
     </div>
+    <div class="col-sm-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.users[0].emp_num)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.users[0].name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.users[0].team)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.users[0].Email)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.users)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.emp_num)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.team)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@item.emp_num">Edit</a>
+                            <a asp-page="./Delete" asp-route-id="@item.emp_num">Delete</a>
+                            <a asp-page="./AssignRoles">Roles</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
-</div>
+
+
+    
+
 
 @section Scripts 
 {
 <partial name="_ValidationScriptsPartial" />
 }
+
+ 
+    
