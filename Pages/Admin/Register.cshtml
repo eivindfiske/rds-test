@@ -1,9 +1,11 @@
 @page
 @model RegisterModel
 @{
+
     ViewData["Title"] = "Register";
 }
 @{
+
     Layout = "~/Pages/Shared/_AdminLayout.cshtml";
 }
 
@@ -31,13 +33,11 @@
             </div>
             <h1> </h1>
             <div class="form-floating">
-                <select asp-for="Input.team" class="form-select form-select-lg mb-3" asp-items="@Model.teamList">
-                    <option>
-                        Team
-                    </option>
-                </select>
-                <span asp-validation-for="Input.team" class="text-danger"></span>
-            </div>
+                                <select asp-for="Input.team" class="form-select form-select-lg mb-3" asp-items="@Model.teamList">
+                <option>Team</option>
+                                 </select>
+                    <span asp-validation-for="Input.team" class="text-danger"></span>
+               </di v>
             <h1></h1>
             <div class="form-floating">
                 <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
@@ -48,7 +48,7 @@
             <div class="form-floating">
                 <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
                 <label asp-for="Input.Password"></label>
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
+             <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
             <h1></h1>
             <div class="form-floating">
@@ -77,6 +77,7 @@
                     <th>
                         @Html.DisplayNameFor(model => model.users[0].Email)
                     </th>
+
                     <th></th>
                 </tr>
             </thead>
@@ -96,7 +97,8 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Email)
                         </td>
-                        <td>
+                        <
+td>
                             <a asp-page="./Edit" asp-route-id="@item.emp_num">Edit |</a> 
                             <a asp-page="./Delete" asp-route-id="@item.emp_num">Delete |</a>
                             <a asp-page="./AssignRoles">Rolle</a>
@@ -104,16 +106,13 @@
                     </tr>
                 }
             </tbody>
-        </table>
+    </table>
     </div>
 </div>
 
 
     
 
-
-@section Scripts 
-{
 <partial name="_ValidationScriptsPartial" />
 }
 
