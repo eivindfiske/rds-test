@@ -3,11 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using rds_test.Models;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace rds_test.Pages.Admin
 {
+    [Authorize(Roles = "Admin")]
 
     public class RolesModel : PageModel
     {

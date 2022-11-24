@@ -1,6 +1,7 @@
 ﻿@page
 @model rds_test.Pages.Admin.AssignRolesModel
 @{
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
 }
 
 <head>
@@ -27,7 +28,7 @@
                 <span asp-validation-for="SelectedRole" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Assign" class="btn btn-primary" />
+                <input type="submit" value="Opprett" class="btn btn-primary" />
             </div>
         </form>
     </div>
