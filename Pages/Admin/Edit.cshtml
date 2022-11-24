@@ -1,5 +1,5 @@
 @page
-@model rds_test.Pages_ApplicationUsers.EditModel
+@model rds_test.Pages.Admin.EditModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -37,9 +37,11 @@
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Register">Back to List</a>
 </div>
 
 @section Scripts {
-@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

@@ -21,8 +21,10 @@ using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using rds_test.Models;
 using rds_test.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
-namespace rds_test.Pages.Account
+namespace rds_test.Pages.Admin
 {
     public class RegisterModel : PageModel
     {
@@ -72,6 +74,10 @@ namespace rds_test.Pages.Account
             public string name { get; set; }
 
             [Required]
+            [Display(Name = "Roles")]
+            public string Role { get; set; }
+
+            [Required]
             [Display(Name = "Team")]
             public string team { get; set; }
 
@@ -90,6 +96,8 @@ namespace rds_test.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+            [ValidateNever]
+            public IEnumerable<SelectListItem> RoleList { get; set; }
         }
 
         public List<SelectListItem> teamList { get; set; }
@@ -104,6 +112,11 @@ namespace rds_test.Pages.Account
 
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
+            if (_context.applicationUsers != null)
+            {
+                users = await _context.applicationUsers.ToListAsync();
+            }
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
@@ -129,15 +142,18 @@ namespace rds_test.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+                        
+                        
 
-                    var userId = await _userManager.GetUserIdAsync(user);
-                    // var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    // code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    // var callbackUrl = Url.Page(
-                    //     "/Account/ConfirmEmail",
-                    //     pageHandler: null,
-                    //     values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
-                    //     protocol: Request.Scheme);
+
+                        var userId = await _userManager.GetUserIdAsync(user);
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                    var callbackUrl = Url.Page(
+                        "/Account/ConfirmEmail",
+                        pageHandler: null,
+                        values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
+                        protocol: Request.Scheme);
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
@@ -180,5 +196,17 @@ namespace rds_test.Pages.Account
             }
             return (IUserEmailStore<ApplicationUser>)_userStore;
         }
+
+
+
+        public IList<ApplicationUser> users { get; set; } = default!;
+
+        //public async Task OnGetAsync()
+        //{
+        //    if (_context.applicationUsers != null)
+        //    {
+        //        users = await _context.applicationUsers.ToListAsync();
+        //    }
+        //}
     }
 }
