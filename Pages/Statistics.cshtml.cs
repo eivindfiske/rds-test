@@ -23,15 +23,30 @@ namespace rds_test.Pages
             // select AspNetUsers.team, count(*) from suggestion join
             // AspNetUsers on suggestion.Id = AspNetUsers.Id group by team order by count(*) desc;
 
+            var teams = (from a in _context.applicationUsers select a.team).Distinct().ToArray();
+
             var suggestions = (from s in _context.suggestion
                                 join a in _context.applicationUsers on s.Id equals a.Id 
                                 group s by a.team into g
-                                select g.Count()
+                                select g.Count() 
                                 ).ToArray();
             
-            var teams = (from a in _context.applicationUsers select a.team).Distinct().ToArray();
+            var stats = new List<Statistic>();
+        
+            for (int i = 0; i < teams.Length; i++)
+            {
+                var stat = new Statistic();
+                stat.count = suggestions[i];
+                stat.teams = teams[i];
+                stats.Add(stat);
+            }
 
-            return new JsonResult(new {teams, suggestions});
+            // var suggestions = (from s in _context.suggestion 
+            //                     join a in _context.applicationUsers on s.Id equals a.Id
+            //                     select new {s.case_num, a.name}
+            //                     ).ToArray();
+
+            return new JsonResult(stats.ToArray());
 
         }
 
