@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using rds_test.Data;
 using rds_test.Models;
 
-namespace rds_test.Pages_ApplicationUsers
+namespace rds_test.Pages.Admin
 {
     public class DeleteModel : PageModel
     {
-        private readonly rds_test.Data.ApplicationContext _context;
+        private readonly ApplicationContext _context;
 
-        public DeleteModel(rds_test.Data.ApplicationContext context)
+        public DeleteModel(ApplicationContext context)
         {
             _context = context;
         }

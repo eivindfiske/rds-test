@@ -9,13 +9,13 @@ using Microsoft.EntityFrameworkCore;
 using rds_test.Data;
 using rds_test.Models;
 
-namespace rds_test.Pages_ApplicationUsers
+namespace rds_test.Pages.Admin
 {
     public class EditModel : PageModel
     {
-        private readonly rds_test.Data.ApplicationContext _context;
+        private readonly ApplicationContext _context;
 
-        public EditModel(rds_test.Data.ApplicationContext context)
+        public EditModel(ApplicationContext context)
         {
             _context = context;
         }
