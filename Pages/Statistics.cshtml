@@ -6,104 +6,102 @@
 
 <link rel="stylesheet" href="../css/index.css">
 
-<div class="container-fluid"> 
+<div class="container-fluid">
     <div class="row">
         <div class="filterbar col-2 pt-5">
-        
-        <input class="form-control mr-sm-2" type="search" placeholder="Søk.." aria-label="Search" id="txtSearch"/>
-        
-        <h2>Filter Anything</h2>
 
-         <div class="form-check">
+            <input class="form-control mr-sm-2" type="search" placeholder="Søk.." aria-label="Search" id="txtSearch" />
+
+            <h3>Filtrer</h3>
+
+            <div class="form-check">
                 <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" value="">Option 1
+                    <input type="checkbox" class="form-check-input" value="">Option 1
                 </label>
             </div>
 
-        <div class="form-check">
+            <div class="form-check">
                 <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" value="">Option 1
+                    <input type="checkbox" class="form-check-input" value="">Option 1
                 </label>
             </div>
-        
-        <div class="form-check">
+
+            <div class="form-check">
                 <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" value="">Option 1
+                    <input type="checkbox" class="form-check-input" value="">Option 1
                 </label>
             </div>
-        
-        <div class="form-check">
+
+            <div class="form-check">
                 <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" value="">Option 1
+                    <input type="checkbox" class="form-check-input" value="">Option 1
                 </label>
             </div>
-        
-        <div class="form-check">
+
+            <div class="form-check">
                 <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" value="">Option 1
+                    <input type="checkbox" class="form-check-input" value="">Option 1
                 </label>
             </div>
         </div>
 
-          
 
-    <div class="suggestionColumn col-md-10 pt-4">
+
+        <div class="suggestionColumn col-md-10 pt-4">
 
         <div id="chart" class="col-9 align-items-center"></div>
 
-        @section Scripts
-        {
+            @section Scripts
+            {
             <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
             <script type="text/javascript">
-                google.charts.load('current', {'packages':['corechart']});
+                google.charts.load('current', { 'packages': ['corechart'] });
                 google.charts.setOnLoadCallback(LoadData);
 
                 function LoadData() {
-                $.ajax({
-                    url: '/Statistics?handler=ChartData',
-                    dataType: "json",
-                    type: "GET",
-                    success: function (data) {
-                        drawChart(data);
-                    }
-                });
+                    $.ajax({
+                        url: '/Statistics?handler=ChartData',
+                        dataType: "json",
+                        type: "GET",
+                        success: function (data) {
+                            drawChart(data);
+                        }
+                    });
                 }
 
                 function drawChart(statData) {
 
-                var data = new google.visualization.DataTable(statData);
-                    
+                    var data = new google.visualization.DataTable(statData);
+
                     data.addColumn('string', 'Team');
                     data.addColumn('number', 'Antall forslag');
 
                     for (var i = 0; i < statData.length; i++) {
-                        
+
                         data.addRow([statData[i].teams, statData[i].count]);
                     }
 
 
-                var options = {'title':'Antall forslag per team',
-                            'width':800,
-                            'height':500,
-                            hAxis: {
-                                title: 'Teams',
-                                minValue: 0
-                            },
-                            vAxis: {
-                                title: 'Totale forslag'
-                            }
-                        };
+                    var options = {
+                        'title': 'Antall forslag per team',
+                        'width': 800,
+                        'height': 500,
+                        hAxis: {
+                            title: 'Teams',
+                            minValue: 0
+                        },
+                        vAxis: {
+                            title: 'Totale forslag'
+                        }
+                    };
 
-                var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
-                chart.draw(data, options);
-            }
+                    var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
+                    chart.draw(data, options);
+                }
             </script>
-            }  
-            </div>
+            }
         </div>
     </div>
 </div>
-
-
-   
+</div>
