@@ -39,6 +39,7 @@ namespace rds_test.Pages.Suggestions
                 Value = a.dept.ToString(),
                 Text = a.dept
             }).Distinct().ToList();
+            
         }
 
 
