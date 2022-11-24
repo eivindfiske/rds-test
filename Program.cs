@@ -7,7 +7,6 @@ using rds_test.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();

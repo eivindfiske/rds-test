@@ -38,7 +38,7 @@ namespace rds_test.Pages.Suggestions
             {
                 Value = a.dept.ToString(),
                 Text = a.dept
-            }).ToList();
+            }).Distinct().ToList();
         }
 
 

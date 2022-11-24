@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using rds_test.Data;
 using rds_test.Models;
 
@@ -18,24 +19,25 @@ namespace rds_test.Pages
 
         public IActionResult OnGetChartData()
         {
-            var suggestions = (from s in _context.suggestion
-                                
-                                select new {s.case_num, s.title}
-                                ).ToArray();
+            //SQL
+            // select AspNetUsers.team, count(*) from suggestion join
+            // AspNetUsers on suggestion.Id = AspNetUsers.Id group by team order by count(*) desc;
 
-                return new JsonResult(suggestions);
+            var suggestions = (from s in _context.suggestion
+                                join a in _context.applicationUsers on s.Id equals a.Id 
+                                group s by a.team into g
+                                select g.Count()
+                                ).ToArray();
+            
+            var teams = (from a in _context.applicationUsers select a.team).Distinct().ToArray();
+
+            return new JsonResult(new {teams, suggestions});
+
         }
 
-//select AspNetUsers.name, suggestion.Id, count(*) from suggestion join AspNetUsers on 
-//suggestion.Id = AspNetUsers.Id group by id order by count(*) desc limit 3;
-
-//select AspNetUsers.team, suggestion.Id, count(*) from suggestion join 
-//AspNetUsers on suggestion.Id = AspNetUsers.Id group by team order by count(*) desc;
         
         public IActionResult onGet()
         {
-            
-
             return Page();
         }
 
