@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using rds_test.Data;
 using rds_test.Models;
 
@@ -18,24 +19,40 @@ namespace rds_test.Pages
 
         public IActionResult OnGetChartData()
         {
-            var suggestions = (from s in _context.suggestion
-                                
-                                select new {s.case_num, s.title}
-                                ).ToArray();
+            //SQL
+            // select AspNetUsers.team, count(*) from suggestion join
+            // AspNetUsers on suggestion.Id = AspNetUsers.Id group by team order by count(*) desc;
 
-                return new JsonResult(suggestions);
+            var teams = (from a in _context.applicationUsers select a.team).Distinct().ToArray();
+
+            var suggestions = (from s in _context.suggestion
+                                join a in _context.applicationUsers on s.Id equals a.Id 
+                                group s by a.team into g
+                                select g.Count() 
+                                ).ToArray();
+            
+            var stats = new List<Statistic>();
+        
+            for (int i = 0; i < teams.Length; i++)
+            {
+                var stat = new Statistic();
+                stat.count = suggestions[i];
+                stat.teams = teams[i];
+                stats.Add(stat);
+            }
+
+            // var suggestions = (from s in _context.suggestion 
+            //                     join a in _context.applicationUsers on s.Id equals a.Id
+            //                     select new {s.case_num, a.name}
+            //                     ).ToArray();
+
+            return new JsonResult(stats.ToArray());
+
         }
 
-//select AspNetUsers.name, suggestion.Id, count(*) from suggestion join AspNetUsers on 
-//suggestion.Id = AspNetUsers.Id group by id order by count(*) desc limit 3;
-
-//select AspNetUsers.team, suggestion.Id, count(*) from suggestion join 
-//AspNetUsers on suggestion.Id = AspNetUsers.Id group by team order by count(*) desc;
         
         public IActionResult onGet()
         {
-            
-
             return Page();
         }
 
