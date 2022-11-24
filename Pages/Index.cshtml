@@ -26,10 +26,16 @@
             <div>
                 <div class="filterRow row">
                     <h4>Filtrer</h4>
+                    <div><a asp-page="/Index">Alle forslag</a></div>
+                    <br>
                     <div><a asp-page="/Index" asp-route-sortData="@Model.timestampSort">Nyeste øverst</a></div>
+                    <br>
                     <div><a asp-page="/Index" asp-route-sortData="@Model.deadlineSort">Tidsfrist</a></div>
+                    <br>
                     <div><a asp-page="/Index" asp-route-sortData="@Model.timeframeJDISort">Just do it</a></div>
+                    <br>
                     <div><a asp-page="/Index" asp-route-sortData="@Model.timeframeShortSort">Kortsiktig</a></div>
+                    <br>
                     <div><a asp-page="/Index" asp-route-sortData="@Model.timeframeLongSort">Langsiktig</a></div>
                 </div>
             </div>
@@ -59,15 +65,6 @@
                             <li><a asp-page="/Index" asp-route-sortData="@Model.statusActSort">Act</a></li>
                         </ul>
                     </div>
-                </div>
-            </div>
-
-            <div>
-                <div class="filterRow row">
-                    <div>Mine forslag</div>
-                    <div><a asp-page="/Index">Alle forslag</a></div>
-                    <div>Fullførte forslag</div>
-                    <div>Avviste forslag</div>
                 </div>
             </div>
         </div>
