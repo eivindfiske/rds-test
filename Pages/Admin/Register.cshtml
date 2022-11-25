@@ -72,7 +72,7 @@
                         @Html.DisplayNameFor(model => model.users[0].Email)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.users[0].LockoutEnd)
+                        @Html.DisplayNameFor(model => model.users[0].Lockout)
                     </th>
                     <th></th>
                 </tr>
@@ -92,14 +92,14 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Email)
-                        </td>
+                        </td>      
                         <td>
-                            @Html.DisplayFor(modelItem => item.LockoutEnd)
+                            @Html.DisplayFor(modelItem => item.Lockout)
                         </td>
                         <td>
                             <a asp-page="./Edit" asp-route-id="@item.emp_num">Edit</a>
-                            <a asp-page="./AssignRoles">Roles</a>
                             <a asp-page="./Lockout" asp-route-id="@item.emp_num">Lockout</a>
+                            <a asp-page="./RestoreUser" asp-route-id="@item.emp_num">Restore</a>
                             <a asp-page="./Delete" asp-route-id="@item.emp_num">Delete</a>
                         </td>
                     </tr>

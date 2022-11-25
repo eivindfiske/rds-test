@@ -1,8 +1,8 @@
 ﻿@page
-@model rds_test.Pages.Admin.LockoutModel
+@model rds_test.Pages.Admin.RestoreUserModel
 @{
 }
-<h3>Er du sikker på at du vil slette denne brukeren?</h3>
+<h3>Er du sikker på at du vil gjennoprette denne brukeren?</h3>
 <div>
     <h4>Ansatt</h4>
     <hr />
@@ -29,12 +29,7 @@
 
     <form method="post">
         <input type="hidden" asp-for="ApplicationUser.emp_num" />
-        <input type="submit" value="Lockout" class="btn btn-danger" /> |
+        <input type="submit" value="Restore" class="btn btn-danger" /> |
         <a asp-page="./Index">Tilbake</a>
     </form>
-    <form method="Restore">
-        <input type="hidden" asp-for="ApplicationUser.emp_num" />
-        <input type="submit" value="Restore" class="btn" /> |
-    </form>
-
 </div>

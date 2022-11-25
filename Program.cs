@@ -7,7 +7,6 @@ using rds_test.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
@@ -21,7 +20,7 @@ var LockoutOptions = new LockoutOptions()
 {
     AllowedForNewUsers = true,
     DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1),
-    MaxFailedAccessAttempts = 2
+    MaxFailedAccessAttempts = 5
 };
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
