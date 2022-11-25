@@ -1,17 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using rds_test.Data;
 using rds_test.Models.StatModels;
 
 namespace rds_test.Pages
 {
-    // [Authorize]
+    [Authorize]
     public class StatisticsModel : PageModel
     {
         public readonly ApplicationContext _context;
 
-         public StatisticsModel(ApplicationContext context)
+        public StatisticsModel(ApplicationContext context)
         {
             _context = context;
         }
@@ -26,13 +26,13 @@ namespace rds_test.Pages
             var teams = (from a in _context.applicationUsers select a.team).Distinct().ToArray();
 
             var suggestions = (from s in _context.suggestion
-                                join a in _context.applicationUsers on s.Id equals a.Id 
-                                group s by a.team into g
-                                select g.Count() 
+                               join a in _context.applicationUsers on s.Id equals a.Id
+                               group s by a.team into g
+                               select g.Count()
                                 ).ToArray();
-            
+
             var stats = new List<StatAllTeams>();
-        
+
             for (int i = 0; i < suggestions.Length; i++)
             {
                 var stat = new StatAllTeams();
@@ -50,7 +50,7 @@ namespace rds_test.Pages
 
         }
 
-        
+
         public IActionResult onGet()
         {
             return Page();

@@ -11,27 +11,29 @@
         @if (User.IsInRole("Admin"))
         {
             <div class="pl-2">
-            <li>
-                <a asp-area="" asp-page="/Admin/AssignRoles">Roller</a>
-            </li>
-            <li>
-                <a asp-area="" asp-page="/Admin/Register">Brukere</a>
-            </li>
-            <hr />
+                <li>
+                    <a asp-area="" asp-page="/Admin/AssignRoles">Roller</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-page="/Admin/Register">Opprett nye roller</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-page="/Admin/Register">Brukere</a>
+                </li>
+                <hr />
             </div>
-            
+
         }
-        
+
         <div class="pl-2">
-        <li>
-            <h4 style="color: #007D63">@UserManager.GetUserName(User)<h4>
-        </li>
-        <li>
-            <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
-            asp-route-returnUrl="@Url.Page("/Index", new { area = "" })">
-                <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-            </form>
-        </li>
+            <li>
+                <h4 style="color: #007D63">@UserManager.GetUserName(User)<h4>
+            </li>
+            <li>
+                <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
+                asp-route-returnUrl="@Url.Page("/Index", new { area = "" })">
+                    <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                </form>
+            </li>
         </div>
     }
-    

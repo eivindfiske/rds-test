@@ -1,16 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using rds_test.Data;
 using rds_test.Models;
 
 namespace rds_test.Pages.Suggestions
 {
+    [Authorize]
     public class EditModel : PageModel
     {
         private readonly rds_test.Data.ApplicationContext _context;
@@ -51,8 +48,8 @@ namespace rds_test.Pages.Suggestions
             return Page();
         }
 
-        
-        
+
+
         public async Task<IActionResult> OnPostAsync(int id)
         {
             var editSuggestion = await _context.suggestion.FindAsync(id);

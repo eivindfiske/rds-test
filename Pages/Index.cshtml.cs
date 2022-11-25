@@ -6,7 +6,7 @@ using rds_test.Models;
 
 namespace rds_test.Pages
 {
-    //[Authorize]
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly rds_test.Data.ApplicationContext _context;
