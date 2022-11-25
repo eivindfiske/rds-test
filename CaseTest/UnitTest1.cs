@@ -16,11 +16,11 @@
 //     [TestMethod]
 //     public void GetUsersSuggestions()
 //     {
-//         //Arrange
+//         Arrange
 //         var suggestion = (from s in _context.suggestion where s.title = "Få klær i garderobe" select s.case_num);
 //         var expectedcase_num = 1;
 
-//         //Assert
+//         Assert
 //         Assert.AreEqual(expectedcase_num, suggestion);
 
 //     }
