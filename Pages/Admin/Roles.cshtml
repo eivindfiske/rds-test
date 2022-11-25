@@ -1,10 +1,14 @@
 ﻿@page
 @model rds_test.Pages.Admin.RolesModel
 @{
-    ViewData["Title"] = "Roles";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
 }
 
-<h4>Create Role</h4>
+<head>
+    <link rel="stylesheet" href="../css/site.css">
+</head>
+
+<h3>Opprett en rolle</h3>
 
 <div class="row">
     <div class="col-md-8">
@@ -24,5 +28,5 @@
 
 
 @section scripts{
-    <partial name="_ValidationScriptsPartial" />
+<partial name="_ValidationScriptsPartial" />
 }

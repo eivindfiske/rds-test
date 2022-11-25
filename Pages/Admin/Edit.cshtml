@@ -1,13 +1,14 @@
 @page
 @model rds_test.Pages.Admin.EditModel
-
 @{
-    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Rediger ansatt</h1>
+<head>
+    <link rel="stylesheet" href="../css/site.css">
+</head>
 
-<h4>Ansatt</h4>
+<h1>Rediger ansatt</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -20,7 +21,7 @@
                 <span asp-validation-for="ApplicationUser.name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ApplicationUser.PasswordHash" class="control-label"></label>
+                <label asp-for="ApplicationUser.PasswordHash" class="control-label">Passordkode</label>
                 <input asp-for="ApplicationUser.PasswordHash" class="form-control" />
                 <span asp-validation-for="ApplicationUser.PasswordHash" class="text-danger"></span>
             </div>
@@ -29,19 +30,21 @@
                 <select asp-for="ApplicationUser.team" class="form-control" asp-items="ViewBag.team"></select>
                 <span asp-validation-for="ApplicationUser.team" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
         </form>
+        <div class="row">
+            <div class="form-group">
+                <input type="submit" value="Lagre" class="btn btn-primary" />
+                <a asp-page="./Register">Tilbake</a>
+            </div>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-page="./Register">Back to List</a>
-</div>
+
+
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-    }
+@{
+await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

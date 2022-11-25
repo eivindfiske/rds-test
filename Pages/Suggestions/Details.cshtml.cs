@@ -41,6 +41,12 @@ namespace rds_test.Pages.Suggestions
                 Suggestion = suggestion;
             }
             return Page();
+
         }
+
+        // public void GetName(int? id)
+        // {
+        //     var namewanted = (from a in _context.applicationUsers where a.Id = id select a.name);
+        // }
     }
 }
