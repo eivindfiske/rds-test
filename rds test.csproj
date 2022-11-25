@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>rds_test</RootNamespace>
-    <UserSecretsId>0361fb9d-3801-46c8-9e3d-77c9f121dbb3</UserSecretsId>
+    <UserSecretsId>9444f2bb-7f91-4092-abb3-3abdfd6e1d42</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
