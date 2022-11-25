@@ -9,47 +9,66 @@
 <div class="container-fluid">
     <div class="row">
         <div class="filterbar col-2 pt-5">
-
-            <input class="form-control mr-sm-2" type="search" placeholder="Søk.." aria-label="Search" id="txtSearch" />
-
-            <h3>Filtrer</h3>
-
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" value="">Option 1
-                </label>
-            </div>
-
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" value="">Option 1
-                </label>
-            </div>
-
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" value="">Option 1
-                </label>
-            </div>
-
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" value="">Option 1
-                </label>
-            </div>
-
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" value="">Option 1
-                </label>
+            <h4 style="margin-left: 20px">Filtrer</h4>
+            <div>
+                <div class="filterRow row">
+                    <div class="dropdown">
+                        <button class="teambtn" type="button" data-toggle="dropdown">Avdeling
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <p>Produksjon</p>
+                            </li>
+                            <li>
+                                <p>Salg og marked</p>
+                            </li>
+                            <li>
+                                <p>Logistikk</p>
+                            </li>
+                            <li>
+                                <p>Ledergruppe</p>
+                            </li>
+                            <li>
+                                <p>Teknisk
+                                <p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <button class="teambtn" type="button" data-toggle="dropdown">Team
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <p>Produksjon</p>
+                            </li>
+                            <li>
+                                <p>Salg og marked</p>
+                            </li>
+                            <li>
+                                <p>Logistikk</p>
+                            </li>
+                            <li>
+                                <p>Ledergruppe</p>
+                            </li>
+                            <li>
+                                <p>Teknisk
+                                <p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
 
 
 
+
+
         <div class="suggestionColumn col-md-10 pt-4">
 
-        <div id="chart" class="col-9 align-items-center"></div>
+            <div id="chart" class="col-9 align-items-center"></div>
 
             @section Scripts
             {
@@ -82,17 +101,15 @@
                         data.addRow([statData[i].teams, statData[i].count]);
                     }
 
-
                     var options = {
                         'title': 'Antall forslag per team',
-                        'width': 800,
+                        'width': 1000,
                         'height': 500,
                         hAxis: {
                             title: 'Teams',
-                            minValue: 0
                         },
                         vAxis: {
-                            title: 'Totale forslag'
+                            title: 'Forslag'
                         }
                     };
 

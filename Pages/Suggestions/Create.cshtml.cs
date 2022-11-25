@@ -2,11 +2,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 using rds_test.Data;
 using rds_test.Models;
 
 namespace rds_test.Pages.Suggestions
 {
+    [Authorize]
     public class CreateModel : PageModel
     {
         private readonly ApplicationContext _context;
@@ -39,7 +41,7 @@ namespace rds_test.Pages.Suggestions
                 Value = a.dept.ToString(),
                 Text = a.dept
             }).Distinct().ToList();
-            
+
         }
 
 

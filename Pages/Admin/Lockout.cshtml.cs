@@ -1,11 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
 using rds_test.Data;
 using rds_test.Models;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace rds_test.Pages.Admin
 {
@@ -23,9 +21,9 @@ namespace rds_test.Pages.Admin
         [BindProperty]
         public ApplicationUser ApplicationUser { get; set; } = default!;
 
-       
 
-    public async Task<IActionResult> OnGetAsync(string? id)
+
+        public async Task<IActionResult> OnGetAsync(string? id)
         {
             if (id == null || _context.applicationUsers == null)
             {
@@ -33,7 +31,7 @@ namespace rds_test.Pages.Admin
             }
 
             var applicationUsers = await _context.applicationUsers.FirstOrDefaultAsync(m => m.emp_num == id);
-            
+
 
             if (applicationUsers == null)
             {
@@ -46,7 +44,7 @@ namespace rds_test.Pages.Admin
                 applicationUsers.LockoutEnd = DateTime.UtcNow.AddYears(100);
                 applicationUsers.Lockout = true;
                 await _userManager.UpdateAsync(applicationUsers);
-                
+
             }
             return Page();
         }
