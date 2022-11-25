@@ -112,7 +112,7 @@ a:hover {
 }
 
 a:visited {
-  color: black;
+  color:rgb(82, 81, 81);
 }
 
 .floating-btn.material-icons {
@@ -150,7 +150,7 @@ a:visited {
 .modal-dialog {
   margin-top: 20px;
   margin-right: 40px;
-  max-width: 300px;
+  max-width: 250px;
   float: right;
 }
 
@@ -160,7 +160,7 @@ a:visited {
 }
 
 .modalx {
-  margin-left: 160px;
+  margin-left: 110px;
 }
 
 

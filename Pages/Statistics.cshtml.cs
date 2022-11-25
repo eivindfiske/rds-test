@@ -25,7 +25,7 @@ namespace rds_test.Pages
 
             var teams = (from a in _context.applicationUsers select a.team).Distinct().ToArray();
 
-            var suggestions = (from s in _context.suggestion.DefaultIfEmpty()
+            var suggestions = (from s in _context.suggestion
                                 join a in _context.applicationUsers on s.Id equals a.Id 
                                 group s by a.team into g
                                 select g.Count() 
