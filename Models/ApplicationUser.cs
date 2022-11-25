@@ -19,6 +19,9 @@ public class ApplicationUser : IdentityUser
     [Display(Name = "Navn")]
     [Column(TypeName = "varchar(50)")]
     public string? name { get; set; }
+    
+
+    public bool Lockout { get; set; }
 
     [PersonalData]
     [Display(Name = "Team")]
@@ -30,5 +33,7 @@ public class ApplicationUser : IdentityUser
     public List<Participants> participants { get; set; }
     public List<Log> log { get; set; }
     public List<Suggestion> suggestions { get; set; }
+
+    
 }
 

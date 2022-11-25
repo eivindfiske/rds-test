@@ -77,7 +77,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.users[0].Email)
                     </th>
-
+                    <th>
+                        @Html.DisplayNameFor(model => model.users[0].LockoutEnd)
+                    </th>
                     <th></th>
                 </tr>
             </thead>
@@ -97,11 +99,15 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Email)
                         </td>
-                        <
-td>
-                            <a asp-page="./Edit" asp-route-id="@item.emp_num">Edit |</a> 
-                            <a asp-page="./Delete" asp-route-id="@item.emp_num">Delete |</a>
-                            <a asp-page="./AssignRoles">Rolle</a>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LockoutEnd)
+                        </td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@item.emp_num">Edit</a>
+                            <a asp-page="./AssignRoles">Roles</a>
+                            <a asp-page="./Lockout" asp-route-id="@item.emp_num">Lockout</a>
+                            <a asp-page="./Delete" asp-route-id="@item.emp_num">Delete</a>
+                        <td>
                         </td>
                     </tr>
                 }
@@ -109,10 +115,6 @@ td>
     </table>
     </div>
 </div>
-
-
-    
-
 <partial name="_ValidationScriptsPartial" />
 }
 
