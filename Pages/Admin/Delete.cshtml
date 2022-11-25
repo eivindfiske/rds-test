@@ -1,40 +1,43 @@
 @page
 @model rds_test.Pages.Admin.DeleteModel
-
 @{
-   ViewData["Title"] = "Delete";
+   Layout = "~/Pages/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Slett</h1>
+<head>
+   <link rel="stylesheet" href="../css/site.css">
+</head>
 
 <h3>Er du sikker på at du vil slette denne brukeren?</h3>
-<div>
-   <h4>Ansatt</h4>
-   <hr />
-   <dl class="row">
-      <dt class="col-sm-2">
-         @Html.DisplayNameFor(model => model.ApplicationUser.name)
-      </dt>
-      <dd class="col-sm-10">
-         @Html.DisplayFor(model => model.ApplicationUser.name)
-      </dd>
-      <dt class="col-sm-2">
-         @Html.DisplayNameFor(model => model.ApplicationUser.PasswordHash)
-      </dt>
-      <dd class="col-sm-10">
-         @Html.DisplayFor(model => model.ApplicationUser.PasswordHash)
-      </dd>
-      <dt class="col-sm-2">
-         @Html.DisplayNameFor(model => model.ApplicationUser.dept)
-      </dt>
-      <dd class="col-sm-10">
-         @Html.DisplayFor(model => model.ApplicationUser.dept.team)
-      </dd>
-   </dl>
+<hr />
 
-   <form method="post">
-      <input type="hidden" asp-for="ApplicationUser.emp_num" />
-      <input type="submit" value="Delete" class="btn btn-danger" /> |
-      <a asp-page="./Index">Tilbake</a>
-   </form>
+<dl class="row">
+   <dt class="col-sm-2">
+      @Html.DisplayNameFor(model => model.ApplicationUser.name)
+   </dt>
+   <dd class="col-sm-10">
+      @Html.DisplayFor(model => model.ApplicationUser.name)
+   </dd>
+   <dt class="col-sm-2">
+      <p>Passordkode</p>
+   </dt>
+   <dd class="col-sm-10">
+      @Html.DisplayFor(model => model.ApplicationUser.PasswordHash)
+   </dd>
+   <dt class="col-sm-2">
+      <p>Avdeling</p>
+   </dt>
+   <dd class="col-sm-10">
+      @Html.DisplayFor(model => model.ApplicationUser.dept.team)
+   </dd>
+</dl>
+
+<div class="row">
+   <div class="form-group">
+      <form method="post">
+         <input type="hidden" asp-for="ApplicationUser.emp_num" />
+         <input type="submit" value="Slett" class="btn btn-danger" />
+         <a asp-page="./Register">Tilbake</a>
+      </form>
+   </div>
 </div>

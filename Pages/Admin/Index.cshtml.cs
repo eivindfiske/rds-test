@@ -4,17 +4,21 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using rds_test.Models;
 using System.ComponentModel.DataAnnotations;
 
+
+
 namespace rds_test.Pages.Admin
 {
+    [Authorize(Roles = "Admin")]
     public class IndexModel : PageModel
     {
         private readonly UserManager<ApplicationUser> _userManager;
         public IndexModel(UserManager<ApplicationUser> userManager)
         {
-            
+
             _userManager = userManager;
         }
         public SelectList UserData { get; set; }
@@ -25,17 +29,17 @@ namespace rds_test.Pages.Admin
             await GetOptions();
         }
 
-        
+
         public async Task<IActionResult> OnPostAsync()
         {
             if (ModelState.IsValid)
             {
                 var user = await _userManager.FindByNameAsync(SelectedUser);
                 user.LockoutEnd = DateTime.Now.AddMinutes(1);
-                
-                
+
+
             }
-            
+
             await GetOptions();
             return RedirectToPage("/index");
         }

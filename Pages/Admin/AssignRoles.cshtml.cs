@@ -5,9 +5,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using rds_test.Models;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace rds_test.Pages.Admin
 {
+    [Authorize(Roles = "Admin")]
     public class AssignRolesModel : PageModel
     {
         private readonly RoleManager<IdentityRole> _roleManager;
