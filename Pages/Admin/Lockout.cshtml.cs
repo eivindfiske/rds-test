@@ -43,7 +43,8 @@ namespace rds_test.Pages.Admin
             {
                 ApplicationUser = applicationUsers;
                 applicationUsers.LockoutEnabled = true;
-                applicationUsers.LockoutEnd = DateTime.UtcNow.AddMinutes(5);
+                applicationUsers.LockoutEnd = DateTime.UtcNow.AddYears(100);
+                applicationUsers.Lockout = true;
                 await _userManager.UpdateAsync(applicationUsers);
                 
             }
