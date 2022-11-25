@@ -2,9 +2,13 @@
 @model RegisterModel
 @{
 
+
+
     ViewData["Title"] = "Register";
 }
 @{
+
+
 
     Layout = "~/Pages/Shared/_AdminLayout.cshtml";
 }
@@ -84,6 +88,7 @@
             </thead>
             <tbody>
                 @foreach (var item in Model.users)
+
                 {
                     <tr>
                         <td>
@@ -99,11 +104,12 @@
                             @Html.DisplayFor(modelItem => item.Email)
                         </td>
                         <td>
-                            <a asp-page="./Edit" asp-route-id="@item.emp_num">Edit |</a>
+                               <a asp-page="./Edit" asp-route-id="@item.emp_num">Edit |</a> 
                             <a asp-page="./Delete" asp-route-id="@item.emp_num">Delete |</a>
                             <a asp-page="./AssignRoles">Rolle</a>
                         </td>
                     </tr>
+
                 }
             </tbody>
         </table>
@@ -114,4 +120,3 @@
 
 
 <partial name="_ValidationScriptsPartial" />
-

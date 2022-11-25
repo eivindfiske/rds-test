@@ -33,7 +33,7 @@ namespace rds_test.Pages
             
             var stats = new List<StatAllTeams>();
         
-            for (int i = 0; i < teams.Length; i++)
+            for (int i = 0; i < suggestions.Length; i++)
             {
                 var stat = new StatAllTeams();
                 stat.count = suggestions[i];
